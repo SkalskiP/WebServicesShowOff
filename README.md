@@ -6,9 +6,9 @@
 
 ## Services description
 
-1. Parking Space Service [Java]
+1. [Parking Space Service](./01_parking_space_service/) [Java]
 2. Account Service [Java]
 3. Notifications Service [Java]
-4. Web Application [JavaScript / React]
+4. [Web Application](./04_web_application/) [JavaScript / React]
 5. Parking Meter [Python]
 6. Parking Sensors [Python]
