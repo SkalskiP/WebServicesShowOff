@@ -12,3 +12,4 @@
 4. [Web Application](./04_web_application/) [JavaScript / React]
 5. Parking Meter [Python]
 6. Parking Sensors [Python]
+7. Parking Space Database [MySQL]
