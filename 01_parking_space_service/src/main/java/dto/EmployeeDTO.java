@@ -14,7 +14,7 @@ public class EmployeeDTO extends AbstractDTO {
     private Integer id;
 
     @Column(name = "id_from_account_db", nullable = false)
-    private Integer external_id;
+    private Integer externalId;
 
     @OneToMany(mappedBy="employee")
     private Set<ZoneDTO> zones;
@@ -27,12 +27,12 @@ public class EmployeeDTO extends AbstractDTO {
         this.id = id;
     }
 
-    public Integer getExternal_id() {
-        return external_id;
+    public Integer getExternalId() {
+        return externalId;
     }
 
-    public void setExternal_id(Integer external_id) {
-        this.external_id = external_id;
+    public void setExternalId(Integer external_id) {
+        this.externalId = external_id;
     }
 
     public Set<ZoneDTO> getZones() {

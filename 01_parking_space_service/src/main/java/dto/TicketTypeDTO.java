@@ -12,13 +12,13 @@ public class TicketTypeDTO extends AbstractDTO {
     @Column(name = "id", nullable = false)
     private Integer id;
 
-    @Column(name = "name", nullable = false)
+    @Column(name = "name", nullable = false, unique = true)
     private String name;
 
     @Column(name = "price", nullable = false)
     private Double price;
 
-    @Column(name = "duration", nullable = false)
+    @Column(name = "duration", nullable = false, unique = true)
     private Integer duration;
 
     public Integer getId() {

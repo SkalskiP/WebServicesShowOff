@@ -1,6 +1,7 @@
 package dto;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity()
 @Table(name = "STREET")
@@ -18,6 +19,9 @@ public class StreetDTO extends AbstractDTO {
     @ManyToOne
     @JoinColumn(name = "zone_id", referencedColumnName = "id")
     private ZoneDTO zone;
+
+    @OneToMany(mappedBy="street")
+    private Set<ParkingSpotDTO> parkingSpots;
 
     @Override
     public Integer getId() {
@@ -42,5 +46,13 @@ public class StreetDTO extends AbstractDTO {
 
     public void setZone(ZoneDTO zone) {
         this.zone = zone;
+    }
+
+    public Set<ParkingSpotDTO> getParkingSpots() {
+        return parkingSpots;
+    }
+
+    public void setParkingSpots(Set<ParkingSpotDTO> parking_spots) {
+        this.parkingSpots = parking_spots;
     }
 }

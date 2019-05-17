@@ -11,6 +11,8 @@
         <class>dto.EmployeeDTO</class>
         <class>dto.ZoneDTO</class>
         <class>dto.StreetDTO</class>
+        <class>dto.ParkingSpotDTO</class>
+        <class>dto.ParkingTicketDTO</class>
         <properties>
             <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL55Dialect"/>
             <property name="hibernate.hbm2ddl.auto" value="update"/>

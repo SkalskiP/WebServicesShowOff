@@ -47,4 +47,12 @@ public class ZoneDTO extends AbstractDTO {
     public void setEmployee(EmployeeDTO employee) {
         this.employee = employee;
     }
+
+    public Set<StreetDTO> getStreets() {
+        return streets;
+    }
+
+    public void setStreets(Set<StreetDTO> streets) {
+        this.streets = streets;
+    }
 }
