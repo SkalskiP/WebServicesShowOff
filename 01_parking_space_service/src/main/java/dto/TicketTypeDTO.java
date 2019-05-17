@@ -5,7 +5,7 @@ import javax.persistence.*;
 @Entity()
 @Table(name = "TICKET_TYPE")
 @Access(AccessType.FIELD)
-public class TicketType {
+public class TicketTypeDTO {
 
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
