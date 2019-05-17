@@ -5,7 +5,7 @@ import javax.persistence.*;
 @Entity()
 @Table(name = "TICKET_TYPE")
 @Access(AccessType.FIELD)
-public class TicketTypeDTO {
+public class TicketTypeDTO extends AbstractDTO {
 
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)

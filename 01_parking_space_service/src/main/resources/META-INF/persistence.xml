@@ -8,6 +8,9 @@
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
         <jta-data-source>java:/PARKING_SPACE</jta-data-source>
         <class>dto.TicketTypeDTO</class>
+        <class>dto.EmployeeDTO</class>
+        <class>dto.ZoneDTO</class>
+        <class>dto.StreetDTO</class>
         <properties>
             <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL55Dialect"/>
             <property name="hibernate.hbm2ddl.auto" value="update"/>
