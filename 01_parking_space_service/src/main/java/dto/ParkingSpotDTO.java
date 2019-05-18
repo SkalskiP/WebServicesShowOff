@@ -1,5 +1,8 @@
 package dto;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import java.util.Set;
 
@@ -16,11 +19,16 @@ public class ParkingSpotDTO extends AbstractDTO {
     @Column(name = "number", nullable = false)
     private Integer number;
 
+    @Column(name = "occupied", nullable = false)
+    private Boolean occupied;
+
     @ManyToOne
     @JoinColumn(name = "street_id", referencedColumnName = "id")
+    @JsonBackReference
     private StreetDTO street;
 
     @OneToMany(mappedBy="parkingSpot")
+    @JsonManagedReference
     private Set<ParkingTicketDTO> parkingTickets;
 
     @Override
@@ -42,6 +50,14 @@ public class ParkingSpotDTO extends AbstractDTO {
 
     public StreetDTO getStreet() {
         return street;
+    }
+
+    public Boolean getOccupied() {
+        return occupied;
+    }
+
+    public void setOccupied(Boolean occupied) {
+        this.occupied = occupied;
     }
 
     public void setStreet(StreetDTO street) {

@@ -11,11 +11,11 @@ import javax.ws.rs.core.Response;
 import java.util.List;
 
 @Path("/ticket-types")
-public class TicketTypeRestService {
+public class TicketTypesRestService {
 
     @GET
     @Produces({MediaType.APPLICATION_JSON})
-    public Response getUsers() {
+    public Response getTicketTypes() {
         List<TicketTypeDTO> ticketTypes = TicketTypeDAO.getInstance().getItems();
         return Response.ok().entity(ticketTypes).build();
     }

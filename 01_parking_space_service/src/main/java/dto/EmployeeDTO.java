@@ -1,5 +1,7 @@
 package dto;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import java.util.Set;
 
@@ -17,6 +19,7 @@ public class EmployeeDTO extends AbstractDTO {
     private Integer externalId;
 
     @OneToMany(mappedBy="employee")
+    @JsonManagedReference
     private Set<ZoneDTO> zones;
 
     public Integer getId() {
