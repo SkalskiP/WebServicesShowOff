@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Czas generowania: 18 Maj 2019, 18:53
+-- Czas generowania: 18 Maj 2019, 23:19
 -- Wersja serwera: 5.7.25-0ubuntu0.18.04.2
 -- Wersja PHP: 7.0.33-5+ubuntu18.04.1+deb.sury.org+1
 
@@ -206,7 +206,7 @@ CREATE TABLE `PARKING_TICKET` (
   `parking_spot_id` int(11) NOT NULL,
   `ticket_type_id` int(11) DEFAULT NULL,
   `start_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `end_time` int(11) DEFAULT NULL,
+  `end_time` timestamp NULL DEFAULT NULL,
   `status` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -367,7 +367,7 @@ ALTER TABLE `PARKING_SPOT`
 -- AUTO_INCREMENT dla tabeli `PARKING_TICKET`
 --
 ALTER TABLE `PARKING_TICKET`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT dla tabeli `STREET`
 --
