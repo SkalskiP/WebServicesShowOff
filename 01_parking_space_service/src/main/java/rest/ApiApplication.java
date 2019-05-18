@@ -1,9 +1,6 @@
 package rest;
 
-import rest.ticketType.EmployeesRestService;
-import rest.ticketType.ParkingSpotRestService;
-import rest.ticketType.StreetsRestService;
-import rest.ticketType.TicketTypesRestService;
+import rest.services.*;
 
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
@@ -23,6 +20,7 @@ public class ApiApplication extends Application {
         set.add(EmployeesRestService.class);
         set.add(StreetsRestService.class);
         set.add(ParkingSpotRestService.class);
+        set.add(ParkingTicketRestService.class);
 
         return set;
     }

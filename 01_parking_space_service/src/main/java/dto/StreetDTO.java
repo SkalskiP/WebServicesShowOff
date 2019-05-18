@@ -19,12 +19,12 @@ public class StreetDTO extends AbstractDTO {
     @Column(name = "name", nullable = false)
     private String name;
 
-    @ManyToOne
+    @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name = "zone_id", referencedColumnName = "id")
     @JsonBackReference
     private ZoneDTO zone;
 
-    @OneToMany(mappedBy="street")
+    @OneToMany(fetch=FetchType.LAZY, mappedBy="street")
     @JsonManagedReference
     private Set<ParkingSpotDTO> parkingSpots;
 

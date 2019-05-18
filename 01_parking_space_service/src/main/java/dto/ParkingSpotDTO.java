@@ -22,12 +22,12 @@ public class ParkingSpotDTO extends AbstractDTO {
     @Column(name = "occupied", nullable = false)
     private Boolean occupied;
 
-    @ManyToOne
+    @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name = "street_id", referencedColumnName = "id")
     @JsonBackReference
     private StreetDTO street;
 
-    @OneToMany(mappedBy="parkingSpot")
+    @OneToMany(fetch=FetchType.LAZY, mappedBy="parkingSpot")
     @JsonManagedReference
     private Set<ParkingTicketDTO> parkingTickets;
 

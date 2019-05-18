@@ -1,4 +1,4 @@
-package rest.ticketType;
+package rest.services;
 
 import dao.TicketTypeDAO;
 import dto.TicketTypeDTO;

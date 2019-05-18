@@ -1,5 +1,9 @@
 package dto;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import domain.ParkingTicketStatus;
+import domain.ParkingTicketStatusConverter;
+
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
@@ -13,12 +17,14 @@ public class ParkingTicketDTO extends AbstractDTO {
     @Column(name = "id", nullable = false)
     private Integer id;
 
-    @ManyToOne
+    @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name = "parking_spot_id", referencedColumnName = "id", nullable = false)
+    @JsonBackReference
     private ParkingSpotDTO parkingSpot;
 
-    @ManyToOne
+    @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name = "ticket_type_id", referencedColumnName = "id", nullable = true)
+    @JsonBackReference
     private TicketTypeDTO ticketType;
 
     @Column(name = "start_time", nullable = false)
@@ -28,7 +34,16 @@ public class ParkingTicketDTO extends AbstractDTO {
     private LocalDateTime endTime;
 
     @Column(name = "status", nullable = false)
-    private String status;
+    @Convert(converter = ParkingTicketStatusConverter.class)
+    private ParkingTicketStatus status;
+
+    public ParkingTicketDTO() {}
+
+    public ParkingTicketDTO(ParkingSpotDTO parkingSpot) {
+        this.parkingSpot = parkingSpot;
+        this.startTime = LocalDateTime.now();
+        this.status = ParkingTicketStatus.UNPAID;
+    }
 
     @Override
     public Integer getId() {
@@ -71,11 +86,11 @@ public class ParkingTicketDTO extends AbstractDTO {
         this.endTime = endTime;
     }
 
-    public String getStatus() {
+    public ParkingTicketStatus getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(ParkingTicketStatus status) {
         this.status = status;
     }
 }

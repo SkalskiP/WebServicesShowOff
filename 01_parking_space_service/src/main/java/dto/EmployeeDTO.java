@@ -18,7 +18,7 @@ public class EmployeeDTO extends AbstractDTO {
     @Column(name = "id_from_account_db", nullable = false)
     private Integer externalId;
 
-    @OneToMany(mappedBy="employee")
+    @OneToMany(fetch=FetchType.LAZY, mappedBy="employee")
     @JsonManagedReference
     private Set<ZoneDTO> zones;
 

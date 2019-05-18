@@ -10,8 +10,8 @@ import java.util.Optional;
 
 public abstract class AbstractDAO<T extends AbstractDTO> {
     private static final String PERSISTENCE_UNIT_NAME = "ParkingServiceUnit";
-    private String className;
-    private Class clazz;
+    protected String className;
+    protected Class clazz;
 
     protected EntityManager entityManager;
 
