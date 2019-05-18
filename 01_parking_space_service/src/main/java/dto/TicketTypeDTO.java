@@ -18,8 +18,8 @@ public class TicketTypeDTO extends AbstractDTO {
     @Column(name = "price", nullable = false)
     private Double price;
 
-    @Column(name = "duration", nullable = false, unique = true)
-    private Integer duration;
+    @Column(name = "duration_hours", nullable = false, unique = true)
+    private Integer durationHours;
 
     public Integer getId() {
         return id;
@@ -45,11 +45,11 @@ public class TicketTypeDTO extends AbstractDTO {
         this.price = price;
     }
 
-    public Integer getDuration() {
-        return duration;
+    public Integer getDurationHours() {
+        return durationHours;
     }
 
-    public void setDuration(Integer duration) {
-        this.duration = duration;
+    public void setDurationHours(Integer duration) {
+        this.durationHours = duration;
     }
 }
