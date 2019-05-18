@@ -13,7 +13,7 @@
 3. Notifications Service [Java]
 4. [Web Application](./04_web_application/) [JavaScript / React]
 5. Parking Meter [Python]
-6. Parking Sensors [Python]
+6. [Parking Sensors](./06_parking_sensor) [Python]
 7. [Parking Space Database](./07_parking_space_database) [MySQL]
 
 ## Parking Space Database diagram
