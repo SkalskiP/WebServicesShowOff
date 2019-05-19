@@ -11,6 +11,7 @@
 
 import curses
 from ..utils.views_names import ViewsNames
+from ..utils.soap_client import SoapClient
 
 
 def select_spot_to_occupy_view(router):
@@ -23,7 +24,8 @@ def select_spot_to_occupy_view(router):
     s = router.read_text_from_user(4, 4)
 
     if s is not "q":
-        router.selected_spot = int(s)
+        router.soap_response = SoapClient.occupy_parking_spot(int(s))
+        print(router.soap_response)
         router.current_view = ViewsNames.SHOW_OCCUPY_SPOT_OUTCOME
     else:
         router.current_view = ViewsNames.ACTIONS_MENU

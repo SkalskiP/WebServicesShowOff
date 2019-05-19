@@ -17,7 +17,7 @@ from .utils.views_names import ViewsNames
 
 class ViewRutting:
     def __init__(self):
-        self.selected_spot = None
+        self.soap_response = None
         self.screen = self.init_screen()
         self.running = True
         self.current_view = ViewsNames.INTRO
