@@ -16,6 +16,12 @@
 6. [Parking Sensors](./06_parking_sensor) [Python]
 7. [Parking Space Database](./07_parking_space_database) [MySQL]
 
+## Parking Sensor SOAP Client
+
+<p align="center"> 
+    <img width="600" src="./docs/parking_sensor_mock.gif" alt="Services Diagram">
+</p>
+
 ## Parking Space Database diagram
 
 <p align="center"> 
