@@ -46,6 +46,16 @@ python3 parking_sensor_terminal.py
 ```
 </p></details>
 
+<details><summary><i>Set up Database for Parking Service</i></summary><p>
+
+1. Install MySQL on your system
+2. Create Database and run provided SQL script
+3. Set up MySQL on Application Server
+4. Add datasource to your application server with JNDI name java:/PARKING_SPACE
+5. Profit
+
+</p></details>
+
 ## Parking Sensor SOAP Client
 
 <p align="center"> 
