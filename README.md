@@ -29,6 +29,20 @@ cd WebServicesShowOff
 ```
 </p></details>
 
+<details><summary><i>Set up and run Web Application</i></summary><p>
+
+```bash
+# navigate to web application directory
+cd 04_web_application
+
+# install dependencies
+npm install
+
+# serve with hot reload at localhost:3000
+npm start
+```
+</p></details>
+
 <details><summary><i>Set up and run Parking Sensor Client</i></summary><p>
 
 ```bash
