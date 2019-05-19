@@ -11,13 +11,18 @@
 import curses
 from .views.intro_view import intro_view
 from .views.select_spot_to_occupy_view import select_spot_to_occupy_view
+from .views.select_spot_to_release_view import select_spot_to_release_view
 from .views.actions_menu_view import actions_menu_view
+from .views.show_occupy_spot_outcome import show_occupy_spot_outcome
+from .views.show_release_spot_outcome import show_release_spot_outcome
 from .utils.views_names import ViewsNames
 
 
 class ViewRutting:
     def __init__(self):
+        self.spot_id = None
         self.soap_response = None
+        self.error_type = None
         self.screen = self.init_screen()
         self.running = True
         self.current_view = ViewsNames.INTRO
@@ -25,7 +30,9 @@ class ViewRutting:
             ViewsNames.INTRO: intro_view,
             ViewsNames.ACTIONS_MENU: actions_menu_view,
             ViewsNames.SELECT_SPOT_TO_OCCUPY: select_spot_to_occupy_view,
-
+            ViewsNames.SELECT_SPOT_TO_RELEASE: select_spot_to_release_view,
+            ViewsNames.SHOW_OCCUPY_SPOT_OUTCOME: show_occupy_spot_outcome,
+            ViewsNames.SHOW_RELEASE_SPOT_OUTCOME: show_release_spot_outcome,
         }
 
     def run_app(self):

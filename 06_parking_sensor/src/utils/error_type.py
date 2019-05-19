@@ -5,23 +5,15 @@
 # DATE:                     19.05.2019
 # AUTHOR:                   Piotr Skalski [github.com/SkalskiP]
 # ======================================================================================================================
-# File contains class responsible for soap comunication
+# File contains enum that is holding names of errors that could happen turing soap connection
 # ======================================================================================================================
 
-from zeep import Client
-from ..config.config import Config
+
+from enum import Enum
 
 
-class SoapClient:
-
-    @staticmethod
-    def occupy_parking_spot(spot_id: int):
-        client = Client(Config.WSDL_URL)
-        response = client.service.occupyParkingSpot(arg0=spot_id)
-        return response
-
-    @staticmethod
-    def release_parking_spot(spot_id: int):
-        client = Client(Config.WSDL_URL)
-        response = client.service.releaseParkingSpot(arg0=spot_id)
-        return response
+class ErrorType(Enum):
+    NO_ERROR = 1
+    PARSING = 2
+    WRONG_ID = 3
+    NO_CONNECTION = 4

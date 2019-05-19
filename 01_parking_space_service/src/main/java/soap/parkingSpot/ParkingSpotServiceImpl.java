@@ -7,14 +7,19 @@ import dto.ParkingSpotDTO;
 import dto.ParkingTicketDTO;
 
 import javax.jws.WebMethod;
+import javax.jws.WebParam;
+import javax.jws.WebResult;
 import javax.jws.WebService;
+import javax.jws.soap.SOAPBinding;
 import java.time.LocalDateTime;
 
-@WebService
+@WebService()
+@SOAPBinding(style = SOAPBinding.Style.RPC)
 public class ParkingSpotServiceImpl implements ParkingSpotService {
 
     @WebMethod
-    public Boolean occupyParkingSpot(Integer spotId) {
+    @WebResult(name="operationOutcome")
+    public Boolean occupyParkingSpot(@WebParam(name="spotId")Integer spotId) {
         ParkingSpotDTO parkingSpot = ParkingSpotDAO.getInstance().getItem(spotId);
 
         if (!parkingSpot.getOccupied()) {
@@ -30,7 +35,8 @@ public class ParkingSpotServiceImpl implements ParkingSpotService {
     }
 
     @WebMethod
-    public Boolean releaseParkingSpot(Integer spotId) {
+    @WebResult(name="operationOutcome")
+    public Boolean releaseParkingSpot(@WebParam(name="spotId")Integer spotId) {
         ParkingSpotDTO parkingSpot = ParkingSpotDAO.getInstance().getItem(spotId);
 
         if (parkingSpot.getOccupied()) {
