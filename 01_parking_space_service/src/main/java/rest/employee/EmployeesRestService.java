@@ -1,10 +1,11 @@
-package rest.services;
+package rest.employee;
 
 import dao.EmployeeDAO;
 import dto.EmployeeDTO;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -20,4 +21,11 @@ public class EmployeesRestService {
         return Response.ok().entity(employees).build();
     }
 
+    @GET
+    @Path("/{id}")
+    @Produces({MediaType.APPLICATION_JSON})
+    public Response getEmployeeById(@PathParam("id") Integer id) {
+        EmployeeDTO employee = EmployeeDAO.getInstance().getItem(id);
+        return Response.ok().entity(employee).build();
+    }
 }

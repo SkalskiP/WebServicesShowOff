@@ -1,10 +1,11 @@
-package rest.services;
+package rest.parkingTicket;
 
 import dao.ParkingTicketDAO;
 import dto.ParkingTicketDTO;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -20,4 +21,11 @@ public class ParkingTicketRestService {
         return Response.ok().entity(parkingTickets).build();
     }
 
+    @GET
+    @Path("/{id}")
+    @Produces({MediaType.APPLICATION_JSON})
+    public Response getParkingTicketById(@PathParam("id") Integer id) {
+        ParkingTicketDTO parkingTicket = ParkingTicketDAO.getInstance().getItem(id);
+        return Response.ok().entity(parkingTicket).build();
+    }
 }

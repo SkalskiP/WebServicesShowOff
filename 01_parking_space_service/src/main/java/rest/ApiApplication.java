@@ -1,6 +1,10 @@
 package rest;
 
-import rest.services.*;
+import rest.employee.EmployeesRestService;
+import rest.parkingSpot.ParkingSpotRestService;
+import rest.parkingTicket.ParkingTicketRestService;
+import rest.street.StreetsRestService;
+import rest.ticketType.TicketTypesRestService;
 
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;

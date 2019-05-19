@@ -1,10 +1,11 @@
-package rest.services;
+package rest.ticketType;
 
 import dao.TicketTypeDAO;
 import dto.TicketTypeDTO;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -20,4 +21,11 @@ public class TicketTypesRestService {
         return Response.ok().entity(ticketTypes).build();
     }
 
+    @GET
+    @Path("/{id}")
+    @Produces({MediaType.APPLICATION_JSON})
+    public Response getTicketTypeById(@PathParam("id") Integer id) {
+        TicketTypeDTO ticketType = TicketTypeDAO.getInstance().getItem(id);
+        return Response.ok().entity(ticketType).build();
+    }
 }
