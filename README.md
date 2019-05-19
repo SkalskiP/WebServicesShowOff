@@ -16,6 +16,36 @@
 6. [Parking Sensors](./06_parking_sensor) [Python]
 7. [Parking Space Database](./07_parking_space_database) [MySQL]
 
+## Hit the ground running
+
+<details><summary><i>Set up project</i></summary><p>
+
+```bash
+# clone repository
+git clone https://github.com/SkalskiP/WebServicesShowOff.git
+
+# navigate to main directory
+cd WebServicesShowOff
+```
+</p></details>
+
+<details><summary><i>Set up and run Parking Sensor Client</i></summary><p>
+
+```bash
+# navigate to parking sensor directory
+cd 06_parking_sensor
+
+# run set up shell script
+sudo sh setup_python_with_env.sh
+
+# activate virtual environment
+source .env/bin/activate
+
+# run client
+python3 parking_sensor_terminal.py
+```
+</p></details>
+
 ## Parking Sensor SOAP Client
 
 <p align="center"> 
