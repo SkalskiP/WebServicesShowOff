@@ -7,10 +7,9 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="01_parking_space_service" />
+        <module name="02_account_service" />
+        <module name="03_notifications_service" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="01_parking_space_service" target="8" />
-    </bytecodeTargetLevel>
   </component>
 </project>
