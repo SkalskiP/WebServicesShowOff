@@ -7,50 +7,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="80addc5b-1f34-4020-b125-392b607d1147" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/00_main_parking_project.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/01_parking_space_service/01_parking_space_service.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/01_parking_space_service/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/01_parking_space_service/src/main/java/dao/AbstractDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/01_parking_space_service/src/main/java/dao/EmployeeDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/01_parking_space_service/src/main/java/dao/ParkingSpotDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/01_parking_space_service/src/main/java/dao/ParkingTicketDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/01_parking_space_service/src/main/java/dao/StreetDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/01_parking_space_service/src/main/java/dao/TicketTypeDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/01_parking_space_service/src/main/java/dao/ZoneDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/01_parking_space_service/src/main/java/domain/ParkingTicketStatus.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/01_parking_space_service/src/main/java/domain/ParkingTicketStatusConverter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/01_parking_space_service/src/main/java/dto/AbstractDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/01_parking_space_service/src/main/java/dto/EmployeeDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/01_parking_space_service/src/main/java/dto/ParkingSpotDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/01_parking_space_service/src/main/java/dto/ParkingTicketDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/01_parking_space_service/src/main/java/dto/StreetDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/01_parking_space_service/src/main/java/dto/TicketTypeDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/01_parking_space_service/src/main/java/dto/ZoneDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/01_parking_space_service/src/main/java/rest/ApiApplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/01_parking_space_service/src/main/java/rest/employee/EmployeesRestService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/01_parking_space_service/src/main/java/rest/parkingSpot/ParkingSpotRestService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/01_parking_space_service/src/main/java/rest/parkingTicket/ParkingTicketRestService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/01_parking_space_service/src/main/java/rest/street/StreetsRestService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/01_parking_space_service/src/main/java/rest/ticketType/TicketTypesRestService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/01_parking_space_service/src/main/java/schedul/ProgrammaticAtFixedRateTimerBean.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/01_parking_space_service/src/main/java/soap/parkingSpot/ParkingSpotService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/01_parking_space_service/src/main/java/soap/parkingSpot/ParkingSpotServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/01_parking_space_service/src/main/resources/META-INF/persistence.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/01_parking_space_service/src/main/webapp/WEB-INF/jboss-web.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/01_parking_space_service/src/main/webapp/WEB-INF/server-config.wsdd" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/01_parking_space_service/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/02_account_service/02_account_service.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/02_account_service/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/03_notifications_service/03_notifications_service.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/03_notifications_service/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../01_parking_space_service/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../01_parking_space_service/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/02_account_service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/02_account_service/pom.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -77,15 +36,19 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/01_parking_space_service/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="274">
-              <caret line="88" column="19" selection-start-line="88" selection-start-column="19" selection-end-line="88" selection-end-column="19" />
+            <state relative-caret-position="465">
+              <caret line="31" column="8" selection-start-line="31" selection-start-column="8" selection-end-line="49" selection-end-column="21" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/02_account_service/pom.xml">
-          <provider selected="true" editor-type-id="text-editor" />
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="735">
+              <caret line="49" column="21" selection-start-line="49" selection-start-column="21" selection-end-line="49" selection-end-column="21" />
+            </state>
+          </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
@@ -103,11 +66,13 @@
       <list>
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/01_parking_space_service/pom.xml" />
+        <option value="$PROJECT_DIR$/02_account_service/pom.xml" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="24" />
+    <option name="x" value="1637" />
+    <option name="y" value="115" />
     <option name="width" value="1346" />
     <option name="height" value="724" />
   </component>
@@ -166,6 +131,24 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
               <item name="META-INF" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="main_parking_project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="00_main_parking_project" type="462c0819:PsiDirectoryNode" />
+              <item name="02_account_service" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="main_parking_project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="00_main_parking_project" type="462c0819:PsiDirectoryNode" />
+              <item name="02_account_service" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="main_parking_project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="00_main_parking_project" type="462c0819:PsiDirectoryNode" />
+              <item name="02_account_service" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -285,17 +268,25 @@
       <workItem from="1558551561870" duration="1139000" />
       <workItem from="1558552885204" duration="156000" />
       <workItem from="1558553180811" duration="475000" />
-      <workItem from="1558553812297" duration="576000" />
+      <workItem from="1558553812297" duration="2771000" />
     </task>
+    <task id="LOCAL-00001" summary="refactorisation of the project">
+      <created>1558554590714</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1558554590715</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2346000" />
+    <option name="totallyTimeSpent" value="4541000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="-1" width="1680" height="1050" extended-state="6" />
+    <frame x="1680" y="129" width="1366" height="728" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.21052632" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26060605" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -315,7 +306,7 @@
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
       <window_info anchor="bottom" id="Java Enterprise" order="10" />
       <window_info anchor="bottom" id="Database Changes" order="11" />
-      <window_info active="true" anchor="bottom" id="Version Control" order="12" visible="true" weight="0.5788337" />
+      <window_info anchor="bottom" id="Version Control" order="12" visible="true" weight="0.107615896" />
       <window_info anchor="bottom" id="Application Servers" order="13" weight="0.3294702" />
       <window_info anchor="bottom" id="Messages" order="14" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -335,6 +326,10 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="refactorisation of the project" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactorisation of the project" />
+  </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
@@ -343,16 +338,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/02_account_service/pom.xml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/03_notifications_service/pom.xml">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/02_account_service/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="735">
+          <caret line="49" column="21" selection-start-line="49" selection-start-column="21" selection-end-line="49" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/01_parking_space_service/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="274">
-          <caret line="88" column="19" selection-start-line="88" selection-start-column="19" selection-end-line="88" selection-end-column="19" />
+        <state relative-caret-position="465">
+          <caret line="31" column="8" selection-start-line="31" selection-start-column="8" selection-end-line="49" selection-end-column="21" />
         </state>
       </provider>
     </entry>
