@@ -1,0 +1,3 @@
+export enum Action {
+    UPDATE_ACTIVE_TAB_NAME = 'UPDATE_ACTIVE_TAB_NAME',
+}
