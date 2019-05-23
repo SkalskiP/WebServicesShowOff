@@ -1,0 +1,57 @@
+@import '../../Settings';
+
+.NavigationBar {
+  width: 350px;
+  background-color: transparent;
+
+  align-self: stretch;
+
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  align-content: flex-start;
+
+  .Header {
+    height: 200px;
+    background-color: transparent;
+
+    align-self: stretch;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    align-content: flex-start;
+  }
+
+  .ButtonsWrapper {
+    flex: 1 0 auto;
+    background-color: transparent;
+
+    align-self: stretch;
+
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    align-content: flex-start;
+  }
+
+  .Footer {
+    height: 75px;
+    background-color: $primaryBackgroundColor;
+
+    align-self: stretch;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    align-content: flex-start;
+  }
+}

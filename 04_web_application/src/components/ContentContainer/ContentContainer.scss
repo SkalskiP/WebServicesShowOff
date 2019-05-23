@@ -1,0 +1,15 @@
+@import '../../Settings';
+
+.ContentContainer {
+  flex: 1 0 auto;
+  background-color: $primaryBackgroundColor;
+
+  align-self: stretch;
+
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  align-content: flex-start;
+}

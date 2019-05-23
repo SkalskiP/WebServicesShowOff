@@ -5,4 +5,11 @@
   padding: 0;
 
   background-image: linear-gradient(to right top, #131727, #1d233c, #293053, #353d6a, #434b82, #464f96, #4a53aa, #4f56be, #4b4ed1, #4c44e2, #5134f1, #5d18ff);
+
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  align-content: flex-start;
 }
