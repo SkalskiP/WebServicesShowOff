@@ -5,5 +5,6 @@ export interface INavigationBarButton {
     imageSource: string;
     imageAlt: string;
     activeTabName: TabName;
+    activeTabSubtitle: string;
     advancedAccess: boolean;
 }

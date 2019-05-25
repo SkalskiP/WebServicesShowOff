@@ -1,0 +1,27 @@
+@import '../../Settings';
+
+.ContentContainerHeader {
+  align-self: stretch;
+
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: start;
+  align-content: flex-start;
+
+  user-select: none;
+
+  .SideHeadline {
+    margin-left: 2px;
+    font-size: 30px;
+    font-weight: 500;
+    color: $secondaryHeaderColor;
+  }
+
+  .MainHeadline {
+    font-size: 60px;
+    font-weight: 500;
+    color: $primaryHeaderColor;
+  }
+}

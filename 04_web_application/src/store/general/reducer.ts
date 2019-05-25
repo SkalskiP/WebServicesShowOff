@@ -1,8 +1,9 @@
-import { GeneralActionTypes, GeneralState } from './types';
-import { Action } from '../Action';
+import {GeneralActionTypes, GeneralState} from './types';
+import {Action} from '../Action';
+import {TabName} from "../../utils/types/TabName";
 
 const initialState: GeneralState = {
-    activeTabName: null,
+    activeTabName: TabName.DASHBOARD,
 };
 
 export function generalReducer(
