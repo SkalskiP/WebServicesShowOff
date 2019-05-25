@@ -1,0 +1,11 @@
+.AccountSettingsView {
+  flex: 1 1 auto;
+  align-self: stretch;
+
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: flex-end;
+  align-items: start;
+  align-content: flex-end;
+}

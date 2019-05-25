@@ -1,6 +1,7 @@
 .SlimNavigationBar {
   width: 75px;
   background-color: transparent;
+  transition: width 1s;
 
   align-self: stretch;
 
@@ -10,4 +11,8 @@
   justify-content: flex-start;
   align-items: center;
   align-content: flex-start;
+
+  &.closed {
+    width: 0;
+  }
 }

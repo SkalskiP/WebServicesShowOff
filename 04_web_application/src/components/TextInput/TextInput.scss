@@ -1,0 +1,85 @@
+@import '../../Settings';
+
+$secondary-color: black;
+$main-color: transparent;
+$width: 300px;
+
+* {
+  box-sizing: border-box;
+}
+
+.TextInput {
+  width: $width;
+  height: $width/5;
+  overflow: hidden;
+  position: relative;
+  margin-bottom: 15px;
+}
+
+label {
+  position: absolute;
+  top: $width/15;
+  color: rgba(black, .5);
+  font: 400 $width/15;
+  cursor: text;
+  transition: .25s ease;
+}
+
+input {
+  display: block;
+  width: 100%;
+  padding-top: $width/15;
+  border: none;
+  border-radius: 0; // For iOS
+  color: black;
+  background: $main-color;
+  font-size: $width/15;
+  transition: .3s ease;
+  &:valid {
+    ~label {
+      top: 0;
+      font: 700 $width/25;
+      color: rgba(black, .5);
+    }
+  }
+  &:focus {
+    outline: none;
+    ~label {
+      top: 0;
+      font: 700 $width/25;
+      color: $secondaryTextColor;
+    }
+
+    ~ .Bar:before {
+      transform: translateX(0);
+    }
+  }
+
+  // Stop Chrome's hideous pale yellow background on auto-fill
+
+  &:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px $main-color inset;
+    -webkit-text-fill-color: white !important;
+  }
+}
+
+.Bar {
+  background: rgba(black, .5);
+  content: '';
+  width: $width;
+  height: $width/150;
+  transition: .3s ease;
+  position: relative;
+
+  &:before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 150%;
+    background: $secondaryTextColor;
+    transform: translateX(-100%);
+
+  }
+}
+
+::selection {background: rgba($secondaryTextColor, .3);}
