@@ -1,8 +1,8 @@
 import React from 'react';
 import './App.scss';
-import ContentContainer from "./components/ContentContainer/ContentContainer";
 import SlimNavigationBar from "./components/SlimNavigationBar/SlimNavigationBar";
 import {NavigationBar} from "./components/NavigationBar/NavigationBar";
+import {ContentContainer} from "./components/ContentContainer/ContentContainer";
 
 const App: React.FC = () => {
   return (
