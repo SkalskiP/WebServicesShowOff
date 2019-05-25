@@ -39,7 +39,7 @@ const NavigationBarButtonsData:INavigationBarButton[] = [
         imageSource: "ico/1/settings.png",
         imageAlt: "settings",
         activeTabName: TabName.SETTINGS,
-        activeTabSubtitle: "Change your account settings",
+        activeTabSubtitle: "Change your",
         advancedAccess: false
     }
 ];

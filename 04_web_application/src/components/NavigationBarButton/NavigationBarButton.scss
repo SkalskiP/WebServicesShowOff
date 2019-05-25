@@ -1,3 +1,5 @@
+@import '../../Settings';
+
 .NavigationBarButton {
   align-self: stretch;
   box-sizing: border-box;
@@ -20,8 +22,19 @@
   align-items: center;
   align-content: flex-start;
 
+  .Marker {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: $secondaryHeaderColor;
+  }
+
   > * {
     padding-right: 25px;
+  }
+
+  > *:last-child {
+    padding-right: 0px;
   }
 
   > img {

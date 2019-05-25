@@ -23,6 +23,8 @@ const NavigationBarComponent = (props: IProps) => {
                 imageAlt={data.imageAlt}
                 label={data.displayName}
                 isActive={props.activeTabName === data.activeTabName}
+                //TODO: Validation of newly added notifications
+                isMarked={data.activeTabName === TabName.NOTIFICATIONS}
                 onClick={() => props.updateActiveTabName(data.activeTabName)}
             />
         )

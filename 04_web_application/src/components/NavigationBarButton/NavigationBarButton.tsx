@@ -9,10 +9,11 @@ interface IProps {
     label:string;
     onClick?: () => any;
     isActive:boolean;
+    isMarked:boolean;
 }
 
 const NavigationBarButton = (props:IProps) => {
-    const {key, image, imageAlt, label, onClick, isActive} = props;
+    const {key, image, imageAlt, label, onClick, isActive, isMarked} = props;
 
     const geClassName = () => {
         return classNames(
@@ -33,6 +34,7 @@ const NavigationBarButton = (props:IProps) => {
             <span className="ButtonLabel">
                 {label}
             </span>
+            {isMarked && <div className="Marker"/>}
         </div>
     );
 };
