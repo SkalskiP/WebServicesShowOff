@@ -34,7 +34,7 @@
     transition: all .1s ease-in;
   }
 
-  &.selected {
+  &.active {
     background-color: rgba(0, 0, 0, 0.3);
   }
 }

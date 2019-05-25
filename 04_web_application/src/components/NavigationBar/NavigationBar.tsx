@@ -3,8 +3,17 @@ import './NavigationBar.scss';
 import NavigationBarButton from "../NavigationBarButton/NavigationBarButton";
 import NavigationBarButtonsData from "../../data/NavigationBarButtonsData";
 import {INavigationBarButton} from "../../interfaces/INavigationBarButton";
+import {AppState} from "../../store";
+import {updateActiveTabName} from "../../store/general/actionCreators";
+import {connect} from "react-redux";
+import {TabName} from "../../utils/types/TabName";
 
-const NavigationBar: React.FC = () => {
+interface IProps {
+    activeTabName: TabName;
+    updateActiveTabName: (activeTabName: TabName) => any;
+}
+
+const NavigationBarComponent = (props: IProps) => {
 
     const getButtons = () => {
         return NavigationBarButtonsData.map(
@@ -13,16 +22,15 @@ const NavigationBar: React.FC = () => {
                 image={data.imageSource}
                 imageAlt={data.imageAlt}
                 label={data.displayName}
-                isActive={true}
+                isActive={props.activeTabName === data.activeTabName}
+                onClick={() => props.updateActiveTabName(data.activeTabName)}
             />
         )
     };
 
     return (
         <div className="NavigationBar">
-            <div className="Header">
-                <img alt={"logo"} src={"/logo.png"}/>
-            </div>
+            <img alt={"logo"} src={"/logo.png"}/>
             <div className="ButtonsWrapper">
                 {getButtons()}
             </div>
@@ -31,4 +39,15 @@ const NavigationBar: React.FC = () => {
     );
 };
 
-export default NavigationBar;
+const mapStateToProps = (state: AppState) => ({
+    activeTabName: state.general.activeTabName
+});
+
+const dispatchToProps = {
+    updateActiveTabName
+};
+
+export const NavigationBar = connect(
+    mapStateToProps,
+    dispatchToProps
+)(NavigationBarComponent);
