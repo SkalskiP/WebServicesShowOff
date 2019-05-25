@@ -46,18 +46,4 @@
       }
     }
   }
-
-  .Footer {
-    height: 75px;
-    background-color: $primaryBackgroundColor;
-
-    align-self: stretch;
-
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content: flex-start;
-    align-items: center;
-    align-content: flex-start;
-  }
 }

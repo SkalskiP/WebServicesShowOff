@@ -6,7 +6,8 @@ import {INavigationBarButton} from "../../interfaces/INavigationBarButton";
 import {AppState} from "../../store";
 import {updateActiveTabName} from "../../store/general/actionCreators";
 import {connect} from "react-redux";
-import {TabName} from "../../utils/types/TabName";
+import {TabName} from "../../utils/types/TabName"
+import {NavigationBarFooter} from "../NavigationBarFooter/NavigationBarFooter";
 
 interface IProps {
     activeTabName: TabName;
@@ -36,7 +37,7 @@ const NavigationBarComponent = (props: IProps) => {
             <div className="ButtonsWrapper">
                 {getButtons()}
             </div>
-            <div className="Footer"/>
+            <NavigationBarFooter/>
         </div>
     );
 };

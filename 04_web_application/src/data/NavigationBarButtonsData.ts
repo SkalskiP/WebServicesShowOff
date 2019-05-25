@@ -4,7 +4,7 @@ import {TabName} from "../utils/types/TabName";
 const NavigationBarButtonsData:INavigationBarButton[] = [
     {
         displayName: "Dashboard",
-        imageSource: "ico/1/dashboard.png",
+        imageSource: "ico/dashboard.png",
         imageAlt: "dashboard",
         activeTabName: TabName.DASHBOARD,
         activeTabSubtitle: "Parking space",
@@ -12,7 +12,7 @@ const NavigationBarButtonsData:INavigationBarButton[] = [
     },
     {
         displayName: "Notifications",
-        imageSource: "ico/1/notification.png",
+        imageSource: "ico/notification.png",
         imageAlt: "notifications",
         activeTabName: TabName.NOTIFICATIONS,
         activeTabSubtitle: "Most recent",
@@ -20,7 +20,7 @@ const NavigationBarButtonsData:INavigationBarButton[] = [
     },
     {
         displayName: "History",
-        imageSource: "ico/1/history.png",
+        imageSource: "ico/history.png",
         imageAlt: "history",
         activeTabName: TabName.HISTORY,
         activeTabSubtitle: "Last weeks",
@@ -28,7 +28,7 @@ const NavigationBarButtonsData:INavigationBarButton[] = [
     },
     {
         displayName: "Menage users",
-        imageSource: "ico/1/users.png",
+        imageSource: "ico/users.png",
         imageAlt: "menage users",
         activeTabName: TabName.MANAGE_USERS,
         activeTabSubtitle: "Change other users' settings",
@@ -36,7 +36,7 @@ const NavigationBarButtonsData:INavigationBarButton[] = [
     },
     {
         displayName: "Account settings",
-        imageSource: "ico/1/settings.png",
+        imageSource: "ico/settings.png",
         imageAlt: "settings",
         activeTabName: TabName.SETTINGS,
         activeTabSubtitle: "Change your",

@@ -1,0 +1,63 @@
+@import '../../Settings';
+
+.NavigationBarFooter {
+  height: 75px;
+  background-color: $primaryBackgroundColor;
+  font-weight: 100;
+  user-select: none;
+
+  align-self: stretch;
+
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  align-content: flex-start;
+
+  .LogoutButton {
+
+    height: 65px;
+    width: 65px;
+    margin: 5px;
+    border-right: solid 1px black;
+    cursor: pointer;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+
+    > img {
+      max-height: 20px;
+      transition: 0.3s ease;
+    }
+
+    &:hover {
+      > img {
+        transform: scale(1.2, 1.2);
+        transition: 0.3s ease;
+      }
+    }
+  }
+
+  .Avatar {
+
+    height: 65px;
+    width: 65px;
+    margin: 0 15px;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+
+    > img {
+      max-height: 55px;
+    }
+  }
+}
