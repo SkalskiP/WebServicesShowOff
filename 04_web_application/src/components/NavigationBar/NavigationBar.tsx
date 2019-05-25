@@ -8,6 +8,7 @@ import {updateActiveTabName} from "../../store/general/actionCreators";
 import {connect} from "react-redux";
 import {TabName} from "../../utils/types/TabName"
 import {NavigationBarFooter} from "../NavigationBarFooter/NavigationBarFooter";
+import Scrollbars from 'react-custom-scrollbars';
 
 interface IProps {
     activeTabName: TabName;
@@ -34,9 +35,12 @@ const NavigationBarComponent = (props: IProps) => {
     return (
         <div className="NavigationBar">
             <img alt={"logo"} src={"/logo.png"}/>
-            <div className="ButtonsWrapper">
-                {getButtons()}
-            </div>
+            //TODO: Add scrollbars
+            {/*<Scrollbars>*/}
+                <div className="ButtonsWrapper">
+                    {getButtons()}
+                </div>
+            {/*</Scrollbars>*/}
             <NavigationBarFooter/>
         </div>
     );
