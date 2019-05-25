@@ -1,0 +1,40 @@
+.NavigationBarButton {
+  align-self: stretch;
+  box-sizing: border-box;
+  height: 60px;
+  border-radius: 4px;
+  padding: 0 25px;
+  font-weight: 500;
+  color: white;
+
+  cursor: pointer;
+  user-select: none;
+
+  background-color: transparent;
+  transition: all .1s ease-in;
+
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  align-content: flex-start;
+
+  > * {
+    padding-right: 25px;
+  }
+
+  > img {
+    filter: brightness(0) invert(1);
+    max-height: 30px;
+  }
+
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.3);
+    transition: all .1s ease-in;
+  }
+
+  &.selected {
+    background-color: rgba(0, 0, 0, 0.3);
+  }
+}

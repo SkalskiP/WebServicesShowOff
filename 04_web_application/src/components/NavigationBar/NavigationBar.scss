@@ -25,13 +25,20 @@
     justify-content: flex-start;
     align-items: center;
     align-content: flex-start;
+
+    > img {
+      max-height: 500px;
+      margin-left: 40px;
+      margin-top: 130px;
+    }
   }
 
   .ButtonsWrapper {
     flex: 1 0 auto;
-    background-color: transparent;
-
     align-self: stretch;
+
+    background-color: transparent;
+    padding: 30px;
 
     display: flex;
     flex-direction: column;
@@ -39,6 +46,14 @@
     justify-content: flex-start;
     align-items: center;
     align-content: flex-start;
+
+    > * {
+      margin-top: 5px;
+
+      &:first-child {
+        margin-top: 0;
+      }
+    }
   }
 
   .Footer {
