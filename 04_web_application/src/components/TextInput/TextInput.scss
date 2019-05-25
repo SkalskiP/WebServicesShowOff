@@ -2,7 +2,7 @@
 
 $secondary-color: black;
 $main-color: transparent;
-$width: 300px;
+$width: 400px;
 
 * {
   box-sizing: border-box;
@@ -33,7 +33,7 @@ input {
   border-radius: 0; // For iOS
   color: black;
   background: $main-color;
-  font-size: $width/15;
+  font-size: $width/20;
   transition: .3s ease;
   &:valid {
     ~label {

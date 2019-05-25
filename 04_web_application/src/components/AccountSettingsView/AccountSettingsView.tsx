@@ -12,12 +12,22 @@ const AccountSettingsView = () => {
                 key={"login"}
             />
             <TextInput
-                label={"Password"}
-                key={"password"}
+                label={"Previous password"}
+                key={"previous_password"}
             />
-            <TextButton
-                label={"Submit"}
+            <TextInput
+                label={"New password"}
+                key={"new_password"}
             />
+            <TextInput
+                label={"Repeat password"}
+                key={"repeat_password"}
+            />
+            <div className="SubmitWrapper">
+                <TextButton
+                    label={"Submit"}
+                />
+            </div>
         </div>
     );
 };
