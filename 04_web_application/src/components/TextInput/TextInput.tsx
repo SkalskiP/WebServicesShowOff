@@ -12,7 +12,7 @@ const TextInput = (props: IProps) => {
 
     return (
         <div className="TextInput">
-            <input type="text" id={key} required={true}/>
+            <input type="password" id={key} required={true}/>
             <label htmlFor={key}>{label}</label>
             <div className="Bar"/>
         </div>

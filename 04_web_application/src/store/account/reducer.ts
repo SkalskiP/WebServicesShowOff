@@ -19,7 +19,7 @@ export function accountReducer(
                 surname: action.payload.surname,
             };
         }
-        case Action.UPDATE_USER_AVATER: {
+        case Action.UPDATE_USER_AVATAR: {
             return {
                 ...state,
                 avatar: action.payload.avatar

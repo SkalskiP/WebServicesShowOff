@@ -1,7 +1,9 @@
 @import '../../Settings';
 
+$logoutButtonMargin: 5px;
+
 .NavigationBarFooter {
-  min-height: 75px;
+  min-height: $navigationBarFooterHeight;
   background-color: $primaryBackgroundColor;
   font-weight: 300;
   color: rgba(0, 0, 0, 0.5);
@@ -19,9 +21,9 @@
 
   .LogoutButton {
 
-    height: 65px;
-    width: 65px;
-    margin: 5px;
+    height: calc(#{$navigationBarFooterHeight} - #{2 * $logoutButtonMargin});
+    width: calc(#{$navigationBarFooterHeight} - #{2 * $logoutButtonMargin});
+    margin: $logoutButtonMargin;
     border-right: solid 1px rgba(0, 0, 0, 0.5);
     cursor: pointer;
 
@@ -48,8 +50,8 @@
 
   .Avatar {
 
-    height: 65px;
-    width: 65px;
+    height: calc(#{$navigationBarFooterHeight} - #{2 * $logoutButtonMargin});
+    width: calc(#{$navigationBarFooterHeight} - #{2 * $logoutButtonMargin});
     margin: 0 15px;
 
     display: flex;

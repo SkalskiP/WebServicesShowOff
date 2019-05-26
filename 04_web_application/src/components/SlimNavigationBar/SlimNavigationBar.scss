@@ -1,5 +1,7 @@
+@import '../../Settings';
+
 .SlimNavigationBar {
-  width: 75px;
+  width: $slimNavigationBarWidth;
   background-color: transparent;
   transition: width 0.5s;
   overflow: hidden;

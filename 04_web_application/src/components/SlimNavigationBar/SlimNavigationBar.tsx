@@ -5,9 +5,16 @@ import classNames from "classnames";
 import _ from 'lodash';
 import {AppState} from "../../store";
 import {connect} from "react-redux";
+import HistoryButtonsData from "../../data/HistoryButtonsData";
+import SlimNavigationBarButton from "../SlimNavigationBarButton/SlimNavigationBarButton";
+import {ISlimNavigationBarButton} from "../../interfaces/ISlimNavigationBarButton";
+import {HistoryTabName} from "../../utils/types/HistoryTabName";
+import {updateActiveHistoryTabName} from "../../store/general/actionCreators";
 
 interface IProps {
     activeTabName: TabName;
+    activeHistoryTabName: HistoryTabName;
+    updateActiveHistoryTabName: (activeHistoryTabName: HistoryTabName) => any;
 }
 
 const SlimNavigationBarComponent = (props: IProps) => {
@@ -22,15 +29,41 @@ const SlimNavigationBarComponent = (props: IProps) => {
         );
     };
 
+    const getContent = () => {
+        switch (props.activeTabName) {
+            case (TabName.HISTORY):
+                return HistoryButtonsData.map(
+                    (data:ISlimNavigationBarButton) => <SlimNavigationBarButton
+                        key={data.displayName}
+                        image={data.imageSource}
+                        imageAlt={data.imageAlt}
+                        isActive={data.activeTabName === props.activeHistoryTabName}
+                        onClick={() => props.updateActiveHistoryTabName(data.activeTabName)}
+                    />
+                );
+            default:
+                return null;
+        }
+    };
+
     return (
-        <div className={getClassName()}/>
+        <div className={getClassName()}>
+            {getContent()}
+        </div>
     );
 };
 
 const mapStateToProps = (state: AppState) => ({
-    activeTabName: state.general.activeTabName
+    activeTabName: state.general.activeTabName,
+    activeHistoryTabName: state.general.activeHistoryTabName
 });
 
+const dispatchToProps = {
+    updateActiveHistoryTabName
+};
+
+
 export const SlimNavigationBar = connect(
-    mapStateToProps
+    mapStateToProps,
+    dispatchToProps
 )(SlimNavigationBarComponent);

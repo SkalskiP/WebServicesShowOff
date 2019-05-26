@@ -16,7 +16,7 @@ interface UpdateUserData {
 }
 
 interface UpdateUserAvatar {
-    type: typeof Action.UPDATE_USER_AVATER;
+    type: typeof Action.UPDATE_USER_AVATAR;
     payload: {
         avatar: any;
     };

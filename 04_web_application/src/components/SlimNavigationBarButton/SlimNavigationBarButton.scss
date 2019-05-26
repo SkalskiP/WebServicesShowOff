@@ -1,0 +1,32 @@
+@import '../../Settings';
+
+.SlimNavigationBarButton {
+  align-self: stretch;
+  height: $slimNavigationBarWidth;
+  border-bottom: solid 1px rgb(200, 200, 200);
+
+  background-color: transparent;
+  transition: all .1s ease-in;
+
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+
+  &.active {
+    background-color: $secondaryHeaderColor;
+    transition: all .1s ease-in;
+  }
+
+  &:hover {
+    background-color: $secondaryHeaderColor;
+    transition: all .1s ease-in;
+  }
+
+  > img {
+    filter: brightness(0) invert(1);
+    max-width: 30px;
+  }
+}

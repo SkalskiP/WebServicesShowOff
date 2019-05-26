@@ -17,7 +17,7 @@ export function updateUserAvatar (
     avatar: any
 ): AccountActionTypes {
     return {
-        type: Action.UPDATE_USER_AVATER,
+        type: Action.UPDATE_USER_AVATAR,
         payload: {
             avatar
         },
