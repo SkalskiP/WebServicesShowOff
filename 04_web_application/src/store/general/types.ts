@@ -5,6 +5,7 @@ import {HistoryTabName} from "../../utils/types/HistoryTabName";
 export type GeneralState = {
     activeTabName: TabName;
     activeHistoryTabName: HistoryTabName;
+    notificationStatus: boolean;
 };
 
 interface UpdateActiveTabName {
@@ -21,5 +22,13 @@ interface UpdateActiveHistoryTabName {
     };
 }
 
+interface UpdateNotificationStatus {
+    type: typeof Action.UPDATE_NOTIFICATION_STATUS;
+    payload: {
+        notificationStatus: boolean;
+    };
+}
+
 export type GeneralActionTypes = UpdateActiveTabName
-    | UpdateActiveHistoryTabName;
+    | UpdateActiveHistoryTabName
+    | UpdateNotificationStatus;

@@ -11,6 +11,7 @@ import {NavigationBarFooter} from "../NavigationBarFooter/NavigationBarFooter";
 
 interface IProps {
     activeTabName: TabName;
+    notificationStatus: boolean;
     updateActiveTabName: (activeTabName: TabName) => any;
 }
 
@@ -25,7 +26,7 @@ const NavigationBarComponent = (props: IProps) => {
                 label={data.displayName}
                 isActive={props.activeTabName === data.activeTabName}
                 //TODO: Validation of newly added notifications
-                isMarked={data.activeTabName === TabName.NOTIFICATIONS}
+                isMarked={data.activeTabName === TabName.NOTIFICATIONS && props.notificationStatus}
                 onClick={() => props.updateActiveTabName(data.activeTabName)}
             />
         )
@@ -46,7 +47,8 @@ const NavigationBarComponent = (props: IProps) => {
 };
 
 const mapStateToProps = (state: AppState) => ({
-    activeTabName: state.general.activeTabName
+    activeTabName: state.general.activeTabName,
+    notificationStatus: state.general.notificationStatus
 });
 
 const dispatchToProps = {

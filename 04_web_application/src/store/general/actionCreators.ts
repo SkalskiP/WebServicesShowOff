@@ -24,3 +24,14 @@ export function updateActiveHistoryTabName (
         },
     };
 }
+
+export function updateNotificationStatus (
+    notificationStatus: boolean
+): GeneralActionTypes {
+    return {
+        type: Action.UPDATE_NOTIFICATION_STATUS,
+        payload: {
+            notificationStatus,
+        },
+    };
+}
