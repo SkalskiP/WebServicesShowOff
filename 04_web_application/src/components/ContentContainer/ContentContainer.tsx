@@ -1,7 +1,7 @@
 import React from 'react';
 import './ContentContainer.scss';
 import {ContentContainerHeader} from "../ContentContainerHeader/ContentContainerHeader";
-import RoundBox from "../RoundBox/RoundBox";
+import TableBox from "../TableBox/TableBox";
 import {TabName} from "../../utils/types/TabName";
 import AccountSettingsView from "../AccountSettingsView/AccountSettingsView";
 import {AppState} from "../../store";
@@ -18,7 +18,7 @@ const ContentContainerComponent = (props: IProps) => {
             case TabName.SETTINGS:
                 return <AccountSettingsView/>
             default:
-                return <RoundBox/>
+                return <TableBox/>
         }
     };
 

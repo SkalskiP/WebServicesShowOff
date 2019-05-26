@@ -1,0 +1,74 @@
+@import '../../Settings';
+
+.TableBox {
+  max-width: 100%;
+
+  border-radius: 6px;
+  border: 1px solid #e6e6e6;
+  background-color: #fff;
+  overflow: hidden;
+  align-self: stretch;
+  flex: 1 0 auto;
+  box-shadow: 2px 2px 15px 0px rgba(51,209,229,0.4);
+
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  align-content: flex-start;
+
+  .TableWrapper {
+    align-self: stretch;
+    flex: 1 1 auto;
+  }
+
+  .ControlPanel {
+    align-self: stretch;
+    height: 50px;
+    border-top: 1px solid #e6e6e6;
+  }
+
+  .TableContent {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    align-content: flex-start;
+    width: fit-content;
+
+    .TableColumn {
+      min-width: 200px;
+      border-right: 1px solid #e6e6e6;
+      border-bottom: 1px solid #e6e6e6;
+
+      display: flex;
+      flex-direction: column;
+      flex-wrap: nowrap;
+      justify-content: flex-start;
+      align-items: flex-start;
+      align-content: flex-start;
+    }
+
+    .TableColumn:last-child {
+      border-right: none;
+    }
+
+    .ColumnHeader {
+      align-self: stretch;
+      height: 50px;
+      background-color: $secondaryHeaderColor;
+      border-bottom: 1px solid #e6e6e6;
+      font-weight: 500;
+      color: white;
+
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      justify-content: center;
+      align-items: center;
+      align-content: center;
+    }
+  }
+}
