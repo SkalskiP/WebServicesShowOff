@@ -1,10 +1,13 @@
 package dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 
 @Entity()
 @Table(name = "TICKET_TYPE")
 @Access(AccessType.FIELD)
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class TicketTypeDTO extends AbstractDTO {
 
     @Id

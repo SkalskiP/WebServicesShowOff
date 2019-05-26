@@ -1,6 +1,7 @@
 package dto;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
@@ -9,6 +10,7 @@ import java.util.Set;
 @Entity()
 @Table(name = "PARKING_SPOT")
 @Access(AccessType.FIELD)
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class ParkingSpotDTO extends AbstractDTO {
 
     @Id
@@ -24,11 +26,10 @@ public class ParkingSpotDTO extends AbstractDTO {
 
     @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name = "street_id", referencedColumnName = "id")
-    @JsonBackReference
+    @JsonIgnoreProperties("parkingSpots")
     private StreetDTO street;
 
     @OneToMany(fetch=FetchType.LAZY, mappedBy="parkingSpot")
-    @JsonManagedReference
     private Set<ParkingTicketDTO> parkingTickets;
 
     @Override
