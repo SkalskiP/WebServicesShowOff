@@ -4,7 +4,7 @@
   flex: 1 1 auto;
   background-color: $primaryBackgroundColor;
   padding: 25px 50px 75px 50px;
-
+  min-width: 0;
   align-self: stretch;
 
   display: flex;

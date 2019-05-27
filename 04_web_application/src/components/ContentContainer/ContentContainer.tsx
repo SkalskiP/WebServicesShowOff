@@ -1,11 +1,11 @@
 import React from 'react';
 import './ContentContainer.scss';
 import {ContentContainerHeader} from "../ContentContainerHeader/ContentContainerHeader";
-import TableBox from "../TableBox/TableBox";
 import {TabName} from "../../utils/types/TabName";
 import AccountSettingsView from "../AccountSettingsView/AccountSettingsView";
 import {AppState} from "../../store";
 import {connect} from "react-redux";
+import {HistoryView} from "../HistoryView/HistoryView";
 
 interface IProps {
     activeTabName: TabName;
@@ -17,8 +17,10 @@ const ContentContainerComponent = (props: IProps) => {
         switch (props.activeTabName) {
             case TabName.SETTINGS:
                 return <AccountSettingsView/>
+            case TabName.HISTORY:
+                return <HistoryView/>
             default:
-                return <TableBox/>
+                return null;
         }
     };
 
