@@ -5,62 +5,60 @@ import TableBox from "../TableBox/TableBox";
 import {AppState} from "../../store";
 import {connect} from "react-redux";
 import {IParkingTicket} from "../../interfaces/IParkingTicket";
+import axios, {AxiosResponse} from 'axios'
 
 interface IProps {
     activeHistoryTabName: HistoryTabName;
 }
 
-class HistoryViewComponent extends React.Component<IProps, {}> {
+interface IState {
+    tableData: IParkingTicket[];
+}
+
+class HistoryViewComponent extends React.Component<IProps, IState> {
+
+    public state: IState = {
+        tableData: []
+    };
 
     protected headerLabels: string[] = ["Id", "Street", "Number", "Ticket type", "Start date", "End date", "Status"];
 
-    protected tableData: IParkingTicket[] = [
-        {
-            id: 1,
-            street: "Street 1",
-            number: 1,
-            ticketType: "Type 1",
-            startTime: "xxxx",
-            endTime: "yyyy",
-            status: "CANCELED"
-        },
-        {
-            id: 1,
-            street: "Street 1",
-            number: 1,
-            ticketType: "Type 1",
-            startTime: "xxxx",
-            endTime: "yyyy",
-            status: "CANCELED"
-        },
-        {
-            id: 1,
-            street: "Street 1",
-            number: 1,
-            ticketType: "Type 1",
-            startTime: "xxxx",
-            endTime: "yyyy",
-            status: "CANCELED"
-        },
-        {
-            id: 1,
-            street: "Street 1",
-            number: 1,
-            ticketType: "Type 1",
-            startTime: "xxxx",
-            endTime: "yyyy",
-            status: "CANCELED"
-        },
-        {
-            id: 1,
-            street: "Street 1",
-            number: 1,
-            ticketType: "Type 1",
-            startTime: "xxxx",
-            endTime: "yyyy",
-            status: "CANCELED"
-        },
-    ];
+    public Url:string = "http://localhost:8080/rest/parking-tickets/report";
+
+    public params = {
+        from: "2019-05-25 00:00:00",
+        to: "2019-05-25 23:59:59",
+        limit: 50,
+        offset: 0
+    };
+
+    public requestData = () => {
+        axios.get(this.Url, {params: this.params})
+            .then((data:AxiosResponse) => {
+                const tableData:IParkingTicket[] = data.data.map(
+                    (responseObject:any) => {return {
+                        id: responseObject.id,
+                        street: responseObject.parkingSpot.street.name,
+                        number: responseObject.parkingSpot.number,
+                        ticketType: responseObject.ticketType.name,
+                        startTime: responseObject.startTime,
+                        endTime: responseObject.endTime,
+                        status: responseObject.status
+                    }}
+                );
+                this.setState({tableData: tableData});
+            })
+    };
+
+    public componentDidMount(): void {
+        this.requestData();
+    }
+
+    public componentDidUpdate(prevProps: Readonly<IProps>, prevState: Readonly<{}>, snapshot?: any): void {
+        if (prevProps.activeHistoryTabName !== this.props.activeHistoryTabName) {
+            this.requestData();
+        }
+    }
 
     protected renderHeader = (style: React.CSSProperties) => {
         return(
@@ -75,7 +73,7 @@ class HistoryViewComponent extends React.Component<IProps, {}> {
     protected renderContent = (style: React.CSSProperties) => {
         return(
             <div className="TableContent" style={style}>
-                {this.tableData.map((data: IParkingTicket) => <div className="TableRow">
+                {this.state.tableData.map((data: IParkingTicket) => <div className="TableRow">
                     <div className="TableCell">{data.id}</div>
                     <div className="TableCell">{data.street}</div>
                     <div className="TableCell">{data.number}</div>
