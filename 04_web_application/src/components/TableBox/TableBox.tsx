@@ -3,8 +3,10 @@ import './TableBox.scss';
 import  Scrollbars  from 'react-custom-scrollbars';
 
 interface IProps {
-    columnWidth: number;
-    headerLabels: string[];
+    tableWidth: number;
+    renderHeader: (style: React.CSSProperties) => any;
+    headerHeight:number;
+    renderContent: (style: React.CSSProperties) => any;
 }
 
 interface IState {
@@ -24,11 +26,6 @@ class TableBox extends React.Component<IProps, IState> {
     protected tableWrapper: HTMLDivElement;
     protected tableWidth: number;
 
-    constructor(props) {
-        super(props);
-        this.tableWidth = this.props.columnWidth * this.props.headerLabels.length;
-    }
-
     protected resizeTable = ():void => {
         const tableWrapperSize = this.tableWrapper.getBoundingClientRect();
 
@@ -36,14 +33,6 @@ class TableBox extends React.Component<IProps, IState> {
             tableWidth: Math.min(this.tableWidth, tableWrapperSize.width),
             tableHeight: tableWrapperSize.height
         });
-    };
-
-    protected getHeaderContent = () => {
-        return this.props.headerLabels.map(
-            (value: string) => <div className="ColumnHeader">
-                {value}
-            </div>
-        )
     };
 
     public componentDidMount(): void {
@@ -66,25 +55,15 @@ class TableBox extends React.Component<IProps, IState> {
         return(
             <div className="TableBoxWrapper" ref={ref => this.tableWrapper = ref}>
                 <div className="TableBox" style={{width: tableWidth, height: tableHeight}}>
-                    <div className="HeaderWrapper">
-                        <div className="TableHeader" style={{width: this.tableWidth, left: tableLeftOffset}}>
-                            {this.getHeaderContent()}
-                        </div>
+                    <div className="HeaderWrapper" style={{height: this.props.headerHeight}}>
+                        {this.props.renderHeader({width: this.props.tableWidth, left: tableLeftOffset})}
                     </div>
                     <div className="TableWrapper">
                         <Scrollbars
                             onScrollFrame={this.handleScrollFrame}
                             autoHide={true}
                         >
-                            <div className="TableContent">
-                                <div className="TableColumn" style={{height: 2000}}/>
-                                <div className="TableColumn" style={{height: 2000}}/>
-                                <div className="TableColumn" style={{height: 2000}}/>
-                                <div className="TableColumn" style={{height: 2000}}/>
-                                <div className="TableColumn" style={{height: 2000}}/>
-                                <div className="TableColumn" style={{height: 2000}}/>
-                                <div className="TableColumn" style={{height: 2000}}/>
-                            </div>
+                            {this.props.renderContent({width: this.props.tableWidth})}
                         </Scrollbars>
                     </div>
                     <div className="ControlPanel"/>

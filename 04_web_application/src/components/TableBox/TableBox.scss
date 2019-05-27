@@ -25,68 +25,16 @@
   .HeaderWrapper {
     width: 100%;
     height: 50px;
-    background-image: linear-gradient(to right top, #293053, #2e547e, #297ca6, #22a6c9, #33d1e5);
+    //background-image: linear-gradient(to right top, #5d18ff, #0071ff, #009aff, #00b9ff, #33d1e5);
+    background-color: $tableBackgroundColor;
     overflow: hidden;
     min-width: 0;
     position: relative;
-
-    .TableHeader {
-      position: absolute;
-      height: 50px;
-
-      display: flex;
-      flex-direction: row;
-      flex-wrap: nowrap;
-      justify-content: flex-start;
-      align-items: center;
-      align-content: flex-start;
-
-      .ColumnHeader {
-        align-self: stretch;
-        width: 200px;
-        border-right: 1px solid #e6e6e6;
-        color: white;
-
-        display: flex;
-        flex-direction: column;
-        flex-wrap: nowrap;
-        justify-content: center;
-        align-items: center;
-        align-content: center;
-      }
-    }
   }
 
   .TableWrapper {
     align-self: stretch;
     flex: 1 1 auto;
-
-    .TableContent {
-      display: flex;
-      flex-direction: row;
-      flex-wrap: nowrap;
-      justify-content: flex-start;
-      align-items: flex-start;
-      align-content: flex-start;
-      width: fit-content;
-
-      .TableColumn {
-        min-width: 200px;
-        border-right: 1px solid #e6e6e6;
-        border-bottom: 1px solid #e6e6e6;
-
-        display: flex;
-        flex-direction: column;
-        flex-wrap: nowrap;
-        justify-content: flex-start;
-        align-items: flex-start;
-        align-content: flex-start;
-      }
-
-      .TableColumn:last-child {
-        border-right: none;
-      }
-    }
   }
 
   .ControlPanel {
