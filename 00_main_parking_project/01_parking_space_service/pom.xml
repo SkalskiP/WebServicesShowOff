@@ -108,6 +108,12 @@
             <scope>provided</scope>
         </dependency>
 
+        <!-- CORS -->
+        <dependency>
+            <groupId>org.jboss.resteasy</groupId>
+            <artifactId>resteasy-jaxrs</artifactId>
+            <version>3.1.0.Final</version>
+        </dependency>
     </dependencies>
 
 </project>

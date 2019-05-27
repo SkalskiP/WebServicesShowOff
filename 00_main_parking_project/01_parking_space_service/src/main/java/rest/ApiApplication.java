@@ -16,6 +16,13 @@ public class ApiApplication extends Application {
 
     HashSet<Object> singletons = new HashSet<Object>();
 
+    public ApiApplication() {
+        CorsFilter corsFilter = new CorsFilter();
+        corsFilter.getAllowedOrigins().add("*");
+        corsFilter.setAllowedMethods("OPTIONS, GET, POST, DELETE, PUT, PATCH");
+        singletons.add(corsFilter);
+    }
+
     @Override
     public Set<Class<?>> getClasses() {
         HashSet<Class<?>> set = new HashSet<Class<?>>();
