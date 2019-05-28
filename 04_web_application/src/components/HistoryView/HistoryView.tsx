@@ -25,15 +25,47 @@ class HistoryViewComponent extends React.Component<IProps, IState> {
 
     public Url:string = "http://localhost:8080/rest/parking-tickets/report";
 
-    public params = {
-        from: "2019-05-25 00:00:00",
-        to: "2019-05-25 23:59:59",
-        limit: 50,
-        offset: 0
-    };
+    public getQueryParams() {
+        const startDate = new Date;
+        const endDate = new Date;
+
+        switch (this.props.activeHistoryTabName) {
+            case HistoryTabName.TODAY:
+                startDate.setTime(startDate.getTime() - 24 * 3600000);
+                break;
+            case HistoryTabName.YESTERDAY:
+                startDate.setTime(startDate.getTime() - 2 * 24 * 3600000);
+                endDate.setTime(endDate.getTime() - 24 * 3600000);
+                break;
+            case HistoryTabName.LAST_WEEK:
+                startDate.setTime(startDate.getTime() - 7 * 24 * 3600000);
+                break;
+            case HistoryTabName.LAST_MONTH:
+                startDate.setTime(startDate.getTime() - 30 * 24 * 3600000);
+                break;
+            case HistoryTabName.LAST_YEAR:
+                startDate.setTime(startDate.getTime() - 365 * 24 * 3600000);
+                break;
+        }
+
+        const startYear = startDate.getFullYear();
+        const startDay = startDate.getDate() > 9 ? "" + startDate.getDate() : "0" + startDate.getDate();
+        const startMonth = (startDate.getMonth() + 1) > 9 ? "" + (startDate.getMonth() + 1) : "0" + (startDate.getMonth() + 1);
+
+        const endYear = endDate.getFullYear();
+        const endDay = endDate.getDate() > 9 ? "" + endDate.getDate() : "0" + endDate.getDate();
+        const endMonth = (endDate.getMonth() + 1) > 9 ? "" + (endDate.getMonth() + 1) : "0" + (endDate.getMonth() + 1);
+
+        return {
+            limit: 50,
+            offset: 0,
+            from: startYear + "-" + startMonth + "-" + startDay + " 00:00:00",
+            to: endYear + "-" + endMonth + "-" + endDay + " 23:59:59"
+        };
+    }
 
     public requestData = () => {
-        axios.get(this.Url, {params: this.params})
+        axios.get(this.Url, {params: this.getQueryParams()})
             .then((data:AxiosResponse) => {
                 const tableData:IParkingTicket[] = data.data.map(
                     (responseObject:any) => {return {
