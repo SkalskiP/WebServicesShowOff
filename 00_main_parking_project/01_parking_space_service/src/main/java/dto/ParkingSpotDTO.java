@@ -24,6 +24,9 @@ public class ParkingSpotDTO extends AbstractDTO {
     @Column(name = "occupied", nullable = false)
     private Boolean occupied;
 
+    @Column(name = "trigger_event_uuid", nullable = true)
+    private String triggerEventUuid;
+
     @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name = "street_id", referencedColumnName = "id")
     @JsonIgnoreProperties("parkingSpots")
@@ -71,5 +74,13 @@ public class ParkingSpotDTO extends AbstractDTO {
 
     public void setParkingTickets(Set<ParkingTicketDTO> parkingTickets) {
         this.parkingTickets = parkingTickets;
+    }
+
+    public String getTriggerEventUuid() {
+        return triggerEventUuid;
+    }
+
+    public void setTriggerEventUuid(String triggerEventUuid) {
+        this.triggerEventUuid = triggerEventUuid;
     }
 }

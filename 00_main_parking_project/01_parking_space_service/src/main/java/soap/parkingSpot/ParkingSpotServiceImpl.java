@@ -5,13 +5,17 @@ import dao.ParkingTicketDAO;
 import domain.ParkingTicketStatus;
 import dto.ParkingSpotDTO;
 import dto.ParkingTicketDTO;
+import guard.Guard;
 
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
 import javax.jws.WebResult;
 import javax.jws.WebService;
 import javax.jws.soap.SOAPBinding;
+import javax.validation.constraints.Null;
 import java.time.LocalDateTime;
+import java.util.Optional;
+import java.util.UUID;
 
 @WebService()
 @SOAPBinding(style = SOAPBinding.Style.RPC)
@@ -23,10 +27,13 @@ public class ParkingSpotServiceImpl implements ParkingSpotService {
         ParkingSpotDTO parkingSpot = ParkingSpotDAO.getInstance().getItem(spotId);
 
         if (!parkingSpot.getOccupied()) {
+            String uniqueID = UUID.randomUUID().toString();
             parkingSpot.setOccupied(true);
+            parkingSpot.setTriggerEventUuid(uniqueID);
             ParkingSpotDAO.getInstance().updateItem(parkingSpot);
             ParkingTicketDTO newTicket = new ParkingTicketDTO(parkingSpot);
-            ParkingTicketDAO.getInstance().addItem(newTicket);
+            Optional<Integer> ticketId = ParkingTicketDAO.getInstance().addItem(newTicket);
+            Guard.getInstance().scheduleTicketValidation(ticketId.get(), uniqueID);
             return true;
         }
         else {
@@ -41,6 +48,7 @@ public class ParkingSpotServiceImpl implements ParkingSpotService {
 
         if (parkingSpot.getOccupied()) {
             parkingSpot.setOccupied(false);
+            parkingSpot.setTriggerEventUuid(null);
             ParkingSpotDAO.getInstance().updateItem(parkingSpot);
             ParkingTicketDTO activeTicket = ParkingTicketDAO.getInstance().findActiveTicketForSpot(parkingSpot);
             activeTicket.setEndTime(LocalDateTime.now());
