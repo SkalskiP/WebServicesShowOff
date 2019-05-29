@@ -3,7 +3,7 @@
 ## Services diagram
 
 <p align="center"> 
-    <img width="600" src="./docs/services.png" alt="Services Diagram">
+    <img width="800" src="./docs/services.png" alt="Services Diagram">
 </p>
 
 ## Services description
@@ -73,11 +73,11 @@ python3 parking_sensor_terminal.py
 ## Parking Sensor SOAP Client
 
 <p align="center"> 
-    <img width="600" src="./docs/parking_sensor_mock.gif" alt="Services Diagram">
+    <img width="800" src="./docs/parking_sensor_mock.gif" alt="Services Diagram">
 </p>
 
 ## Parking Space Database diagram
 
 <p align="center"> 
-    <img width="600" src="./docs/parking_space_database.png" alt="Services Diagram">
+    <img width="800" src="./docs/parking_space_database.png" alt="Services Diagram">
 </p>
