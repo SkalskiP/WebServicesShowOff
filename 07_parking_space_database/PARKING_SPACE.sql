@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Czas generowania: 18 Maj 2019, 23:19
+-- Czas generowania: 29 Maj 2019, 11:56
 -- Wersja serwera: 5.7.25-0ubuntu0.18.04.2
 -- Wersja PHP: 7.0.33-5+ubuntu18.04.1+deb.sury.org+1
 
@@ -210,6 +210,27 @@ CREATE TABLE `PARKING_TICKET` (
   `status` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Zrzut danych tabeli `PARKING_TICKET`
+--
+
+INSERT INTO `PARKING_TICKET` (`id`, `parking_spot_id`, `ticket_type_id`, `start_time`, `end_time`, `status`) VALUES
+(7, 115, 1, '2019-05-19 17:44:35', '2019-05-19 17:44:44', 'CLOSED'),
+(8, 116, 1, '2019-05-19 17:45:19', '2019-05-19 17:45:30', 'CLOSED'),
+(9, 117, 1, '2019-05-19 17:48:24', '2019-05-19 17:48:33', 'CLOSED'),
+(13, 119, 2, '2019-05-25 06:16:25', '2019-05-25 06:32:56', 'CLOSED'),
+(14, 121, 1, '2019-05-25 13:44:59', '2019-05-25 13:56:59', 'CLOSED'),
+(15, 137, 2, '2019-05-01 04:18:22', '2019-05-01 05:19:24', 'CLOSED'),
+(16, 191, 1, '2019-05-02 12:34:35', '2019-05-02 13:04:13', 'CLOSED'),
+(17, 191, 1, '2019-05-03 03:12:40', '2019-05-03 03:18:25', 'CLOSED'),
+(18, 224, 1, '2019-05-03 04:30:48', '2019-05-03 05:04:11', 'CLOSED'),
+(19, 243, 1, '2019-05-28 03:18:18', '2019-05-28 03:27:35', 'CLOSED'),
+(20, 247, 1, '2019-05-28 05:23:35', '2019-05-28 05:42:29', 'CLOSED'),
+(21, 166, 1, '2019-05-27 17:47:47', '2019-05-27 18:52:54', 'CLOSED'),
+(22, 149, 1, '2019-05-27 10:31:35', '2019-05-27 11:04:06', 'CLOSED'),
+(23, 242, 1, '2019-05-27 13:36:42', '2019-05-27 14:07:23', 'CLOSED'),
+(24, 114, 2, '2019-05-27 15:07:19', '2019-05-27 16:08:10', 'CLOSED');
+
 -- --------------------------------------------------------
 
 --
@@ -367,7 +388,7 @@ ALTER TABLE `PARKING_SPOT`
 -- AUTO_INCREMENT dla tabeli `PARKING_TICKET`
 --
 ALTER TABLE `PARKING_TICKET`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 --
 -- AUTO_INCREMENT dla tabeli `STREET`
 --
