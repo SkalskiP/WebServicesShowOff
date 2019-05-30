@@ -31,15 +31,25 @@ public class ParkingTicketDTO extends AbstractDTO {
     @JoinColumn(name = "ticket_type_id", referencedColumnName = "id", nullable = true)
     private TicketTypeDTO ticketType;
 
-    @Column(name = "start_time", nullable = false)
+    @Column(name = "arrival_time", nullable = false)
     @JsonDeserialize(using = JsonDateDeserializer.class)
     @JsonSerialize(using = JsonDateSerializer.class)
-    private LocalDateTime startTime;
+    private LocalDateTime arrivalTime;
 
-    @Column(name = "end_time", nullable = true)
+    @Column(name = "payment_time", nullable = true)
     @JsonDeserialize(using = JsonDateDeserializer.class)
     @JsonSerialize(using = JsonDateSerializer.class)
-    private LocalDateTime endTime;
+    private LocalDateTime paymentTime;
+
+    @Column(name = "expiry_time", nullable = true)
+    @JsonDeserialize(using = JsonDateDeserializer.class)
+    @JsonSerialize(using = JsonDateSerializer.class)
+    private LocalDateTime expiryTime;
+
+    @Column(name = "departure_time", nullable = true)
+    @JsonDeserialize(using = JsonDateDeserializer.class)
+    @JsonSerialize(using = JsonDateSerializer.class)
+    private LocalDateTime departureTime;
 
     @Column(name = "status", nullable = false)
     @Convert(converter = ParkingTicketStatusConverter.class)
@@ -49,7 +59,7 @@ public class ParkingTicketDTO extends AbstractDTO {
 
     public ParkingTicketDTO(ParkingSpotDTO parkingSpot) {
         this.parkingSpot = parkingSpot;
-        this.startTime = LocalDateTime.now();
+        this.arrivalTime = LocalDateTime.now();
         this.status = ParkingTicketStatus.ARRIVED;
     }
 
@@ -78,20 +88,20 @@ public class ParkingTicketDTO extends AbstractDTO {
         this.ticketType = ticketType;
     }
 
-    public LocalDateTime getStartTime() {
-        return startTime;
+    public LocalDateTime getArrivalTime() {
+        return arrivalTime;
     }
 
-    public void setStartTime(LocalDateTime startTime) {
-        this.startTime = startTime;
+    public void setArrivalTime(LocalDateTime arrivalTime) {
+        this.arrivalTime = arrivalTime;
     }
 
-    public LocalDateTime getEndTime() {
-        return endTime;
+    public LocalDateTime getDepartureTime() {
+        return departureTime;
     }
 
-    public void setEndTime(LocalDateTime endTime) {
-        this.endTime = endTime;
+    public void setDepartureTime(LocalDateTime departureTime) {
+        this.departureTime = departureTime;
     }
 
     public ParkingTicketStatus getStatus() {
@@ -100,5 +110,21 @@ public class ParkingTicketDTO extends AbstractDTO {
 
     public void setStatus(ParkingTicketStatus status) {
         this.status = status;
+    }
+
+    public LocalDateTime getPaymentTime() {
+        return paymentTime;
+    }
+
+    public void setPaymentTime(LocalDateTime paymentTime) {
+        this.paymentTime = paymentTime;
+    }
+
+    public LocalDateTime getExpiryTime() {
+        return expiryTime;
+    }
+
+    public void setExpiryTime(LocalDateTime expiryTime) {
+        this.expiryTime = expiryTime;
     }
 }

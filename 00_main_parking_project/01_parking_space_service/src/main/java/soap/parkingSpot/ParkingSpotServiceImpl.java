@@ -50,7 +50,7 @@ public class ParkingSpotServiceImpl implements ParkingSpotService {
             parkingSpot.setTriggerEventUuid(null);
             ParkingSpotDAO.getInstance().updateItem(parkingSpot);
             ParkingTicketDTO activeTicket = ParkingTicketDAO.getInstance().findActiveTicketForSpot(parkingSpot);
-            activeTicket.setEndTime(LocalDateTime.now());
+            activeTicket.setDepartureTime(LocalDateTime.now());
             activeTicket.setStatus(ParkingTicketStatus.CLOSED);
             ParkingTicketDAO.getInstance().updateItem(activeTicket);
             return true;

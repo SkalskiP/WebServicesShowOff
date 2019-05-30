@@ -41,9 +41,12 @@ public class ParkingTicketRestService {
         try {
             ParkingSpotDTO parkingSpot = ParkingSpotDAO.getInstance().getItem(ticketPurchaseData.parkingSpotId);
             TicketTypeDTO ticketType = TicketTypeDAO.getInstance().getItem(ticketPurchaseData.ticketTypeId);
+            LocalDateTime currentTime = LocalDateTime.now();
             ParkingTicketDTO parkingTicket = ParkingTicketDAO.getInstance().findActiveTicketForSpot(parkingSpot);
             parkingTicket.setTicketType(ticketType);
             parkingTicket.setStatus(ParkingTicketStatus.PAID);
+            parkingTicket.setPaymentTime(currentTime);
+            parkingTicket.setExpiryTime(currentTime.plusMinutes(ticketType.getDurationMinutes()));
             ParkingTicketDTO updatedParkingTicket = ParkingTicketDAO.getInstance().updateItem(parkingTicket);
             return Response.ok().entity(updatedParkingTicket).build();
         } catch (Exception e) {

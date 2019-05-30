@@ -19,7 +19,7 @@ public class ParkingSpotValidationTask extends TimerTask {
     public void run() {
         ParkingTicketDTO requestedTicket = ParkingTicketDAO.getInstance().getItem(ticketId);
         if (requestedTicket.getParkingSpot().getTriggerEventUuid() == triggerEventUuid && requestedTicket.getStatus() == ParkingTicketStatus.ARRIVED) {
-            requestedTicket.setStatus(ParkingTicketStatus.ALARM);
+            requestedTicket.setStatus(ParkingTicketStatus.UNPAID);
             ParkingTicketDAO.getInstance().updateItem(requestedTicket);
             //TODO: Send JMS
         }
