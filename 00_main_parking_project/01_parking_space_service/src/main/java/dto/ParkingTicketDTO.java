@@ -1,6 +1,5 @@
 package dto;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
@@ -51,7 +50,7 @@ public class ParkingTicketDTO extends AbstractDTO {
     public ParkingTicketDTO(ParkingSpotDTO parkingSpot) {
         this.parkingSpot = parkingSpot;
         this.startTime = LocalDateTime.now();
-        this.status = ParkingTicketStatus.UNPAID;
+        this.status = ParkingTicketStatus.ARRIVED;
     }
 
     @Override

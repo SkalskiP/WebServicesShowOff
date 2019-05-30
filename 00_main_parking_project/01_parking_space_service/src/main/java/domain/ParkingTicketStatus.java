@@ -1,7 +1,7 @@
 package domain;
 
 public enum ParkingTicketStatus {
-    UNPAID("UNPAID"),
+    ARRIVED("ARRIVED"),
     PAID("PAID"),
     ALARM("ALARM"),
     CLOSED("CLOSED");

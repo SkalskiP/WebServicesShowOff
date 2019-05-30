@@ -1,7 +1,12 @@
 package rest.parkingTicket;
 
+import dao.ParkingSpotDAO;
 import dao.ParkingTicketDAO;
+import dao.TicketTypeDAO;
+import domain.ParkingTicketStatus;
+import dto.ParkingSpotDTO;
 import dto.ParkingTicketDTO;
+import dto.TicketTypeDTO;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -26,6 +31,24 @@ public class ParkingTicketRestService {
     public Response getParkingTicketById(@PathParam("id") Integer id) {
         ParkingTicketDTO parkingTicket = ParkingTicketDAO.getInstance().getItem(id);
         return Response.ok().entity(parkingTicket).build();
+    }
+
+    @POST
+    @Path("/buy")
+    @Consumes({MediaType.APPLICATION_JSON})
+    @Produces({MediaType.APPLICATION_JSON})
+    public Response buyTicketForParkingSpotById(TicketPurchaseData ticketPurchaseData) {
+        try {
+            ParkingSpotDTO parkingSpot = ParkingSpotDAO.getInstance().getItem(ticketPurchaseData.parkingSpotId);
+            TicketTypeDTO ticketType = TicketTypeDAO.getInstance().getItem(ticketPurchaseData.ticketTypeId);
+            ParkingTicketDTO parkingTicket = ParkingTicketDAO.getInstance().findActiveTicketForSpot(parkingSpot);
+            parkingTicket.setTicketType(ticketType);
+            parkingTicket.setStatus(ParkingTicketStatus.PAID);
+            ParkingTicketDTO updatedParkingTicket = ParkingTicketDAO.getInstance().updateItem(parkingTicket);
+            return Response.ok().entity(updatedParkingTicket).build();
+        } catch (Exception e) {
+            return Response.status(Response.Status.NOT_FOUND).build();
+        }
     }
 
     @GET

@@ -5,14 +5,13 @@ import dao.ParkingTicketDAO;
 import domain.ParkingTicketStatus;
 import dto.ParkingSpotDTO;
 import dto.ParkingTicketDTO;
-import guard.Guard;
+import guard.ParkingSpotGuard;
 
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
 import javax.jws.WebResult;
 import javax.jws.WebService;
 import javax.jws.soap.SOAPBinding;
-import javax.validation.constraints.Null;
 import java.time.LocalDateTime;
 import java.util.Optional;
 import java.util.UUID;
@@ -33,7 +32,7 @@ public class ParkingSpotServiceImpl implements ParkingSpotService {
             ParkingSpotDAO.getInstance().updateItem(parkingSpot);
             ParkingTicketDTO newTicket = new ParkingTicketDTO(parkingSpot);
             Optional<Integer> ticketId = ParkingTicketDAO.getInstance().addItem(newTicket);
-            Guard.getInstance().scheduleTicketValidation(ticketId.get(), uniqueID);
+            ParkingSpotGuard.getInstance().scheduleValidation(ticketId.get(), uniqueID);
             return true;
         }
         else {
