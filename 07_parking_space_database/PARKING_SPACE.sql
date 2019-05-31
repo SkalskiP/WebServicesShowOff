@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Czas generowania: 29 Maj 2019, 11:56
+-- Czas generowania: 31 Maj 2019, 09:37
 -- Wersja serwera: 5.7.25-0ubuntu0.18.04.2
 -- Wersja PHP: 7.0.33-5+ubuntu18.04.1+deb.sury.org+1
 
@@ -50,6 +50,7 @@ CREATE TABLE `PARKING_SPOT` (
   `id` int(11) NOT NULL,
   `number` int(11) NOT NULL,
   `occupied` tinyint(1) NOT NULL DEFAULT '0',
+  `trigger_event_uuid` varchar(36) DEFAULT NULL,
   `street_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -57,143 +58,143 @@ CREATE TABLE `PARKING_SPOT` (
 -- Zrzut danych tabeli `PARKING_SPOT`
 --
 
-INSERT INTO `PARKING_SPOT` (`id`, `number`, `occupied`, `street_id`) VALUES
-(113, 1, 0, 1),
-(114, 2, 0, 1),
-(115, 3, 0, 1),
-(116, 4, 0, 1),
-(117, 5, 0, 1),
-(118, 6, 0, 1),
-(119, 7, 0, 1),
-(120, 1, 0, 2),
-(121, 2, 0, 2),
-(122, 3, 0, 2),
-(123, 4, 0, 2),
-(124, 5, 0, 2),
-(125, 1, 0, 3),
-(126, 2, 0, 3),
-(127, 3, 0, 3),
-(128, 4, 0, 3),
-(129, 5, 0, 3),
-(130, 6, 0, 3),
-(131, 1, 0, 4),
-(132, 2, 0, 4),
-(133, 3, 0, 4),
-(134, 4, 0, 4),
-(135, 1, 0, 5),
-(136, 2, 0, 5),
-(137, 3, 0, 5),
-(138, 4, 0, 5),
-(139, 5, 0, 5),
-(140, 6, 0, 5),
-(141, 1, 0, 6),
-(142, 2, 0, 6),
-(143, 3, 0, 6),
-(144, 4, 0, 6),
-(145, 5, 0, 6),
-(146, 6, 0, 6),
-(147, 7, 0, 6),
-(148, 1, 0, 7),
-(149, 2, 0, 7),
-(150, 3, 0, 7),
-(151, 4, 0, 7),
-(152, 1, 0, 8),
-(153, 2, 0, 8),
-(154, 3, 0, 8),
-(155, 4, 0, 8),
-(156, 5, 0, 8),
-(157, 6, 0, 8),
-(158, 7, 0, 8),
-(159, 8, 0, 8),
-(160, 1, 0, 9),
-(161, 2, 0, 9),
-(162, 3, 0, 9),
-(163, 4, 0, 9),
-(164, 1, 0, 10),
-(165, 2, 0, 10),
-(166, 3, 0, 10),
-(167, 4, 0, 10),
-(168, 5, 0, 10),
-(169, 6, 0, 10),
-(170, 1, 0, 11),
-(171, 2, 0, 11),
-(172, 3, 0, 11),
-(173, 4, 0, 11),
-(174, 5, 0, 11),
-(175, 1, 0, 12),
-(176, 2, 0, 12),
-(177, 3, 0, 12),
-(178, 4, 0, 12),
-(179, 1, 0, 13),
-(180, 2, 0, 13),
-(181, 3, 0, 13),
-(182, 4, 0, 13),
-(183, 5, 0, 13),
-(184, 1, 0, 14),
-(185, 2, 0, 14),
-(186, 3, 0, 14),
-(187, 4, 0, 14),
-(188, 5, 0, 14),
-(189, 6, 0, 14),
-(190, 7, 0, 14),
-(191, 1, 0, 15),
-(192, 2, 0, 15),
-(193, 3, 0, 15),
-(194, 4, 0, 15),
-(195, 5, 0, 15),
-(196, 1, 0, 16),
-(197, 2, 0, 16),
-(198, 3, 0, 16),
-(199, 4, 0, 16),
-(200, 1, 0, 17),
-(201, 2, 0, 17),
-(202, 3, 0, 17),
-(203, 4, 0, 17),
-(204, 5, 0, 17),
-(205, 1, 0, 18),
-(206, 2, 0, 18),
-(207, 3, 0, 18),
-(208, 4, 0, 18),
-(209, 5, 0, 18),
-(210, 6, 0, 18),
-(211, 7, 0, 18),
-(212, 1, 0, 19),
-(213, 2, 0, 19),
-(214, 3, 0, 19),
-(215, 4, 0, 19),
-(216, 5, 0, 19),
-(217, 1, 0, 20),
-(218, 2, 0, 20),
-(219, 3, 0, 20),
-(220, 4, 0, 20),
-(221, 5, 0, 20),
-(222, 6, 0, 20),
-(223, 7, 0, 20),
-(224, 1, 0, 21),
-(225, 2, 0, 21),
-(226, 3, 0, 21),
-(227, 4, 0, 21),
-(228, 5, 0, 21),
-(229, 1, 0, 22),
-(230, 2, 0, 22),
-(231, 3, 0, 22),
-(232, 4, 0, 22),
-(233, 1, 0, 23),
-(234, 2, 0, 23),
-(235, 3, 0, 23),
-(236, 4, 0, 23),
-(237, 5, 0, 23),
-(238, 6, 0, 23),
-(239, 7, 0, 23),
-(240, 1, 0, 24),
-(241, 2, 0, 24),
-(242, 3, 0, 24),
-(243, 1, 0, 25),
-(244, 2, 0, 25),
-(245, 3, 0, 25),
-(246, 4, 0, 25),
-(247, 5, 0, 25),
-(248, 6, 0, 25);
+INSERT INTO `PARKING_SPOT` (`id`, `number`, `occupied`, `trigger_event_uuid`, `street_id`) VALUES
+(113, 1, 0, NULL, 1),
+(114, 2, 0, NULL, 1),
+(115, 3, 0, NULL, 1),
+(116, 4, 0, NULL, 1),
+(117, 5, 0, NULL, 1),
+(118, 6, 0, NULL, 1),
+(119, 7, 0, NULL, 1),
+(120, 1, 0, NULL, 2),
+(121, 2, 0, NULL, 2),
+(122, 3, 0, NULL, 2),
+(123, 4, 0, NULL, 2),
+(124, 5, 0, NULL, 2),
+(125, 1, 0, NULL, 3),
+(126, 2, 0, NULL, 3),
+(127, 3, 0, NULL, 3),
+(128, 4, 0, NULL, 3),
+(129, 5, 0, NULL, 3),
+(130, 6, 0, NULL, 3),
+(131, 1, 0, NULL, 4),
+(132, 2, 0, NULL, 4),
+(133, 3, 0, NULL, 4),
+(134, 4, 0, NULL, 4),
+(135, 1, 0, NULL, 5),
+(136, 2, 0, NULL, 5),
+(137, 3, 0, NULL, 5),
+(138, 4, 0, NULL, 5),
+(139, 5, 0, NULL, 5),
+(140, 6, 0, NULL, 5),
+(141, 1, 0, NULL, 6),
+(142, 2, 0, NULL, 6),
+(143, 3, 0, NULL, 6),
+(144, 4, 0, NULL, 6),
+(145, 5, 0, NULL, 6),
+(146, 6, 0, NULL, 6),
+(147, 7, 0, NULL, 6),
+(148, 1, 0, NULL, 7),
+(149, 2, 0, NULL, 7),
+(150, 3, 0, NULL, 7),
+(151, 4, 0, NULL, 7),
+(152, 1, 0, NULL, 8),
+(153, 2, 0, NULL, 8),
+(154, 3, 0, NULL, 8),
+(155, 4, 0, NULL, 8),
+(156, 5, 0, NULL, 8),
+(157, 6, 0, NULL, 8),
+(158, 7, 0, NULL, 8),
+(159, 8, 0, NULL, 8),
+(160, 1, 0, NULL, 9),
+(161, 2, 0, NULL, 9),
+(162, 3, 0, NULL, 9),
+(163, 4, 0, NULL, 9),
+(164, 1, 0, NULL, 10),
+(165, 2, 0, NULL, 10),
+(166, 3, 0, NULL, 10),
+(167, 4, 0, NULL, 10),
+(168, 5, 0, NULL, 10),
+(169, 6, 0, NULL, 10),
+(170, 1, 0, NULL, 11),
+(171, 2, 0, NULL, 11),
+(172, 3, 0, NULL, 11),
+(173, 4, 0, NULL, 11),
+(174, 5, 0, NULL, 11),
+(175, 1, 0, NULL, 12),
+(176, 2, 0, NULL, 12),
+(177, 3, 0, NULL, 12),
+(178, 4, 0, NULL, 12),
+(179, 1, 0, NULL, 13),
+(180, 2, 0, NULL, 13),
+(181, 3, 0, NULL, 13),
+(182, 4, 0, NULL, 13),
+(183, 5, 0, NULL, 13),
+(184, 1, 0, NULL, 14),
+(185, 2, 0, NULL, 14),
+(186, 3, 0, NULL, 14),
+(187, 4, 0, NULL, 14),
+(188, 5, 0, NULL, 14),
+(189, 6, 0, NULL, 14),
+(190, 7, 0, NULL, 14),
+(191, 1, 0, NULL, 15),
+(192, 2, 0, NULL, 15),
+(193, 3, 0, NULL, 15),
+(194, 4, 0, NULL, 15),
+(195, 5, 0, NULL, 15),
+(196, 1, 0, NULL, 16),
+(197, 2, 0, NULL, 16),
+(198, 3, 0, NULL, 16),
+(199, 4, 0, NULL, 16),
+(200, 1, 0, NULL, 17),
+(201, 2, 0, NULL, 17),
+(202, 3, 0, NULL, 17),
+(203, 4, 0, NULL, 17),
+(204, 5, 0, NULL, 17),
+(205, 1, 0, NULL, 18),
+(206, 2, 0, NULL, 18),
+(207, 3, 0, NULL, 18),
+(208, 4, 0, NULL, 18),
+(209, 5, 0, NULL, 18),
+(210, 6, 0, NULL, 18),
+(211, 7, 0, NULL, 18),
+(212, 1, 0, NULL, 19),
+(213, 2, 0, NULL, 19),
+(214, 3, 0, NULL, 19),
+(215, 4, 0, NULL, 19),
+(216, 5, 0, NULL, 19),
+(217, 1, 0, NULL, 20),
+(218, 2, 0, NULL, 20),
+(219, 3, 0, NULL, 20),
+(220, 4, 0, NULL, 20),
+(221, 5, 0, NULL, 20),
+(222, 6, 0, NULL, 20),
+(223, 7, 0, NULL, 20),
+(224, 1, 0, NULL, 21),
+(225, 2, 0, NULL, 21),
+(226, 3, 0, NULL, 21),
+(227, 4, 0, NULL, 21),
+(228, 5, 0, NULL, 21),
+(229, 1, 0, NULL, 22),
+(230, 2, 0, NULL, 22),
+(231, 3, 0, NULL, 22),
+(232, 4, 0, NULL, 22),
+(233, 1, 0, NULL, 23),
+(234, 2, 0, NULL, 23),
+(235, 3, 0, NULL, 23),
+(236, 4, 0, NULL, 23),
+(237, 5, 0, NULL, 23),
+(238, 6, 0, NULL, 23),
+(239, 7, 0, NULL, 23),
+(240, 1, 0, NULL, 24),
+(241, 2, 0, NULL, 24),
+(242, 3, 0, NULL, 24),
+(243, 1, 0, NULL, 25),
+(244, 2, 0, NULL, 25),
+(245, 3, 0, NULL, 25),
+(246, 4, 0, NULL, 25),
+(247, 5, 0, NULL, 25),
+(248, 6, 0, NULL, 25);
 
 -- --------------------------------------------------------
 
@@ -205,8 +206,10 @@ CREATE TABLE `PARKING_TICKET` (
   `id` int(11) NOT NULL,
   `parking_spot_id` int(11) NOT NULL,
   `ticket_type_id` int(11) DEFAULT NULL,
-  `start_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `end_time` timestamp NULL DEFAULT NULL,
+  `arrival_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `payment_time` timestamp NULL DEFAULT NULL,
+  `expiry_time` timestamp NULL DEFAULT NULL,
+  `departure_time` timestamp NULL DEFAULT NULL,
   `status` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -214,22 +217,12 @@ CREATE TABLE `PARKING_TICKET` (
 -- Zrzut danych tabeli `PARKING_TICKET`
 --
 
-INSERT INTO `PARKING_TICKET` (`id`, `parking_spot_id`, `ticket_type_id`, `start_time`, `end_time`, `status`) VALUES
-(7, 115, 1, '2019-05-19 17:44:35', '2019-05-19 17:44:44', 'CLOSED'),
-(8, 116, 1, '2019-05-19 17:45:19', '2019-05-19 17:45:30', 'CLOSED'),
-(9, 117, 1, '2019-05-19 17:48:24', '2019-05-19 17:48:33', 'CLOSED'),
-(13, 119, 2, '2019-05-25 06:16:25', '2019-05-25 06:32:56', 'CLOSED'),
-(14, 121, 1, '2019-05-25 13:44:59', '2019-05-25 13:56:59', 'CLOSED'),
-(15, 137, 2, '2019-05-01 04:18:22', '2019-05-01 05:19:24', 'CLOSED'),
-(16, 191, 1, '2019-05-02 12:34:35', '2019-05-02 13:04:13', 'CLOSED'),
-(17, 191, 1, '2019-05-03 03:12:40', '2019-05-03 03:18:25', 'CLOSED'),
-(18, 224, 1, '2019-05-03 04:30:48', '2019-05-03 05:04:11', 'CLOSED'),
-(19, 243, 1, '2019-05-28 03:18:18', '2019-05-28 03:27:35', 'CLOSED'),
-(20, 247, 1, '2019-05-28 05:23:35', '2019-05-28 05:42:29', 'CLOSED'),
-(21, 166, 1, '2019-05-27 17:47:47', '2019-05-27 18:52:54', 'CLOSED'),
-(22, 149, 1, '2019-05-27 10:31:35', '2019-05-27 11:04:06', 'CLOSED'),
-(23, 242, 1, '2019-05-27 13:36:42', '2019-05-27 14:07:23', 'CLOSED'),
-(24, 114, 2, '2019-05-27 15:07:19', '2019-05-27 16:08:10', 'CLOSED');
+INSERT INTO `PARKING_TICKET` (`id`, `parking_spot_id`, `ticket_type_id`, `arrival_time`, `payment_time`, `expiry_time`, `departure_time`, `status`) VALUES
+(37, 140, 1, '2019-05-30 21:31:07', '2019-05-30 21:31:45', '2019-05-30 22:31:45', '2019-05-30 21:32:26', 'CLOSED'),
+(50, 150, 6, '2019-05-31 06:41:53', '2019-05-31 06:42:16', '2019-05-31 06:44:16', '2019-05-31 06:45:23', 'CLOSED'),
+(57, 190, 5, '2019-05-31 07:04:12', '2019-05-31 07:04:19', '2019-05-31 07:05:19', '2019-05-31 07:04:25', 'CLOSED'),
+(58, 200, 5, '2019-05-31 07:10:20', '2019-05-31 07:10:38', '2019-05-31 07:11:38', '2019-05-31 07:10:45', 'CLOSED'),
+(59, 195, 5, '2019-05-31 07:24:13', '2019-05-31 07:24:23', '2019-05-31 07:25:23', '2019-05-31 07:24:29', 'CLOSED');
 
 -- --------------------------------------------------------
 
@@ -284,19 +277,20 @@ CREATE TABLE `TICKET_TYPE` (
   `id` int(11) NOT NULL,
   `name` varchar(50) NOT NULL,
   `price` double NOT NULL,
-  `duration_hours` int(3) NOT NULL,
-  `duration` int(11) NOT NULL
+  `duration_minutes` int(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Zrzut danych tabeli `TICKET_TYPE`
 --
 
-INSERT INTO `TICKET_TYPE` (`id`, `name`, `price`, `duration_hours`, `duration`) VALUES
-(1, '1 hour parking time', 1.5, 1, 0),
-(2, '2 hour parking time', 3, 2, 0),
-(3, '3 hour parking time', 6, 3, 0),
-(4, '1 day parking time', 60, 24, 0);
+INSERT INTO `TICKET_TYPE` (`id`, `name`, `price`, `duration_minutes`) VALUES
+(1, '1 hour parking time', 1.5, 60),
+(2, '2 hour parking time', 3, 120),
+(3, '3 hour parking time', 6, 180),
+(4, '1 day parking time', 60, 1440),
+(5, '1 minut paking time TEST', 0, 1),
+(6, '2 minut paking time TEST', 0, 2);
 
 -- --------------------------------------------------------
 
@@ -361,7 +355,7 @@ ALTER TABLE `STREET`
 ALTER TABLE `TICKET_TYPE`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `name` (`name`),
-  ADD UNIQUE KEY `duration_hours` (`duration_hours`);
+  ADD UNIQUE KEY `duration_hours` (`duration_minutes`);
 
 --
 -- Indexes for table `ZONE`
@@ -388,7 +382,7 @@ ALTER TABLE `PARKING_SPOT`
 -- AUTO_INCREMENT dla tabeli `PARKING_TICKET`
 --
 ALTER TABLE `PARKING_TICKET`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
 --
 -- AUTO_INCREMENT dla tabeli `STREET`
 --
@@ -398,7 +392,7 @@ ALTER TABLE `STREET`
 -- AUTO_INCREMENT dla tabeli `TICKET_TYPE`
 --
 ALTER TABLE `TICKET_TYPE`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT dla tabeli `ZONE`
 --
