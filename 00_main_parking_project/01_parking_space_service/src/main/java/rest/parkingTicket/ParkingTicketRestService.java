@@ -7,6 +7,7 @@ import domain.ParkingTicketStatus;
 import dto.ParkingSpotDTO;
 import dto.ParkingTicketDTO;
 import dto.TicketTypeDTO;
+import guard.ParkingTicketGuard;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -48,6 +49,7 @@ public class ParkingTicketRestService {
             parkingTicket.setPaymentTime(currentTime);
             parkingTicket.setExpiryTime(currentTime.plusMinutes(ticketType.getDurationMinutes()));
             ParkingTicketDTO updatedParkingTicket = ParkingTicketDAO.getInstance().updateItem(parkingTicket);
+            ParkingTicketGuard.getInstance().scheduleValidation(parkingTicket.getId(), parkingSpot.getTriggerEventUuid(), ticketType.getDurationMinutes());
             return Response.ok().entity(updatedParkingTicket).build();
         } catch (Exception e) {
             return Response.status(Response.Status.NOT_FOUND).build();

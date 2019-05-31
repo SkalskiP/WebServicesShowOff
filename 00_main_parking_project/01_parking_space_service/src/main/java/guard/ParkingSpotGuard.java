@@ -3,7 +3,6 @@ package guard;
 import java.util.Timer;
 
 public class ParkingSpotGuard {
-
     private static ParkingSpotGuard instance;
     private static Timer timer;
 
@@ -22,7 +21,9 @@ public class ParkingSpotGuard {
         return instance;
     }
 
-    public void scheduleValidation(Integer parkingSpotId, String triggerEventUuid) {
-        timer.schedule(new ParkingSpotValidationTask(parkingSpotId, triggerEventUuid), 3 * 60 * 1000);
+    public void scheduleValidation(Integer parkingTicketId, String triggerEventUuid) {
+        //TODO: Remove log
+        System.out.println("TicketId " + parkingTicketId.toString() + ", triggerEventUuid " + triggerEventUuid + " VALIDATE PARKING SPOT SCHEDULED");
+        timer.schedule(new ParkingSpotValidationTask(parkingTicketId, triggerEventUuid), 1 * 60 * 1000);
     }
 }

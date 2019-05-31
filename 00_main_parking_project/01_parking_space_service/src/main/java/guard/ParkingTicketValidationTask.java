@@ -8,12 +8,12 @@ import dto.ParkingTicketDTO;
 
 import java.util.TimerTask;
 
-public class ParkingSpotValidationTask extends TimerTask {
+public class ParkingTicketValidationTask extends TimerTask {
 
     private Integer ticketId;
     private String triggerEventUuid;
 
-    public ParkingSpotValidationTask(Integer ticketId, String triggerEventUuid) {
+    public ParkingTicketValidationTask(Integer ticketId, String triggerEventUuid) {
         this.ticketId = ticketId;
         this.triggerEventUuid = triggerEventUuid;
     }
@@ -23,15 +23,16 @@ public class ParkingSpotValidationTask extends TimerTask {
         // This line is required due to the Lazy Evaluation of objects in relation.
         ParkingSpotDTO requestedSpot = ParkingSpotDAO.getInstance().getItem(requestedTicket.getParkingSpot().getId());
         // we need to use == and dot equals because of null pointers exceptions
-        if (requestedSpot.getTriggerEventUuid() == triggerEventUuid && requestedTicket.getStatus() == ParkingTicketStatus.ARRIVED) {
-            requestedTicket.setStatus(ParkingTicketStatus.UNPAID);
+        if (requestedSpot.getTriggerEventUuid() == triggerEventUuid && requestedSpot.getOccupied()) {
+            requestedTicket.setStatus(ParkingTicketStatus.ALARM);
             ParkingTicketDAO.getInstance().updateItem(requestedTicket);
             //TODO: Send JMS
             //TODO: Remove log
-            System.out.println("TicketId " + ticketId.toString() + ", triggerEventUuid " + triggerEventUuid + " VALIDATED AS UNPAID");
+            System.out.println("TicketId " + ticketId.toString() + ", triggerEventUuid " + triggerEventUuid + " VALIDATED AS ALARM");
         } else {
             //TODO: Remove log
-            System.out.println("TicketId " + ticketId.toString() + ", triggerEventUuid " + triggerEventUuid + " VALIDATED AS PAID");
+            System.out.println("TicketId " + ticketId.toString() + ", triggerEventUuid " + triggerEventUuid + " VALIDATED AS CLOSED");
         }
     }
 }
+
