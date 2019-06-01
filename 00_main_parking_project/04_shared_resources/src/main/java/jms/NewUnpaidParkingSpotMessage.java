@@ -2,7 +2,7 @@ package jms;
 
 import java.io.Serializable;
 
-public class NewAlarmMessage implements Serializable {
+public class NewUnpaidParkingSpotMessage implements Serializable {
     private Integer spotId;
 
     public Integer getSpotId() {

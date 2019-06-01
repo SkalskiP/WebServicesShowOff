@@ -21,6 +21,15 @@
             <version>8.0</version>
         </dependency>
 
+        <!-- SHARED RESOURCES -->
+
+        <dependency>
+            <groupId>main_parking_project</groupId>
+            <artifactId>shared_resources</artifactId>
+            <version>1.0</version>
+            <scope>compile</scope>
+        </dependency>
+
         <!-- DATABASE -->
 
         <dependency>

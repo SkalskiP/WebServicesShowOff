@@ -13,6 +13,7 @@
         <module>01_parking_space_service</module>
         <module>02_account_service</module>
         <module>03_notifications_service</module>
+        <module>04_shared_resources</module>
     </modules>
 
     <build>

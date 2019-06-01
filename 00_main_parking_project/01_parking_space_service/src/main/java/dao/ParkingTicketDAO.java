@@ -5,12 +5,7 @@ import dto.ParkingSpotDTO;
 import dto.ParkingTicketDTO;
 
 import javax.persistence.TypedQuery;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Root;
-import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 public class ParkingTicketDAO extends AbstractDAO<ParkingTicketDTO> {

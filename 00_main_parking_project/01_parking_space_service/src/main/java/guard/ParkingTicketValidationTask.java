@@ -6,6 +6,7 @@ import domain.ParkingTicketStatus;
 import dto.ParkingSpotDTO;
 import dto.ParkingTicketDTO;
 
+import java.util.Objects;
 import java.util.TimerTask;
 
 public class ParkingTicketValidationTask extends TimerTask {
@@ -23,7 +24,7 @@ public class ParkingTicketValidationTask extends TimerTask {
         // This line is required due to the Lazy Evaluation of objects in relation.
         ParkingSpotDTO requestedSpot = ParkingSpotDAO.getInstance().getItem(requestedTicket.getParkingSpot().getId());
         // we need to use == and dot equals because of null pointers exceptions
-        if (requestedSpot.getTriggerEventUuid() == triggerEventUuid && requestedSpot.getOccupied()) {
+        if (Objects.equals(requestedSpot.getTriggerEventUuid(), triggerEventUuid) && requestedSpot.getOccupied()) {
             requestedTicket.setStatus(ParkingTicketStatus.ALARM);
             ParkingTicketDAO.getInstance().updateItem(requestedTicket);
             //TODO: Send JMS

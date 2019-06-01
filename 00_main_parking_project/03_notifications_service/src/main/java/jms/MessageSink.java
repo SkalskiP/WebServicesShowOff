@@ -18,9 +18,9 @@ public class MessageSink implements MessageListener {
     public void onMessage(Message message) {
         try {
             Serializable msgObj = ((ObjectMessage) message).getObject();
-            if (msgObj instanceof NewAlarmMessage) {
+            if (msgObj instanceof NewUnpaidParkingSpotMessage) {
                 System.out.println("SINK!!!");
-                System.out.println(((NewAlarmMessage) msgObj).getSpotId());
+                System.out.println(((NewUnpaidParkingSpotMessage) msgObj).getSpotId());
             }
         } catch (JMSException e) {
             e.printStackTrace();

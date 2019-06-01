@@ -9,9 +9,9 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>notificatins_service</artifactId>
+    <artifactId>shared_resources</artifactId>
 
-    <packaging>war</packaging>
+    <packaging>jar</packaging>
 
     <dependencies>
 
@@ -21,22 +21,7 @@
             <version>8.0</version>
         </dependency>
 
-        <!-- SHARED RESOURCES -->
-
-        <dependency>
-            <groupId>main_parking_project</groupId>
-            <artifactId>shared_resources</artifactId>
-            <version>1.0</version>
-            <scope>compile</scope>
-        </dependency>
-
         <!-- REST -->
-
-        <dependency>
-            <groupId>org.jboss.resteasy</groupId>
-            <artifactId>resteasy-jaxrs-all</artifactId>
-            <version>3.6.3.Final</version>
-        </dependency>
 
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>

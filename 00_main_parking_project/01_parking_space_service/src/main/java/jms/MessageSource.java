@@ -17,7 +17,7 @@ public class MessageSource {
 
     public void publishAlarmMessage(Integer userId) {
         try {
-            NewAlarmMessage alarmMessage = new NewAlarmMessage();
+            NewUnpaidParkingSpotMessage alarmMessage = new NewUnpaidParkingSpotMessage();
             alarmMessage.setSpotId(userId);
             context.createProducer().send(topic, alarmMessage);
             System.out.println("Message is send " + userId);
