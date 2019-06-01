@@ -123,6 +123,7 @@
             <artifactId>resteasy-jaxrs</artifactId>
             <version>3.1.0.Final</version>
         </dependency>
+
     </dependencies>
 
 </project>
