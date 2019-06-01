@@ -1,4 +1,4 @@
-package guard;
+package timer_guard;
 
 import dao.ParkingSpotDAO;
 import dao.ParkingTicketDAO;
@@ -9,12 +9,12 @@ import dto.ParkingTicketDTO;
 import java.util.Objects;
 import java.util.TimerTask;
 
-public class ParkingSpotValidationTask extends TimerTask {
+public class ParkingTicketValidationTask extends TimerTask {
 
     private Integer ticketId;
     private String triggerEventUuid;
 
-    public ParkingSpotValidationTask(Integer ticketId, String triggerEventUuid) {
+    public ParkingTicketValidationTask(Integer ticketId, String triggerEventUuid) {
         this.ticketId = ticketId;
         this.triggerEventUuid = triggerEventUuid;
     }
@@ -23,16 +23,17 @@ public class ParkingSpotValidationTask extends TimerTask {
         ParkingTicketDTO requestedTicket = ParkingTicketDAO.getInstance().getItem(ticketId);
         // This line is required due to the Lazy Evaluation of objects in relation.
         ParkingSpotDTO requestedSpot = ParkingSpotDAO.getInstance().getItem(requestedTicket.getParkingSpot().getId());
-        if (Objects.equals(requestedSpot.getTriggerEventUuid(), triggerEventUuid) && requestedTicket.getStatus() == ParkingTicketStatus.ARRIVED) {
-            requestedTicket.setStatus(ParkingTicketStatus.UNPAID);
+        // we need to use == and dot equals because of null pointers exceptions
+        if (Objects.equals(requestedSpot.getTriggerEventUuid(), triggerEventUuid) && requestedSpot.getOccupied()) {
+            requestedTicket.setStatus(ParkingTicketStatus.ALARM);
             ParkingTicketDAO.getInstance().updateItem(requestedTicket);
             //TODO: Send JMS
-
             //TODO: Remove log
-            System.out.println("TicketId " + ticketId.toString() + ", triggerEventUuid " + triggerEventUuid + " VALIDATED AS UNPAID");
+            System.out.println("TicketId " + ticketId.toString() + ", triggerEventUuid " + triggerEventUuid + " VALIDATED AS ALARM");
         } else {
             //TODO: Remove log
-            System.out.println("TicketId " + ticketId.toString() + ", triggerEventUuid " + triggerEventUuid + " VALIDATED AS PAID");
+            System.out.println("TicketId " + ticketId.toString() + ", triggerEventUuid " + triggerEventUuid + " VALIDATED AS CLOSED");
         }
     }
 }
+

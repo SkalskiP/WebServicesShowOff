@@ -1,4 +1,4 @@
-package rest.parkingSpot;
+package rest.parking_spot;
 
 import dao.ParkingSpotDAO;
 import dto.ParkingSpotDTO;

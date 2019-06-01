@@ -1,11 +1,12 @@
-package soap.parkingSpot;
+package soap;
 
 import dao.ParkingSpotDAO;
 import dao.ParkingTicketDAO;
 import domain.ParkingTicketStatus;
 import dto.ParkingSpotDTO;
 import dto.ParkingTicketDTO;
-import guard.ParkingSpotGuard;
+import soap.ParkingSpotService;
+import timer_guard.ParkingSpotGuard;
 import jms.MessageSource;
 
 import javax.ejb.EJB;

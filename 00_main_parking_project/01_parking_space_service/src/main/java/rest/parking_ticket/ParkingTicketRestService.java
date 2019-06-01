@@ -1,4 +1,4 @@
-package rest.parkingTicket;
+package rest.parking_ticket;
 
 import dao.ParkingSpotDAO;
 import dao.ParkingTicketDAO;
@@ -7,7 +7,7 @@ import domain.ParkingTicketStatus;
 import dto.ParkingSpotDTO;
 import dto.ParkingTicketDTO;
 import dto.TicketTypeDTO;
-import guard.ParkingTicketGuard;
+import timer_guard.ParkingTicketGuard;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;

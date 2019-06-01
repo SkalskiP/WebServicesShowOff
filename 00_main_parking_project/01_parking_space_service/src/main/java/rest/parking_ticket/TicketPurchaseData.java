@@ -1,4 +1,4 @@
-package rest.parkingTicket;
+package rest.parking_ticket;
 
 import java.io.Serializable;
 

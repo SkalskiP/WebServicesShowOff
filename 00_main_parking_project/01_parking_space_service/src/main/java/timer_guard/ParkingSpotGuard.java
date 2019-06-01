@@ -1,4 +1,4 @@
-package guard;
+package timer_guard;
 
 import java.util.Timer;
 
