@@ -1,33 +1,41 @@
 package timer_guard;
 
-import dao.ParkingSpotDAO;
-import dao.ParkingTicketDAO;
+import dao.*;
 import domain.ParkingTicketStatus;
-import dto.ParkingSpotDTO;
-import dto.ParkingTicketDTO;
+import dto.*;
+import jms.NotificationMessageSource;
 
 import java.util.Objects;
 import java.util.TimerTask;
 
 public class ParkingSpotValidationTask extends TimerTask {
 
+    private NotificationMessageSource messageSource;
     private Integer ticketId;
     private String triggerEventUuid;
 
-    public ParkingSpotValidationTask(Integer ticketId, String triggerEventUuid) {
+    public ParkingSpotValidationTask(Integer ticketId, String triggerEventUuid, NotificationMessageSource messageSource) {
         this.ticketId = ticketId;
         this.triggerEventUuid = triggerEventUuid;
+        this.messageSource = messageSource;
     }
 
     public void run() {
-        ParkingTicketDTO requestedTicket = ParkingTicketDAO.getInstance().getItem(ticketId);
+        ParkingTicketDTO parkingTicket = ParkingTicketDAO.getInstance().getItem(ticketId);
         // This line is required due to the Lazy Evaluation of objects in relation.
-        ParkingSpotDTO requestedSpot = ParkingSpotDAO.getInstance().getItem(requestedTicket.getParkingSpot().getId());
-        if (Objects.equals(requestedSpot.getTriggerEventUuid(), triggerEventUuid) && requestedTicket.getStatus() == ParkingTicketStatus.ARRIVED) {
-            requestedTicket.setStatus(ParkingTicketStatus.UNPAID);
-            ParkingTicketDAO.getInstance().updateItem(requestedTicket);
-            //TODO: Send JMS
+        ParkingSpotDTO parkingSpot = ParkingSpotDAO.getInstance().getItem(parkingTicket.getParkingSpot().getId());
+        if (Objects.equals(parkingSpot.getTriggerEventUuid(), triggerEventUuid) && parkingTicket.getStatus() == ParkingTicketStatus.ARRIVED) {
+            parkingTicket.setStatus(ParkingTicketStatus.UNPAID);
+            ParkingTicketDAO.getInstance().updateItem(parkingTicket);
 
+            EmployeeDTO employee = parkingSpot.getStreet().getZone().getEmployee();
+            messageSource.publish(
+                    employee.getId(),
+                    parkingSpot.getId(),
+                    ticketId,
+                    ParkingTicketStatus.UNPAID,
+                    triggerEventUuid
+            );
             //TODO: Remove log
             System.out.println("TicketId " + ticketId.toString() + ", triggerEventUuid " + triggerEventUuid + " VALIDATED AS UNPAID");
         } else {

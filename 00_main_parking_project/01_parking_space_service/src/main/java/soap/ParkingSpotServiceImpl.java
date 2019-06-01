@@ -5,9 +5,8 @@ import dao.ParkingTicketDAO;
 import domain.ParkingTicketStatus;
 import dto.ParkingSpotDTO;
 import dto.ParkingTicketDTO;
-import soap.ParkingSpotService;
 import timer_guard.ParkingSpotGuard;
-import jms.MessageSource;
+import jms.NotificationMessageSource;
 
 import javax.ejb.EJB;
 import javax.jws.WebMethod;
@@ -23,8 +22,9 @@ import java.util.UUID;
 @SOAPBinding(style = SOAPBinding.Style.RPC)
 public class ParkingSpotServiceImpl implements ParkingSpotService {
 
+    // This is hack! Don't change!
     @EJB
-    private MessageSource messageSource;
+    private NotificationMessageSource messageSource;
 
     @WebMethod
     @WebResult(name="operationOutcome")
@@ -32,14 +32,14 @@ public class ParkingSpotServiceImpl implements ParkingSpotService {
         ParkingSpotDTO parkingSpot = ParkingSpotDAO.getInstance().getItem(spotId);
 
         if (!parkingSpot.getOccupied()) {
-            messageSource.publishAlarmMessage(spotId);
             String uniqueID = UUID.randomUUID().toString();
             parkingSpot.setOccupied(true);
             parkingSpot.setTriggerEventUuid(uniqueID);
             ParkingSpotDAO.getInstance().updateItem(parkingSpot);
             ParkingTicketDTO newTicket = new ParkingTicketDTO(parkingSpot);
             Optional<Integer> ticketId = ParkingTicketDAO.getInstance().addItem(newTicket);
-            ParkingSpotGuard.getInstance().scheduleValidation(ticketId.get(), uniqueID);
+            // This is hack! Don't change!
+            ParkingSpotGuard.getInstance().scheduleValidation(ticketId.get(), uniqueID, messageSource);
             return true;
         }
         else {

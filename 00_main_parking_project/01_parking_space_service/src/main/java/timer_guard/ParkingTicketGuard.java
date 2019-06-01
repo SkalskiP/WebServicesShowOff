@@ -1,5 +1,7 @@
 package timer_guard;
 
+import jms.NotificationMessageSource;
+
 import java.util.Timer;
 
 public class ParkingTicketGuard {
@@ -21,9 +23,9 @@ public class ParkingTicketGuard {
         return instance;
     }
 
-    public void scheduleValidation(Integer parkingTicketId, String triggerEventUuid, Integer timeDeltaMinutes) {
+    public void scheduleValidation(Integer parkingTicketId, String triggerEventUuid, Integer timeDeltaMinutes, NotificationMessageSource messageSource) {
         //TODO: Remove log
         System.out.println("TicketId " + parkingTicketId.toString() + ", triggerEventUuid " + triggerEventUuid + " VALIDATE PARKING TICKET SCHEDULED");
-        timer.schedule(new ParkingTicketValidationTask(parkingTicketId, triggerEventUuid), timeDeltaMinutes * 60 * 1000);
+        timer.schedule(new ParkingTicketValidationTask(parkingTicketId, triggerEventUuid, messageSource), timeDeltaMinutes * 60 * 1000);
     }
 }

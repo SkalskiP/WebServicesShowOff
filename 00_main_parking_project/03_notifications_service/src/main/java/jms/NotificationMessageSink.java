@@ -12,18 +12,20 @@ import java.io.Serializable;
         @ActivationConfigProperty(propertyName = "destinationLookup", propertyValue = "java:/jms/parking-space/AlarmTopic"),
         @ActivationConfigProperty(propertyName = "destinationType", propertyValue = "javax.jms.Topic")
 })
-public class MessageSink implements MessageListener {
+public class NotificationMessageSink implements MessageListener {
 
     @Override
     public void onMessage(Message message) {
         try {
             Serializable msgObj = ((ObjectMessage) message).getObject();
-            if (msgObj instanceof NewUnpaidParkingSpotMessage) {
+            if (msgObj instanceof NewParkingSpotNotificationMessage) {
                 System.out.println("SINK!!!");
-                System.out.println(((NewUnpaidParkingSpotMessage) msgObj).getSpotId());
+                System.out.println(((NewParkingSpotNotificationMessage) msgObj).getSpotId());
             }
         } catch (JMSException e) {
             e.printStackTrace();
         }
     }
+
+
 }
