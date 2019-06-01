@@ -6,7 +6,9 @@ import domain.ParkingTicketStatus;
 import dto.ParkingSpotDTO;
 import dto.ParkingTicketDTO;
 import guard.ParkingSpotGuard;
+import jms.MessageSource;
 
+import javax.ejb.EJB;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
 import javax.jws.WebResult;
@@ -20,12 +22,16 @@ import java.util.UUID;
 @SOAPBinding(style = SOAPBinding.Style.RPC)
 public class ParkingSpotServiceImpl implements ParkingSpotService {
 
+    @EJB
+    private MessageSource messageSource;
+
     @WebMethod
     @WebResult(name="operationOutcome")
     public Boolean occupyParkingSpot(@WebParam(name="spotId")Integer spotId) {
         ParkingSpotDTO parkingSpot = ParkingSpotDAO.getInstance().getItem(spotId);
 
         if (!parkingSpot.getOccupied()) {
+            messageSource.publishAlarmMessage(spotId);
             String uniqueID = UUID.randomUUID().toString();
             parkingSpot.setOccupied(true);
             parkingSpot.setTriggerEventUuid(uniqueID);
