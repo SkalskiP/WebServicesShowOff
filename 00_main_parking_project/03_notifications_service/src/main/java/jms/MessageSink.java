@@ -9,7 +9,7 @@ import javax.jms.ObjectMessage;
 import java.io.Serializable;
 
 @MessageDriven(activationConfig = {
-        @ActivationConfigProperty(propertyName = "destinationLookup", propertyValue = "java:/jms/topic/SoaTopic"),
+        @ActivationConfigProperty(propertyName = "destinationLookup", propertyValue = "java:/jms/parking-space/AlarmTopic"),
         @ActivationConfigProperty(propertyName = "destinationType", propertyValue = "javax.jms.Topic")
 })
 public class MessageSink implements MessageListener {

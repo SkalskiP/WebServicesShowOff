@@ -4,17 +4,13 @@ import javax.annotation.Resource;
 import javax.ejb.Singleton;
 import javax.inject.Inject;
 import javax.jms.JMSContext;
-import javax.jms.Queue;
 import javax.jms.Topic;
 
 @Singleton
 public class MessageSource {
 
-    @Resource(mappedName = "java:/jms/topic/SoaTopic")
+    @Resource(mappedName = "java:/jms/parking-space/AlarmTopic")
     private Topic topic;
-
-    @Resource(mappedName = "java:/jms/queue/SoaQueue")
-    private Queue queue;
 
     @Inject
     private JMSContext context;

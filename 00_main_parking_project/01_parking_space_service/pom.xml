@@ -15,6 +15,12 @@
 
     <dependencies>
 
+        <dependency>
+            <groupId>javax</groupId>
+            <artifactId>javaee-api</artifactId>
+            <version>8.0</version>
+        </dependency>
+
         <!-- DATABASE -->
 
         <dependency>
@@ -35,12 +41,6 @@
             <groupId>org.jboss.resteasy</groupId>
             <artifactId>resteasy-jaxrs-all</artifactId>
             <version>3.6.3.Final</version>
-        </dependency>
-
-        <dependency>
-            <groupId>javax</groupId>
-            <artifactId>javaee-api</artifactId>
-            <version>8.0</version>
         </dependency>
 
         <dependency>
