@@ -19,8 +19,8 @@ public class VerificationService {
     @POST
     public Response verify(Token payload) {
         try {
-            FirebaseToken decodedToken = FirebaseAuth.getInstance().verifyIdToken(payload.getToken());
-            return Response.ok().entity(new Identity(decodedToken.getUid())).build();
+            FirebaseToken token = FirebaseAuth.getInstance().verifyIdToken(payload.getToken());
+            return Response.ok().entity(new Identity(token.getUid())).build();
         } catch (FirebaseAuthException e) {
             e.printStackTrace();
             return Response.serverError().build();
