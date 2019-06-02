@@ -1,10 +1,6 @@
 package rest;
 
 import rest.employee.EmployeesRestService;
-import rest.parking_spot.ParkingSpotRestService;
-import rest.parking_ticket.ParkingTicketRestService;
-import rest.street.StreetsRestService;
-import rest.ticket_type.TicketTypesRestService;
 
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
@@ -27,11 +23,7 @@ public class ApiApplication extends Application {
     public Set<Class<?>> getClasses() {
         HashSet<Class<?>> set = new HashSet<Class<?>>();
 
-        set.add(TicketTypesRestService.class);
         set.add(EmployeesRestService.class);
-        set.add(StreetsRestService.class);
-        set.add(ParkingSpotRestService.class);
-        set.add(ParkingTicketRestService.class);
 
         return set;
     }

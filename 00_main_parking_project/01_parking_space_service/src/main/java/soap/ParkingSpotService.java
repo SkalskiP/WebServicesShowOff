@@ -1,4 +1,4 @@
-package soap.parkingSpot;
+package soap;
 
 import javax.jws.WebMethod;
 import javax.jws.WebService;

@@ -2,7 +2,6 @@ package dto;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -21,7 +20,7 @@ public class StreetDTO extends AbstractDTO {
     @Column(name = "name", nullable = false)
     private String name;
 
-    @ManyToOne(fetch=FetchType.LAZY)
+    @ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(name = "zone_id", referencedColumnName = "id")
     @JsonBackReference
     private ZoneDTO zone;

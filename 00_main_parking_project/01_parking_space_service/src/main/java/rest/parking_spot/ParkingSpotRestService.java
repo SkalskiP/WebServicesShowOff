@@ -1,4 +1,4 @@
-package rest.parkingSpot;
+package rest.parking_spot;
 
 import dao.ParkingSpotDAO;
 import dto.ParkingSpotDTO;
@@ -28,8 +28,4 @@ public class ParkingSpotRestService {
         ParkingSpotDTO parkingSpot = ParkingSpotDAO.getInstance().getItem(id);
         return Response.ok().entity(parkingSpot).build();
     }
-
-//    @GET
-//    @Path("/report")
-//    @Produces({MediaType.APPLICATION_JSON})
 }

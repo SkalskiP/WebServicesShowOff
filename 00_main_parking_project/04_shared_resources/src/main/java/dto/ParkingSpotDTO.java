@@ -1,8 +1,6 @@
 package dto;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -23,6 +21,9 @@ public class ParkingSpotDTO extends AbstractDTO {
 
     @Column(name = "occupied", nullable = false)
     private Boolean occupied;
+
+    @Column(name = "trigger_event_uuid", nullable = true)
+    private String triggerEventUuid;
 
     @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name = "street_id", referencedColumnName = "id")
@@ -71,5 +72,13 @@ public class ParkingSpotDTO extends AbstractDTO {
 
     public void setParkingTickets(Set<ParkingTicketDTO> parkingTickets) {
         this.parkingTickets = parkingTickets;
+    }
+
+    public String getTriggerEventUuid() {
+        return triggerEventUuid;
+    }
+
+    public void setTriggerEventUuid(String triggerEventUuid) {
+        this.triggerEventUuid = triggerEventUuid;
     }
 }
