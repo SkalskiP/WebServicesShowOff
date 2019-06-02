@@ -1,5 +1,7 @@
 package jms;
 
+import store.NotificationStore;
+
 import javax.ejb.ActivationConfigProperty;
 import javax.ejb.MessageDriven;
 import javax.jms.JMSException;
@@ -17,10 +19,12 @@ public class NotificationMessageSink implements MessageListener {
     @Override
     public void onMessage(Message message) {
         try {
-            Serializable msgObj = ((ObjectMessage) message).getObject();
-            if (msgObj instanceof NewParkingSpotNotificationMessage) {
-                System.out.println("SINK!!!");
-                System.out.println(((NewParkingSpotNotificationMessage) msgObj).getSpotId());
+            Serializable messageObject = ((ObjectMessage) message).getObject();
+            if (messageObject instanceof ParkingSystemNotificationMessage) {
+                NotificationStore.getInstance().add((ParkingSystemNotificationMessage) messageObject);
+                //TODO: Remove logs
+                System.out.println("New message received:");
+                System.out.println(((ParkingSystemNotificationMessage) messageObject).toString());
             }
         } catch (JMSException e) {
             e.printStackTrace();

@@ -19,7 +19,7 @@ public class NotificationMessageSource {
 
     public void publish(Integer employeeId, Integer spotId, Integer ticketId, ParkingTicketStatus status, String triggerEventUuid) {
         try {
-            NewParkingSpotNotificationMessage message = new NewParkingSpotNotificationMessage();
+            ParkingSystemNotificationMessage message = new ParkingSystemNotificationMessage();
             message.setEmployeeId(employeeId);
             message.setSpotId(spotId);
             message.setTicketId(ticketId);

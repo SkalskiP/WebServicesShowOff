@@ -4,7 +4,7 @@ import domain.ParkingTicketStatus;
 
 import java.io.Serializable;
 
-public class NewParkingSpotNotificationMessage implements Serializable {
+public class ParkingSystemNotificationMessage implements Serializable {
     private Integer employeeId;
     private Integer spotId;
     private Integer ticketId;
@@ -53,7 +53,7 @@ public class NewParkingSpotNotificationMessage implements Serializable {
 
     @Override
     public String toString() {
-        return "NewParkingSpotNotificationMessage = {" + "\n" +
+        return "ParkingSystemNotificationMessage = {" + "\n" +
                 "employeeId=" + employeeId + "\n" +
                 ", spotId=" + spotId + "\n" +
                 ", ticketId=" + ticketId + "\n" +
