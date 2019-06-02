@@ -1,26 +1,15 @@
-import {Action} from "../Action";
+import { Action } from "../Action";
+import {User} from "firebase";
 
 export type AccountState = {
-    name: string;
-    surname: string;
-    //TODO: Image typing
-    avatar: any;
-}
+  user: User
+};
 
 interface UpdateUserData {
-    type: typeof Action.UPDATE_USER_DATA;
-    payload: {
-        name: string;
-        surname: string;
-    };
+  type: typeof Action.UPDATE_USER_DATA;
+  payload: {
+    user: User;
+  };
 }
 
-interface UpdateUserAvatar {
-    type: typeof Action.UPDATE_USER_AVATAR;
-    payload: {
-        avatar: any;
-    };
-}
-
-export type AccountActionTypes = UpdateUserData
-    | UpdateUserAvatar;
+export type AccountActionTypes = UpdateUserData;
