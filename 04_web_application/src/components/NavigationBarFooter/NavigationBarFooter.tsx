@@ -1,38 +1,42 @@
 import React from "react";
-import './NavigationBarFooter.scss';
-import {AppState} from "../../store";
-import {connect} from "react-redux";
+import "./NavigationBarFooter.scss";
+import { AppState } from "../../store";
+import { connect } from "react-redux";
+import { AccountState } from "../../store/account/types";
+import { Firebase } from "../../utils/Firebase";
 
-interface IProps {
-    name: string;
-    surname: string;
-    avatar: any;
+interface Props {
+  account: AccountState;
 }
 
-const NavigationBarFooterComponent = (props: IProps) => {
-    return (
-        <div className="NavigationBarFooter">
-            <div className="LogoutButton">
-                <img alt={"logout"} src={"/ico/logout.png"}/>
-            </div>
+const NavigationBarFooterComponent: React.FC<Props> = ({ account }) => {
+  return (
+    <div className="NavigationBarFooter">
+      {!!account ? (
+        <>
+          <div className="LogoutButton" onClick={Firebase.signOut}>
+            <img alt={"logout"} src={"/ico/logout.png"} />
+          </div>
 
-            <div className="Avatar">
-                <img alt={"avatar"} src={"/ico/avatar.png"}/>
-            </div>
+          <div className="Avatar">
+            <img alt={"avatar"} src={"/ico/avatar.png"} />
+          </div>
 
-            <span>
-                {props.name + " " + props.surname}
-            </span>
+          <span>{Firebase.auth.displayName}</span>
+        </>
+      ) : (
+        <div className="LoginButton" onClick={() => console.log("Login")}>
+          {"Login"}
         </div>
-    );
+      )}
+    </div>
+  );
 };
 
 const mapStateToProps = (state: AppState) => ({
-    name: state.account.name,
-    surname: state.account.surname,
-    avatar: state.account.avatar,
+  account: state.account
 });
 
-export const NavigationBarFooter = connect(
-    mapStateToProps,
-)(NavigationBarFooterComponent);
+export const NavigationBarFooter = connect(mapStateToProps)(
+  NavigationBarFooterComponent
+);

@@ -5,7 +5,7 @@
          version="4.0">
 
     <listener>
-        <listener-class>com.br400.Firebase.Setup</listener-class>
+        <listener-class>com.br400.Lifecycle.ServletLifecycle</listener-class>
     </listener>
 
 </web-app>

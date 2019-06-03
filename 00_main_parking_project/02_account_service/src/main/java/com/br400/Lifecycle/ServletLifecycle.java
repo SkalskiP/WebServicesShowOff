@@ -1,18 +1,18 @@
-package com.br400.Firebase;
-
+package com.br400.Lifecycle;
 import com.google.auth.oauth2.GoogleCredentials;
+import com.google.common.io.Resources;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.FirebaseOptions;
-
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
-import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
 
-public class Setup implements ServletContextListener {
+public class ServletLifecycle implements ServletContextListener {
     @Override
     public void contextInitialized(ServletContextEvent contextEvent) {
-        this.setup();
+        this.setupFirebase();
     }
 
     @Override
@@ -20,10 +20,11 @@ public class Setup implements ServletContextListener {
         /* Do Shutdown stuff. */
     }
 
-    private void setup() {
+    private void setupFirebase() {
+        URL url = Resources.getResource("firebase-admin.json");
+        InputStream serviceAccount = null;
         try {
-            FileInputStream serviceAccount = new FileInputStream(Setup.class.getClassLoader().getResource("WEB-INF/classes/firebase-admin.json").getFile());
-
+            serviceAccount = url.openStream();
             FirebaseOptions options = new FirebaseOptions.Builder()
                     .setCredentials(GoogleCredentials.fromStream(serviceAccount))
                     .setDatabaseUrl("https://webservicesshowoff.firebaseio.com")
