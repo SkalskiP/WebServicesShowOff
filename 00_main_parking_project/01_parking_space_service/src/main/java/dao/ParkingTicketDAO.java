@@ -36,7 +36,7 @@ public class ParkingTicketDAO extends AbstractDAO<ParkingTicketDTO> {
 
     public List<ParkingTicketDTO> findTicketsFromTimePeriod(LocalDateTime from, LocalDateTime to, Integer limit, Integer offset) {
         TypedQuery query = entityManager.createQuery(
-                "SELECT c FROM " + className + " c WHERE c.startTime BETWEEN :fromDate AND :toDate ORDER BY c.startTime DESC", clazz);
+                "SELECT c FROM " + className + " c WHERE c.arrivalTime BETWEEN :fromDate AND :toDate ORDER BY c.arrivalTime DESC", clazz);
         query.setParameter("fromDate", from);
         query.setParameter("toDate", to);
         query.setFirstResult(offset); // equivalent to OFFSET
