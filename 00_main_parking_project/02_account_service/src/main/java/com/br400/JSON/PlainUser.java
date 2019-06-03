@@ -1,19 +1,10 @@
 package com.br400.JSON;
 
 public class PlainUser {
-    private String uid;
     private String displayName;
     private String email;
     private String password;
     private Boolean isAdmin;
-
-    public String getUid() {
-        return uid;
-    }
-
-    public void setUid(String uid) {
-        this.uid = uid;
-    }
 
     public String getDisplayName() {
         return displayName;

@@ -61,12 +61,13 @@ public class UserService {
     }
 
     @PATCH
+    @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response updateUser(PlainUser payload) {
+    public Response updateUser(@PathParam("id") String userId, PlainUser payload) {
         try {
-            UserRecord user = FirebaseAuth.getInstance().getUser(payload.getUid());
-            UserRecord.UpdateRequest request = new UserRecord.UpdateRequest(payload.getUid());
+            UserRecord user = FirebaseAuth.getInstance().getUser(userId);
+            UserRecord.UpdateRequest request = new UserRecord.UpdateRequest(user.getUid());
 
             if (payload.getAdmin() != null && payload.getAdmin() != user.getCustomClaims().get("isAdmin")) {
                 Map<String, Object> customClaims = new HashMap<>(user.getCustomClaims());
