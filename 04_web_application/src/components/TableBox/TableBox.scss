@@ -43,3 +43,77 @@
     border-top: 1px solid #e6e6e6;
   }
 }
+
+
+.TableHeader {
+  position: absolute;
+  height: 50px;
+
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  align-content: flex-start;
+
+  .ColumnHeader {
+    align-self: stretch;
+    width: 200px;
+    padding: 0 20px;
+    color: white;
+    font-weight: 400;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    align-content: flex-start;
+  }
+}
+
+.TableContent {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+  align-content: flex-start;
+}
+
+.TableRow {
+  align-self: stretch;
+  height: 50px;
+  border-top: 1px solid #e6e6e6;
+
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  align-content: flex-start;
+
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.02);
+  }
+
+  &:hover + & {
+    box-shadow: inset 0px 5px 5px -5px rgba(0,0,0,0.75);
+    border-top: 1px solid transparent;
+  }
+
+  .TableCell {
+    align-self: stretch;
+    width: 200px;
+    padding: 0 20px;
+    color: gray;
+    font-weight: 100;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    align-content: flex-start;
+  }
+}

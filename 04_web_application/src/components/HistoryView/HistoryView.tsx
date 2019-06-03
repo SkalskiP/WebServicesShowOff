@@ -6,6 +6,8 @@ import {AppState} from "../../store";
 import {connect} from "react-redux";
 import {IParkingTicket} from "../../interfaces/IParkingTicket";
 import axios, {AxiosResponse} from 'axios'
+import Settings from "../../settings/Settings";
+import {ResponseToObjectMapper} from "../../utils/ResponseToObjectMapper";
 
 interface IProps {
     activeHistoryTabName: HistoryTabName;
@@ -21,9 +23,9 @@ class HistoryViewComponent extends React.Component<IProps, IState> {
         tableData: []
     };
 
-    protected headerLabels: string[] = ["Id", "Street", "Number", "Ticket type", "Start date", "End date", "Status"];
+    protected headerLabels: string[] = ["Id", "Street", "Number", "Ticket type", "Payment time", "Expiry time", "Departure time", "Status"];
 
-    public Url:string = "http://localhost:8080/rest/parking-tickets/report";
+    public Url:string = Settings.SERVER_NAME + "/" + Settings.HISTORY_REQUEST_PATH;
 
     public getQueryParams() {
         const startDate = new Date;
@@ -67,17 +69,7 @@ class HistoryViewComponent extends React.Component<IProps, IState> {
     public requestData = () => {
         axios.get(this.Url, {params: this.getQueryParams()})
             .then((data:AxiosResponse) => {
-                const tableData:IParkingTicket[] = data.data.map(
-                    (responseObject:any) => {return {
-                        id: responseObject.id,
-                        street: responseObject.parkingSpot.street.name,
-                        number: responseObject.parkingSpot.number,
-                        ticketType: responseObject.ticketType.name,
-                        startTime: responseObject.startTime,
-                        endTime: responseObject.endTime,
-                        status: responseObject.status
-                    }}
-                );
+                const tableData:IParkingTicket[] = data.data.map(ResponseToObjectMapper.fofHistoryRequest);
                 this.setState({tableData: tableData});
             })
     };
@@ -110,8 +102,9 @@ class HistoryViewComponent extends React.Component<IProps, IState> {
                     <div className="TableCell">{data.street}</div>
                     <div className="TableCell">{data.number}</div>
                     <div className="TableCell">{data.ticketType}</div>
-                    <div className="TableCell">{data.startTime}</div>
-                    <div className="TableCell">{data.endTime}</div>
+                    <div className="TableCell">{data.arrivalTime}</div>
+                    <div className="TableCell">{data.expiryTime}</div>
+                    <div className="TableCell">{data.departureTime}</div>
                     <div className="TableCell">{data.status}</div>
                 </div>)}
             </div>

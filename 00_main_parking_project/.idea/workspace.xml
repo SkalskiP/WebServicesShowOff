@@ -8,8 +8,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="80addc5b-1f34-4020-b125-392b607d1147" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../04_web_application/src/settings/Settings.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../04_web_application/src/utils/ResponseToObjectMapper.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/01_parking_space_service/src/main/java/dao/ParkingTicketDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/01_parking_space_service/src/main/java/dao/ParkingTicketDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../04_web_application/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../04_web_application/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../04_web_application/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../04_web_application/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../04_web_application/src/components/HistoryView/HistoryView.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../04_web_application/src/components/HistoryView/HistoryView.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../04_web_application/src/components/HistoryView/HistoryView.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../04_web_application/src/components/HistoryView/HistoryView.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../04_web_application/src/components/NavigationBarFooter/NavigationBarFooter.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../04_web_application/src/components/NavigationBarFooter/NavigationBarFooter.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../04_web_application/src/interfaces/IParkingTicket.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../04_web_application/src/interfaces/IParkingTicket.ts" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -298,7 +305,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1559598601089" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1559602551647" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../SOAPiotrek" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -432,7 +439,7 @@
       <workItem from="1559332721277" duration="7451000" />
       <workItem from="1559377026938" duration="33102000" />
       <workItem from="1559471333052" duration="3147000" />
-      <workItem from="1559506958373" duration="14716000" />
+      <workItem from="1559506958373" duration="18375000" />
     </task>
     <task id="LOCAL-00001" summary="refactorisation of the project">
       <created>1558554590714</created>
@@ -553,11 +560,18 @@
       <option name="project" value="LOCAL" />
       <updated>1559590600826</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Fix ParkingTicketDAO">
+      <created>1559598627479</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1559598627479</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="116049000" />
+    <option name="totallyTimeSpent" value="119708000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -591,7 +605,7 @@
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
       <window_info anchor="bottom" id="Java Enterprise" order="10" weight="0.3294702" />
       <window_info anchor="bottom" id="Database Changes" order="11" />
-      <window_info active="true" anchor="bottom" id="Version Control" order="12" visible="true" weight="0.34341252" />
+      <window_info active="true" anchor="bottom" id="Version Control" order="12" visible="true" weight="0.12850972" />
       <window_info anchor="bottom" id="Application Servers" order="13" weight="0.3294702" />
       <window_info anchor="bottom" id="Messages" order="14" weight="0.45680344" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -629,7 +643,8 @@
     <MESSAGE value="Skeleton of notification service store" />
     <MESSAGE value="Notifications service walking skeleton" />
     <MESSAGE value="Notifications cross validation with parking space service added" />
-    <option name="LAST_COMMIT_MESSAGE" value="Notifications cross validation with parking space service added" />
+    <MESSAGE value="Fix ParkingTicketDAO" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix ParkingTicketDAO" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/04_shared_resources/src/main/java/utils/JsonDateSerializer.java">

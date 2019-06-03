@@ -3,7 +3,8 @@ export interface IParkingTicket {
     street: string;
     number: number;
     ticketType: string;
-    startTime: string;
-    endTime: string;
+    arrivalTime: string;
+    expiryTime: string;
+    departureTime: string;
     status: string;
 }
