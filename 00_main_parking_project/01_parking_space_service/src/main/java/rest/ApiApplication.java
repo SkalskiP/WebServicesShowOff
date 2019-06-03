@@ -1,6 +1,6 @@
 package rest;
 
-import rest.employee.EmployeesRestService;
+import rest.message.EmployeesRestService;
 import rest.parking_spot.ParkingSpotRestService;
 import rest.parking_ticket.ParkingTicketRestService;
 import rest.street.StreetsRestService;

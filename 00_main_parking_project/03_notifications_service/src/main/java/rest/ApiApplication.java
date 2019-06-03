@@ -1,6 +1,6 @@
 package rest;
 
-import rest.employee.EmployeesRestService;
+import rest.message.MessagesRestService;
 
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
@@ -23,7 +23,7 @@ public class ApiApplication extends Application {
     public Set<Class<?>> getClasses() {
         HashSet<Class<?>> set = new HashSet<Class<?>>();
 
-        set.add(EmployeesRestService.class);
+        set.add(MessagesRestService.class);
 
         return set;
     }

@@ -1,4 +1,4 @@
-package rest.employee;
+package rest.message;
 
 import dao.EmployeeDAO;
 import dto.EmployeeDTO;
