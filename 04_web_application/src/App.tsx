@@ -16,6 +16,7 @@ interface Props {
 Firebase.setup();
 
 const App: React.FC<Props> = ({user}) => {
+
   return (
     <div className="App">
       {user === null ? (

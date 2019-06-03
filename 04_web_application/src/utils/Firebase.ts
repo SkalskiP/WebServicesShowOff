@@ -1,6 +1,6 @@
 import * as firebase from "firebase";
-import { store } from "../index";
-import { updateUserData } from "../store/account/actionCreators";
+import {store} from "../index";
+import {updateUserData} from "../store/account/actionCreators";
 import axios from 'axios';
 
 const config = {
@@ -21,10 +21,10 @@ export class Firebase {
   public static async setup() {
     await firebase.initializeApp(config);
     Firebase.auth = firebase.auth();
+    firebase.auth().onAuthStateChanged(function(user) {
+      store.dispatch(updateUserData(user));
+    });
   }
-
-  public static createUser = (email, password) =>
-    Firebase.auth.createUserWithEmailAndPassword(email, password);
 
   public static signIn = async (email, password) => {
     const result = await Firebase.auth.signInWithEmailAndPassword(
