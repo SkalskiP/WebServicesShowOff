@@ -31,7 +31,7 @@ export const LoginView: React.FC<{}> = () => {
     const getBubbles = () => {
         let bubbles = [];
 
-        for (let index = 0; index < 10; index++) {
+        for (let index = 0; index < 15; index++) {
             const bubbleRadius = MathUtil.getRandomInt(20, 120);
             const bubbleStyle:React.CSSProperties = {
                 position: "absolute",
