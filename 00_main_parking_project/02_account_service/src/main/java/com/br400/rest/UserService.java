@@ -1,4 +1,4 @@
-package com.br400.RestServices;
+package com.br400.rest;
 
 import com.br400.JSON.PlainUser;
 import com.google.firebase.auth.FirebaseAuth;
