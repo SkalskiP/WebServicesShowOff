@@ -50,8 +50,8 @@ input {
       color: $secondaryTextColor;
     }
 
-    ~ .Bar:before {
-      transform: translateX(0);
+    ~ .Bar {
+      height: 2px;
     }
   }
 
@@ -67,19 +67,9 @@ input {
   background: rgba(black, .5);
   content: '';
   width: $width;
-  height: $width/150;
+  height: 1px;
   transition: .3s ease;
   position: relative;
-
-  &:before {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 150%;
-    background: $secondaryTextColor;
-    transform: translateX(-100%);
-
-  }
 }
 
 ::selection {background: rgba($secondaryTextColor, .3);}

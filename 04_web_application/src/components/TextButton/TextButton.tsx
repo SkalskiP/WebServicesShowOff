@@ -9,14 +9,17 @@ interface IProps {
 }
 
 export const TextButton = (props:IProps) => {
+
+    const { key, label, onClick, style } = props;
+
     return(
         <div
             className="TextButton"
-            onClick={props.onClick}
-            key={props.key}
-            style={props.style}
+            onClick={onClick}
+            key={key}
+            style={style}
         >
-            {props.label}
+            {label}
         </div>
     )
 };

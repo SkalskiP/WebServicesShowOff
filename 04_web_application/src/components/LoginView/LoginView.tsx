@@ -15,22 +15,44 @@ export const LoginView: React.FC<{}> = () => {
         passwordText
     ]);
 
+    const inputStyle:React.CSSProperties = {
+        color: "#ffffff"
+    };
+
+    const barStyle:React.CSSProperties = {
+        backgroundColor: "#ffffff"
+    };
+
+    const labelStyle:React.CSSProperties = {
+        color: "#ffffff"
+    };
+
     return (
         <div className="LoginView">
+            <img alt={"logo"} src={"/logo.png"}/>
             <div className="LoginContainer">
                 <TextInput
                     label={"Login"}
                     key={"login"}
                     isPassword={false}
                     onChange={onLoginChange}
+                    inputStyle={inputStyle}
+                    barStyle={barStyle}
+                    labelStyle={labelStyle}
                 />
                 <TextInput
                     label={"Previous password"}
                     key={"previous_password"}
                     isPassword={true}
                     onChange={onPasswordChange}
+                    inputStyle={inputStyle}
+                    barStyle={barStyle}
+                    labelStyle={labelStyle}
                 />
-                <TextButton label={"Submit"} onClick={onSubmit}/>
+                <div className="ButtonsWrapper">
+                    <TextButton label={"Sign in"} onClick={onSubmit}/>
+                    <TextButton label={"Forgot password?"} onClick={null}/>
+                </div>
             </div>
         </div>
     );
