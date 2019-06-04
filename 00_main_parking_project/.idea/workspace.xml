@@ -9,10 +9,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="80addc5b-1f34-4020-b125-392b607d1147" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/02_account_service/account_service.iml" beforeDir="false" afterPath="$PROJECT_DIR$/02_account_service/account_service.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/02_account_service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/02_account_service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../04_web_application/src/components/LoginView/LoginView.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../04_web_application/src/components/LoginView/LoginView.tsx" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -184,7 +181,17 @@
     </navigator>
     <panes>
       <pane id="Scope" />
-      <pane id="ProjectPane" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="main_parking_project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="00_main_parking_project" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
       <pane id="PackagesPane" />
     </panes>
   </component>
@@ -464,7 +471,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="121811000" />
+    <option name="totallyTimeSpent" value="122759000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -477,6 +484,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1920" height="1177" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25292864" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -488,7 +496,7 @@
       <window_info id="Web" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.7682119" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.5914577" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.5914577" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.9211663" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
