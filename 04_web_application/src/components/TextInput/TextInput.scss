@@ -64,7 +64,7 @@ input {
 }
 
 .Bar {
-  background: rgba(black, .5);
+  background: $secondaryTextColor;
   content: '';
   width: $width;
   height: 1px;

@@ -1,12 +1,13 @@
 import React from "react";
-import { connect } from "react-redux";
-import { AppState } from "../../store";
-import { TabName } from "../../utils/types/TabName";
+import {connect} from "react-redux";
+import {AppState} from "../../store";
+import {TabName} from "../../utils/types/TabName";
 import AccountSettingsView from "../AccountSettingsView/AccountSettingsView";
-import { ContentContainerHeader } from "../ContentContainerHeader/ContentContainerHeader";
-import { HistoryView } from "../HistoryView/HistoryView";
+import {ContentContainerHeader} from "../ContentContainerHeader/ContentContainerHeader";
+import {HistoryView} from "../HistoryView/HistoryView";
 import "./ContentContainer.scss";
 import DashboardView from "../DashboardView/DashboardView";
+import NotificationsView from "../NotificationsView/NotificationsView";
 
 interface IProps {
   activeTabName: TabName;
@@ -21,6 +22,8 @@ const ContentContainerComponent = (props: IProps) => {
         return <HistoryView />;
       case TabName.DASHBOARD:
         return <DashboardView />;
+      case TabName.NOTIFICATIONS:
+        return <NotificationsView/>
       default:
         return null;
     }
