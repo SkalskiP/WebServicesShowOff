@@ -9,7 +9,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="80addc5b-1f34-4020-b125-392b607d1147" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../04_web_application/src/components/LoginView/LoginView.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../04_web_application/src/components/LoginView/LoginView.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../04_web_application/src/utils/Firebase.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../04_web_application/src/utils/Firebase.ts" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />

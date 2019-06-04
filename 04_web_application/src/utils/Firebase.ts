@@ -21,7 +21,16 @@ export class Firebase {
   public static async setup() {
     await firebase.initializeApp(config);
     Firebase.auth = firebase.auth();
-    firebase.auth().onAuthStateChanged(function(user) {
+    firebase.auth().onAuthStateChanged(async function(user) {
+      if (user !== null) {
+        const currentToken = await user.getIdToken();
+        stickHeader = axios.interceptors.request.use((config) => {
+          config.headers = {...config.headers, Authorization: currentToken};
+          return config;
+        });
+      } else {
+        axios.interceptors.request.eject(stickHeader);
+      }
       store.dispatch(updateUserData(user));
     });
   }
@@ -31,8 +40,9 @@ export class Firebase {
       email,
       password
     );
+    const currentToken = await result.user.getIdToken();
     stickHeader = axios.interceptors.request.use((config) => {
-      config.headers = {...config.headers, Authorization: result.user.getIdToken()};
+      config.headers = {...config.headers, Authorization: currentToken};
       return config;
     });
     store.dispatch(updateUserData(result.user));
