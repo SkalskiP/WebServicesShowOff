@@ -6,10 +6,14 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="01_parking_space_service" />
+        <module name="04_shared_resources" />
+        <module name="notificatins_service" />
+        <module name="shared_resources" />
         <module name="02_account_service" />
         <module name="03_notifications_service" />
-        <module name="04_shared_resources" />
+        <module name="parking_space_service" />
+        <module name="01_parking_space_service" />
+        <module name="account_service" />
       </profile>
     </annotationProcessing>
   </component>
