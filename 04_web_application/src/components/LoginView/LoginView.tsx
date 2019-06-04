@@ -3,6 +3,7 @@ import TextInput from "../TextInput/TextInput";
 import {TextButton} from "../TextButton/TextButton";
 import {Firebase} from "../../utils/Firebase";
 import "./LoginView.scss";
+import {MathUtil} from "../../utils/MathUtil";
 
 export const LoginView: React.FC<{}> = () => {
     let loginText = "";
@@ -27,9 +28,36 @@ export const LoginView: React.FC<{}> = () => {
         color: "#ffffff"
     };
 
+    const getBubbles = () => {
+        let bubbles = [];
+
+        for (let index = 0; index < 10; index++) {
+            const bubbleRadius = MathUtil.getRandomInt(20, 120);
+            const bubbleStyle:React.CSSProperties = {
+                position: "absolute",
+                width: bubbleRadius,
+                height: bubbleRadius,
+                left: MathUtil.getRandomInt(10, 90) + "%",
+                top: MathUtil.getRandomInt(10, 90) + "%"
+            };
+            bubbles.push(<div className="Bubble" style={bubbleStyle}/>)
+        }
+        return bubbles;
+    };
+
     return (
         <div className="LoginView">
-            <img alt={"logo"} src={"/logo.png"}/>
+            <img
+                className="LogoImage"
+                alt={"logo"}
+                src={"/logo.png"}
+            />
+            <img
+                className="LogoText"
+                alt={"logo2"}
+                src={"/logo2.png"}
+            />
+            {getBubbles()}
             <div className="LoginContainer">
                 <TextInput
                     label={"Login"}

@@ -5,25 +5,41 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  flex-wrap: wrap;
   width: 100%;
   height: 100%;
   padding: 30px;
 
-  > img {
-    max-height: 200px;
-    margin: 50px;
+  .LogoImage {
+    position: absolute;
+    max-height: 300px;
+    left: 175px;
+    top: 150px;
+    z-index: 500;
+  }
+
+  .Bubble {
+    background-color: $secondaryHeaderColor;
+    border-radius: 50%;
+    //border: solid 1px white;
+  }
+
+  .LogoText {
+    max-width: 300px;
+    z-index: 1000;
+    margin-bottom: 50px;
   }
 
   .LoginContainer {
-      display: flex;
-      flex-direction: column;
-      justify-self: center;
-      align-items: center;
-      justify-content: center;
-      padding: 32px;
-      border-radius: 8px;
-      border: solid 1px white;
+    display: flex;
+    flex-direction: column;
+    justify-self: center;
+    align-items: center;
+    justify-content: center;
+    padding: 32px;
+    border-radius: 8px;
+    border: solid 1px white;
+    z-index: 1000;
+    background-color: rgba(255, 255, 255, 0.1);
 
     .ButtonsWrapper {
       align-self: stretch;
