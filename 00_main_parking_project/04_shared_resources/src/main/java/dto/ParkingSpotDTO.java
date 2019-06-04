@@ -31,6 +31,7 @@ public class ParkingSpotDTO extends AbstractDTO {
     private StreetDTO street;
 
     @OneToMany(fetch=FetchType.LAZY, mappedBy="parkingSpot")
+    @JsonIgnoreProperties("parkingSpots")
     private Set<ParkingTicketDTO> parkingTickets;
 
     @Override

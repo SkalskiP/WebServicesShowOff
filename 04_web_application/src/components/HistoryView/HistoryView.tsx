@@ -28,8 +28,8 @@ class HistoryViewComponent extends React.Component<IProps, IState> {
     public Url:string = Settings.SERVER_NAME + "/" + Settings.HISTORY_REQUEST_PATH;
 
     public getQueryParams() {
-        const startDate = new Date;
-        const endDate = new Date;
+        const startDate = new Date();
+        const endDate = new Date();
 
         switch (this.props.activeHistoryTabName) {
             case HistoryTabName.TODAY:
@@ -69,7 +69,7 @@ class HistoryViewComponent extends React.Component<IProps, IState> {
     public requestData = () => {
         axios.get(this.Url, {params: this.getQueryParams()})
             .then((data:AxiosResponse) => {
-                const tableData:IParkingTicket[] = data.data.map(ResponseToObjectMapper.fofHistoryRequest);
+                const tableData:IParkingTicket[] = data.data.map(ResponseToObjectMapper.forHistoryRequest);
                 this.setState({tableData: tableData});
             })
     };

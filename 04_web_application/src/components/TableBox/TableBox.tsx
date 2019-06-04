@@ -24,13 +24,12 @@ class TableBox extends React.Component<IProps, IState> {
     };
 
     protected tableWrapper: HTMLDivElement;
-    protected tableWidth: number;
 
     protected resizeTable = ():void => {
         const tableWrapperSize = this.tableWrapper.getBoundingClientRect();
 
         this.setState({
-            tableWidth: Math.min(this.tableWidth, tableWrapperSize.width),
+            tableWidth: Math.min(this.props.tableWidth, tableWrapperSize.width),
             tableHeight: tableWrapperSize.height
         });
     };
@@ -51,7 +50,7 @@ class TableBox extends React.Component<IProps, IState> {
 
     public render() {
         const {tableWidth, tableHeight, tableLeftOffset} = this.state;
-
+        console.log(this.state.tableWidth);
         return(
             <div className="TableBoxWrapper" ref={ref => this.tableWrapper = ref}>
                 <div className="TableBox" style={{width: tableWidth, height: tableHeight}}>

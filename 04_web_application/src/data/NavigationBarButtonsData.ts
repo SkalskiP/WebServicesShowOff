@@ -27,10 +27,10 @@ const NavigationBarButtonsData: INavigationBarButton[] = [
     advancedAccess: false
   },
   {
-    displayName: "Manage users",
+    displayName: "Menage users",
     imageSource: "ico/users.png",
-    imageAlt: "manage users",
-    activeTabName: TabName.MANAGE_USERS,
+    imageAlt: "menage users",
+    activeTabName: TabName.MENAGE_USERS,
     activeTabSubtitle: "Change other users' settings",
     advancedAccess: true
   },

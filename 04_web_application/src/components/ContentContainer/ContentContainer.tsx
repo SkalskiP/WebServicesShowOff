@@ -1,12 +1,12 @@
 import React from "react";
 import { connect } from "react-redux";
 import { AppState } from "../../store";
-import { updateActiveTabName } from "../../store/general/actionCreators";
 import { TabName } from "../../utils/types/TabName";
 import AccountSettingsView from "../AccountSettingsView/AccountSettingsView";
 import { ContentContainerHeader } from "../ContentContainerHeader/ContentContainerHeader";
 import { HistoryView } from "../HistoryView/HistoryView";
 import "./ContentContainer.scss";
+import DashboardView from "../DashboardView/DashboardView";
 
 interface IProps {
   activeTabName: TabName;
@@ -19,6 +19,8 @@ const ContentContainerComponent = (props: IProps) => {
         return <AccountSettingsView />;
       case TabName.HISTORY:
         return <HistoryView />;
+      case TabName.DASHBOARD:
+        return <DashboardView />;
       default:
         return null;
     }
@@ -35,10 +37,6 @@ const ContentContainerComponent = (props: IProps) => {
 const mapStateToProps = (state: AppState) => ({
   activeTabName: state.general.activeTabName
 });
-
-const mapDispatchToProps = {
-  updateActiveTabName
-};
 
 export const ContentContainer = connect(mapStateToProps)(
   ContentContainerComponent
