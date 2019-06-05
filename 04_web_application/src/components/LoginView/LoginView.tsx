@@ -106,10 +106,8 @@ export const LoginView: React.FC<{}> = () => {
         }
     };
 
-
     return (
         <div className="LoginView">
-            <img alt={"logo"} src={"/logo.png"}/>
             <img
                 className="LogoImage"
                 alt={"logo"}

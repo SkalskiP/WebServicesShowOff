@@ -9,6 +9,7 @@ import dto.ParkingTicketDTO;
 import dto.TicketTypeDTO;
 import jms.NotificationMessageSource;
 import timer_guard.ParkingTicketGuard;
+import util.UserValidator;
 
 import javax.ejb.EJB;
 import javax.ws.rs.*;
@@ -27,7 +28,10 @@ public class ParkingTicketRestService {
 
     @GET
     @Produces({MediaType.APPLICATION_JSON})
-    public Response getParkingTickets() {
+    public Response getParkingTickets(@HeaderParam("Authorization") String token) {
+        if (token == null || !UserValidator.validateIdToken(token).getVerificationStatus()) {
+            return Response.status(Response.Status.UNAUTHORIZED).build();
+        }
         List<ParkingTicketDTO> parkingTickets = ParkingTicketDAO.getInstance().getItems();
         return Response.ok().entity(parkingTickets).build();
     }
@@ -35,7 +39,10 @@ public class ParkingTicketRestService {
     @GET
     @Path("/{id}")
     @Produces({MediaType.APPLICATION_JSON})
-    public Response getParkingTicketById(@PathParam("id") Integer id) {
+    public Response getParkingTicketById(@PathParam("id") Integer id, @HeaderParam("Authorization") String token) {
+        if (token == null || !UserValidator.validateIdToken(token).getVerificationStatus()) {
+            return Response.status(Response.Status.UNAUTHORIZED).build();
+        }
         ParkingTicketDTO parkingTicket = ParkingTicketDAO.getInstance().getItem(id);
         return Response.ok().entity(parkingTicket).build();
     }
@@ -66,7 +73,10 @@ public class ParkingTicketRestService {
     @Path("/report")
     @Produces({MediaType.APPLICATION_JSON})
     public Response getParkingTicketsReport(@QueryParam("from") String from, @QueryParam("to") String to,
-                                            @QueryParam("limit") Integer limit,  @QueryParam("offset") Integer offset) {
+                                            @QueryParam("limit") Integer limit, @QueryParam("offset") Integer offset, @HeaderParam("Authorization") String token) {
+        if (token == null || !UserValidator.validateIdToken(token).getVerificationStatus()) {
+            return Response.status(Response.Status.UNAUTHORIZED).build();
+        }
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         LocalDateTime fromDateTime = LocalDateTime.parse(from, formatter);
         LocalDateTime toDateTime = LocalDateTime.parse(to, formatter);

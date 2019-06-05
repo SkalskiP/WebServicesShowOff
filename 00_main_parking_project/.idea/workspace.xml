@@ -9,12 +9,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="80addc5b-1f34-4020-b125-392b607d1147" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/02_account_service/src/main/java/com/br400/JSON/VerificationResult.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/01_parking_space_service/src/main/java/util/Identity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/01_parking_space_service/src/main/java/util/TokenPayload.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/01_parking_space_service/src/main/java/util/UserValidator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/02_account_service/src/main/java/com/br400/JSON/Identity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/02_account_service/src/main/java/com/br400/RestServices/RestServiceConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/02_account_service/src/main/java/com/br400/rest/RestServiceConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/02_account_service/src/main/java/com/br400/RestServices/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/02_account_service/src/main/java/com/br400/rest/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/02_account_service/src/main/java/com/br400/RestServices/VerificationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/02_account_service/src/main/java/com/br400/rest/VerificationService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/01_parking_space_service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/01_parking_space_service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/01_parking_space_service/src/main/java/rest/message/EmployeesRestService.java" beforeDir="false" afterPath="$PROJECT_DIR$/01_parking_space_service/src/main/java/rest/message/EmployeesRestService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/01_parking_space_service/src/main/java/rest/parking_ticket/ParkingTicketRestService.java" beforeDir="false" afterPath="$PROJECT_DIR$/01_parking_space_service/src/main/java/rest/parking_ticket/ParkingTicketRestService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../04_web_application/src/components/LoginView/LoginView.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../04_web_application/src/components/LoginView/LoginView.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../04_web_application/src/utils/Firebase.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../04_web_application/src/utils/Firebase.ts" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -29,66 +32,110 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="DefaultGradleProjectSettings">
-    <option name="testRunner" value="GRADLE" />
-    <option name="delegatedBuild" value="true" />
+    <option name="isMigrated" value="true" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pom.xml">
+        <entry file="file://$PROJECT_DIR$/01_parking_space_service/src/main/java/rest/message/EmployeesRestService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="529">
-              <caret line="23" column="26" lean-forward="true" selection-start-line="23" selection-start-column="26" selection-end-line="23" selection-end-column="26" />
+            <state relative-caret-position="227">
+              <caret line="18" column="9" lean-forward="true" selection-start-line="18" selection-start-column="9" selection-end-line="18" selection-end-column="9" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/03_notifications_service/src/main/java/rest/message/MessagesRestService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="207">
+              <caret line="9" column="29" lean-forward="true" selection-start-line="9" selection-start-column="29" selection-end-line="9" selection-end-column="29" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/01_parking_space_service/src/main/java/rest/parking_ticket/ParkingTicketRestService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="329">
+              <caret line="76" column="70" selection-start-line="76" selection-start-column="70" selection-end-line="76" selection-end-column="70" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/01_parking_space_service/src/main/java/rest/parking_ticket/TicketPurchaseData.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="92">
+              <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/01_parking_space_service/src/main/java/rest/street/StreetsRestService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="368">
+              <caret line="25" column="27" lean-forward="true" selection-start-line="25" selection-start-column="27" selection-end-line="25" selection-end-column="27" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/01_parking_space_service/src/main/java/rest/ApiApplication.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="207">
+              <caret line="18" column="29" lean-forward="true" selection-start-line="18" selection-start-column="29" selection-end-line="18" selection-end-column="29" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/01_parking_space_service/src/main/java/rest/ticket_type/TicketTypesRestService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="322">
+              <caret line="23" column="8" lean-forward="true" selection-start-line="23" selection-start-column="8" selection-end-line="23" selection-end-column="8" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/02_account_service/src/main/java/com/br400/rest/VerificationService.java">
+        <entry file="file://$PROJECT_DIR$/01_parking_space_service/src/main/java/rest/parking_spot/ParkingSpotRestService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="322">
-              <caret line="26" column="43" lean-forward="true" selection-start-line="26" selection-start-column="43" selection-end-line="26" selection-end-column="43" />
+            <state relative-caret-position="253">
+              <caret line="20" column="39" lean-forward="true" selection-start-line="20" selection-start-column="39" selection-end-line="20" selection-end-column="39" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/02_account_service/src/main/java/com/br400/rest/UserService.java">
+        <entry file="file://$PROJECT_DIR$/01_parking_space_service/src/main/java/util/UserValidator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="245">
-              <caret line="44" column="38" selection-start-line="44" selection-start-column="38" selection-end-line="44" selection-end-column="38" />
+            <state relative-caret-position="283">
+              <caret line="19" column="37" selection-start-line="19" selection-start-column="37" selection-end-line="19" selection-end-column="37" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#425#426#0" expanded="true" />
+                <element signature="e#497#498#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/04_shared_resources/pom.xml">
+        <entry file="file://$PROJECT_DIR$/01_parking_space_service/src/main/java/util/Identity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="23">
-              <caret line="1" column="16" selection-start-line="1" selection-start-column="16" selection-end-line="1" selection-end-column="16" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/03_notifications_service/pom.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="822">
-              <caret line="69" column="20" selection-start-line="69" selection-start-column="20" selection-end-line="69" selection-end-column="20" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/00_main_parking_project.iml">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/02_account_service/pom.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="375">
-              <caret line="29" selection-start-line="29" selection-end-line="29" />
+            <state relative-caret-position="437">
+              <caret line="19" column="5" lean-forward="true" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="5" />
+              <folding>
+                <element signature="e#388#389#0" expanded="true" />
+                <element signature="e#418#419#0" expanded="true" />
+                <element signature="e#461#462#0" expanded="true" />
+                <element signature="e#492#493#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -121,17 +168,15 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$/.." value="master" />
+      </map>
+    </option>
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/01_parking_space_service/src/main/java/rest/parkingTicket/ParkingTicketRestService.java" />
-        <option value="$PROJECT_DIR$/01_parking_space_service/src/main/java/jms/Test.java" />
-        <option value="$PROJECT_DIR$/01_parking_space_service/src/main/java/soap/parkingSpot/ParkingSpotServiceImpl.java" />
-        <option value="$PROJECT_DIR$/01_parking_space_service/src/main/java/jms/MessageSink.java" />
-        <option value="$PROJECT_DIR$/03_notifications_service/src/main/java/jms/NewAlarmMessage.java" />
-        <option value="$PROJECT_DIR$/01_parking_space_service/src/main/java/jms/MessageSource.java" />
-        <option value="$PROJECT_DIR$/01_parking_space_service/src/main/java/guard/ParkingTicketValidationTask.java" />
         <option value="$PROJECT_DIR$/01_parking_space_service/src/main/java/jms/NewAlarmMessage.java" />
         <option value="$PROJECT_DIR$/01_parking_space_service/src/main/java/jms/NewUnpaidParkingSpaceMessage.java" />
         <option value="$PROJECT_DIR$/01_parking_space_service/src/main/java/jms/NewUnpaidParkingSpotMessage.java" />
@@ -153,10 +198,8 @@
         <option value="$PROJECT_DIR$/01_parking_space_service/src/main/java/timer_guard/ParkingSpotValidationTask.java" />
         <option value="$PROJECT_DIR$/01_parking_space_service/src/main/java/timer_guard/ParkingTicketValidationTask.java" />
         <option value="$PROJECT_DIR$/01_parking_space_service/src/main/java/timer_guard/ParkingTicketGuard.java" />
-        <option value="$PROJECT_DIR$/01_parking_space_service/src/main/java/rest/parking_ticket/ParkingTicketRestService.java" />
         <option value="$PROJECT_DIR$/01_parking_space_service/src/main/java/timer_guard/ParkingSpotGuard.java" />
         <option value="$PROJECT_DIR$/03_notifications_service/src/main/webapp/WEB-INF/web.xml" />
-        <option value="$PROJECT_DIR$/01_parking_space_service/pom.xml" />
         <option value="$PROJECT_DIR$/03_notifications_service/pom.xml" />
         <option value="$PROJECT_DIR$/03_notifications_service/src/main/java/rest/CorsFilter.java" />
         <option value="$PROJECT_DIR$/03_notifications_service/src/main/java/rest/employee/EmployeesRestService.java" />
@@ -176,6 +219,15 @@
         <option value="$PROJECT_DIR$/02_account_service/src/main/java/com/br400/rest/RestServiceConfig.java" />
         <option value="$PROJECT_DIR$/02_account_service/src/main/java/com/br400/JSON/VerificationResult.java" />
         <option value="$PROJECT_DIR$/02_account_service/src/main/java/com/br400/rest/VerificationService.java" />
+        <option value="$PROJECT_DIR$/../04_web_application/src/components/LoginView/LoginView.tsx" />
+        <option value="$PROJECT_DIR$/01_parking_space_service/pom.xml" />
+        <option value="$PROJECT_DIR$/01_parking_space_service/src/main/java/util/TokenPayload.java" />
+        <option value="$PROJECT_DIR$/01_parking_space_service/src/main/java/util/ValidateUser.java" />
+        <option value="$PROJECT_DIR$/01_parking_space_service/src/main/java/util/Identity.java" />
+        <option value="$PROJECT_DIR$/01_parking_space_service/src/main/java/rest/message/EmployeesRestService.java" />
+        <option value="$PROJECT_DIR$/01_parking_space_service/src/main/java/rest/street/StreetsRestService.java" />
+        <option value="$PROJECT_DIR$/01_parking_space_service/src/main/java/util/UserValidator.java" />
+        <option value="$PROJECT_DIR$/01_parking_space_service/src/main/java/rest/parking_ticket/ParkingTicketRestService.java" />
       </list>
     </option>
   </component>
@@ -187,8 +239,9 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="width" value="1366" />
-    <option name="height" value="728" />
+    <option name="y" value="203" />
+    <option name="width" value="1440" />
+    <option name="height" value="877" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="false" id="Update" />
@@ -198,13 +251,96 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
               <item name="main_parking_project" type="b2602c69:ProjectViewProjectNode" />
               <item name="00_main_parking_project" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="main_parking_project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="00_main_parking_project" type="462c0819:PsiDirectoryNode" />
+              <item name="01_parking_space_service" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="main_parking_project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="00_main_parking_project" type="462c0819:PsiDirectoryNode" />
+              <item name="01_parking_space_service" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="main_parking_project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="00_main_parking_project" type="462c0819:PsiDirectoryNode" />
+              <item name="01_parking_space_service" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="main_parking_project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="00_main_parking_project" type="462c0819:PsiDirectoryNode" />
+              <item name="01_parking_space_service" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="main_parking_project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="00_main_parking_project" type="462c0819:PsiDirectoryNode" />
+              <item name="01_parking_space_service" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="rest" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="main_parking_project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="00_main_parking_project" type="462c0819:PsiDirectoryNode" />
+              <item name="01_parking_space_service" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="rest" type="462c0819:PsiDirectoryNode" />
+              <item name="parking_spot" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="main_parking_project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="00_main_parking_project" type="462c0819:PsiDirectoryNode" />
+              <item name="01_parking_space_service" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="rest" type="462c0819:PsiDirectoryNode" />
+              <item name="parking_ticket" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="main_parking_project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="00_main_parking_project" type="462c0819:PsiDirectoryNode" />
+              <item name="01_parking_space_service" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="rest" type="462c0819:PsiDirectoryNode" />
+              <item name="street" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="main_parking_project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="00_main_parking_project" type="462c0819:PsiDirectoryNode" />
+              <item name="01_parking_space_service" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="rest" type="462c0819:PsiDirectoryNode" />
+              <item name="ticket_type" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="main_parking_project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="00_main_parking_project" type="462c0819:PsiDirectoryNode" />
+              <item name="01_parking_space_service" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="util" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="main_parking_project" type="b2602c69:ProjectViewProjectNode" />
@@ -257,54 +393,13 @@
               <item name="02_account_service" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="br400" type="462c0819:PsiDirectoryNode" />
-              <item name="rest" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="main_parking_project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="00_main_parking_project" type="462c0819:PsiDirectoryNode" />
-              <item name="03_notifications_service" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="main_parking_project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="00_main_parking_project" type="462c0819:PsiDirectoryNode" />
-              <item name="03_notifications_service" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="main_parking_project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="00_main_parking_project" type="462c0819:PsiDirectoryNode" />
-              <item name="03_notifications_service" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="main_parking_project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="00_main_parking_project" type="462c0819:PsiDirectoryNode" />
-              <item name="03_notifications_service" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="main_parking_project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="00_main_parking_project" type="462c0819:PsiDirectoryNode" />
-              <item name="03_notifications_service" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="rest" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="main_parking_project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="00_main_parking_project" type="462c0819:PsiDirectoryNode" />
-              <item name="04_shared_resources" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
       <pane id="PackagesPane" />
     </panes>
   </component>
@@ -319,6 +414,7 @@
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
+    <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
   </component>
   <component name="RecentsManager">
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
@@ -352,10 +448,10 @@
         <artifact name="parking_space_service:war">
           <settings />
         </artifact>
-        <artifact name="account_service:war">
+        <artifact name="notificatins_service:war">
           <settings />
         </artifact>
-        <artifact name="notificatins_service:war">
+        <artifact name="account_service:war">
           <settings />
         </artifact>
       </deployment>
@@ -453,6 +549,7 @@
       <workItem from="1559377026938" duration="33102000" />
       <workItem from="1559471333052" duration="3147000" />
       <workItem from="1559506958373" duration="19660000" />
+      <workItem from="1559722291251" duration="7879000" />
     </task>
     <task id="LOCAL-00001" summary="refactorisation of the project">
       <created>1558554590714</created>
@@ -584,7 +681,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="125473000" />
+    <option name="totallyTimeSpent" value="134132000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -596,9 +693,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1920" height="1177" extended-state="6" />
+    <frame x="0" y="23" width="1440" height="877" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25292864" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2267525" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -608,7 +706,7 @@
       <window_info id="Web" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.7682119" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.8987929" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.8983269" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.9211663" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -620,7 +718,8 @@
       <window_info anchor="bottom" id="Database Changes" order="11" />
       <window_info anchor="bottom" id="Version Control" order="12" weight="0.12850972" />
       <window_info anchor="bottom" id="Application Servers" order="13" weight="0.3294702" />
-      <window_info anchor="bottom" id="Messages" order="14" weight="0.45589602" />
+      <window_info anchor="bottom" id="Messages" order="14" weight="0.45559844" />
+      <window_info anchor="bottom" id="TypeScript" order="15" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -657,75 +756,9 @@
     <MESSAGE value="Notifications service walking skeleton" />
     <MESSAGE value="Notifications cross validation with parking space service added" />
     <MESSAGE value="Fix ParkingTicketDAO" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix ParkingTicketDAO" />
+    <option name="LAST_COMMIT_MESSAGE" value="" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar:///usr/lib/jvm/jdk1.8.0_201/src.zip!/javax/annotation/PostConstruct.java" />
-    <entry file="file://$PROJECT_DIR$/01_parking_space_service/src/main/resources/META-INF/beans.xml" />
-    <entry file="jar://$MAVEN_REPOSITORY$/javax/javaee-api/8.0/javaee-api-8.0.jar!/javax/inject/Inject.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="16" column="18" selection-start-line="16" selection-start-column="18" selection-end-line="16" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar:///usr/lib/jvm/jdk1.8.0_201/src.zip!/java/util/Timer.java" />
-    <entry file="file://$PROJECT_DIR$/01_parking_space_service/src/main/java/jms/SourceWrapper.java" />
-    <entry file="file://$PROJECT_DIR$/01_parking_space_service/src/main/java/soap/ParkingSpotService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="6" column="17" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/01_parking_space_service/src/main/java/rest/parking_ticket/ParkingTicketRestService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="57" column="168" selection-start-line="57" selection-start-column="168" selection-end-line="57" selection-end-column="168" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/01_parking_space_service/src/main/webapp/WEB-INF/server-config.wsdd">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/01_parking_space_service/src/main/webapp/WEB-INF/web.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret selection-end-line="76" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/01_parking_space_service/src/main/webapp/WEB-INF/jboss-web.xml">
-      <provider editor-type-id="com.intellij.javaee.oss.jboss.editor.JBossWebRootProvider" />
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/01_parking_space_service/src/main/java/jms/NotificationMessageSource.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="169">
-          <caret line="23" selection-start-line="23" selection-end-line="23" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/01_parking_space_service/src/main/java/rest/message/EmployeesRestService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/01_parking_space_service/src/main/java/soap/ParkingSpotServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="34" selection-start-line="34" selection-end-line="34" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/01_parking_space_service/src/main/java/timer_guard/ParkingSpotGuard.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="345">
@@ -842,13 +875,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/01_parking_space_service/src/main/java/rest/parking_spot/ParkingSpotRestService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/03_notifications_service/src/main/java/store/NotificationStore.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="265">
@@ -857,16 +883,6 @@
             <element signature="imports" expanded="true" />
             <element signature="e#1393#1438#0" expanded="true" />
             <element signature="e#1514#1548#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/03_notifications_service/src/main/java/rest/message/MessagesRestService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="202">
-          <caret line="53" column="36" selection-start-line="53" selection-start-column="36" selection-end-line="53" selection-end-column="36" />
-          <folding>
-            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -919,13 +935,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/01_parking_space_service/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="974">
-          <caret line="58" column="21" selection-start-line="46" selection-start-column="8" selection-end-line="58" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/02_account_service/src/main/webapp/WEB-INF/web.xml">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -937,13 +946,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/02_account_service/src/main/java/com/br400/JSON/Identity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="46">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/02_account_service/src/main/java/com/br400/JSON/Identity.java" />
     <entry file="file://$PROJECT_DIR$/02_account_service/src/main/java/com/br400/JSON/Token.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="46">
@@ -969,48 +972,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/01_parking_space_service/src/main/java/rest/ApiApplication.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="18" column="29" lean-forward="true" selection-start-line="18" selection-start-column="29" selection-end-line="18" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/02_account_service/src/main/java/com/br400/rest/RestServiceConfig.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="161">
           <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/00_main_parking_project.iml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/04_shared_resources/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="23">
-          <caret line="1" column="16" selection-start-line="1" selection-start-column="16" selection-end-line="1" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="529">
-          <caret line="23" column="26" lean-forward="true" selection-start-line="23" selection-start-column="26" selection-end-line="23" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/02_account_service/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="29" selection-start-line="29" selection-end-line="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/03_notifications_service/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="822">
-          <caret line="69" column="20" selection-start-line="69" selection-start-column="20" selection-end-line="69" selection-end-column="20" />
         </state>
       </provider>
     </entry>
@@ -1021,38 +986,197 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/02_account_service/src/main/resources/firebase-admin.json">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/02_account_service/src/main/java/com/br400/rest/VerificationService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="460">
+          <caret line="32" selection-start-line="32" selection-end-line="32" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/02_account_service/src/main/java/com/br400/rest/UserService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="245">
+        <state relative-caret-position="782">
           <caret line="44" column="38" selection-start-line="44" selection-start-column="38" selection-end-line="44" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/04_shared_resources/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="23">
+          <caret line="1" column="16" selection-start-line="1" selection-start-column="16" selection-end-line="1" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/03_notifications_service/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1587">
+          <caret line="69" column="20" selection-start-line="69" selection-start-column="20" selection-end-line="69" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/00_main_parking_project.iml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/02_account_service/src/main/java/com/br400/Lifecycle/ServletLifecycle.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="253">
+          <caret line="21" selection-start-line="21" selection-end-line="21" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/02_account_service/src/main/java/com/br400/JSON/VerificationResult.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="276">
-          <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
+        <state relative-caret-position="207">
+          <caret line="9" column="23" selection-end-line="37" />
           <folding>
             <element signature="e#388#389#0" expanded="true" />
             <element signature="e#418#419#0" expanded="true" />
             <element signature="e#461#462#0" expanded="true" />
             <element signature="e#492#493#0" expanded="true" />
-            <element signature="e#323#324#0" expanded="true" />
-            <element signature="e#364#365#0" expanded="true" />
-            <element signature="e#433#434#0" expanded="true" />
-            <element signature="e#493#494#0" expanded="true" />
-            <element signature="e#523#524#0" expanded="true" />
-            <element signature="e#549#550#0" expanded="true" />
-            <element signature="e#587#588#0" expanded="true" />
-            <element signature="e#617#618#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/02_account_service/src/main/java/com/br400/rest/VerificationService.java">
+    <entry file="file://$PROJECT_DIR$/01_parking_space_service/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="382">
+          <caret line="51" column="25" selection-start-line="51" selection-start-column="25" selection-end-line="51" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="398">
+          <caret line="23" column="26" selection-start-line="23" selection-start-column="26" selection-end-line="23" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/02_account_service/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="667">
+          <caret line="29" selection-start-line="29" selection-end-line="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/01_parking_space_service/src/main/java/util/TokenPayload.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="115">
+          <caret line="5" column="39" selection-start-line="5" selection-start-column="39" selection-end-line="5" selection-end-column="39" />
+          <folding>
+            <element signature="e#142#143#0" expanded="true" />
+            <element signature="e#99#100#0" expanded="true" />
+            <element signature="e#127#128#0" expanded="true" />
+            <element signature="e#169#170#0" expanded="true" />
+            <element signature="e#203#204#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/httpcomponents/httpcore/4.4.4/httpcore-4.4.4.jar!/org/apache/http/HttpEntity.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="207">
+          <caret line="14" column="23" lean-forward="true" selection-start-line="14" selection-start-column="23" selection-end-line="14" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/httpcomponents/httpcore/4.4.4/httpcore-4.4.4.jar!/org/apache/http/HttpResponse.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="437">
+          <caret line="22" column="9" selection-start-line="22" selection-start-column="9" selection-end-line="22" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/com/google/code/gson/gson/2.7/gson-2.7.jar!/com/google/gson/Gson.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="247">
+          <caret line="461" column="17" selection-start-line="461" selection-start-column="17" selection-end-line="461" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/01_parking_space_service/src/main/java/util/Identity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="437">
+          <caret line="19" column="5" lean-forward="true" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="5" />
+          <folding>
+            <element signature="e#388#389#0" expanded="true" />
+            <element signature="e#418#419#0" expanded="true" />
+            <element signature="e#461#462#0" expanded="true" />
+            <element signature="e#492#493#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/01_parking_space_service/src/main/java/rest/ApiApplication.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="207">
+          <caret line="18" column="29" lean-forward="true" selection-start-line="18" selection-start-column="29" selection-end-line="18" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/03_notifications_service/src/main/java/rest/message/MessagesRestService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="207">
+          <caret line="9" column="29" lean-forward="true" selection-start-line="9" selection-start-column="29" selection-end-line="9" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/01_parking_space_service/src/main/java/rest/street/StreetsRestService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="368">
+          <caret line="25" column="27" lean-forward="true" selection-start-line="25" selection-start-column="27" selection-end-line="25" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/01_parking_space_service/src/main/java/rest/ticket_type/TicketTypesRestService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="322">
-          <caret line="26" column="43" lean-forward="true" selection-start-line="26" selection-start-column="43" selection-end-line="26" selection-end-column="43" />
+          <caret line="23" column="8" lean-forward="true" selection-start-line="23" selection-start-column="8" selection-end-line="23" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/01_parking_space_service/src/main/java/rest/message/EmployeesRestService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="227">
+          <caret line="18" column="9" lean-forward="true" selection-start-line="18" selection-start-column="9" selection-end-line="18" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/01_parking_space_service/src/main/java/util/UserValidator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="283">
+          <caret line="19" column="37" selection-start-line="19" selection-start-column="37" selection-end-line="19" selection-end-column="37" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#425#426#0" expanded="true" />
+            <element signature="e#497#498#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/01_parking_space_service/src/main/java/rest/parking_ticket/ParkingTicketRestService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="329">
+          <caret line="76" column="70" selection-start-line="76" selection-start-column="70" selection-end-line="76" selection-end-column="70" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/01_parking_space_service/src/main/java/rest/parking_ticket/TicketPurchaseData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="92">
+          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/01_parking_space_service/src/main/java/rest/parking_spot/ParkingSpotRestService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="253">
+          <caret line="20" column="39" lean-forward="true" selection-start-line="20" selection-start-column="39" selection-end-line="20" selection-end-column="39" />
         </state>
       </provider>
     </entry>
