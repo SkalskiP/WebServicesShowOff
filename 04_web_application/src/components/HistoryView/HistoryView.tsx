@@ -31,7 +31,7 @@ class HistoryViewComponent extends React.Component<IProps, IState> {
 
     protected headerLabels: string[] = ["Id", "Street", "Number", "Ticket type", "Payment time", "Expiry time", "Departure time", "Status"];
     protected url:string = Settings.SERVER_NAME + "/" + Settings.HISTORY_REQUEST_PATH;
-    protected batchSize:number = 5;
+    protected batchSize:number = 20;
 
     public componentDidMount(): void {
         this.requestData(1);

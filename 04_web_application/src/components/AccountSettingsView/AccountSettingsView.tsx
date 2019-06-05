@@ -6,6 +6,7 @@ import {connect} from "react-redux";
 import {AppState} from "../../store";
 import {User} from "firebase";
 import axios from 'axios';
+import  Scrollbars  from 'react-custom-scrollbars';
 
 interface Props {
     user: User
@@ -27,56 +28,59 @@ const AccountSettingsView: React.FC<Props> = ({user}) => {
 
     return (
         <div className="AccountSettingsView">
-            <TextInput
-                value={email}
-                label={"Email"}
-                key={"email"}
-                isPassword={false}
-                onChange={setEmail}
-            />
-            <TextInput
-                value={name}
-                label={"Name and Surname"}
-                key={"name_and_surname"}
-                isPassword={false}
-                onChange={setName}
-            />
-            <TextInput
-                value={avatarURL}
-                label={"Profile Photo URL"}
-                key={"photo_url"}
-                isPassword={false}
-                onChange={setAvatarURL}
-            />
-            <TextInput
-                value={newPassword}
-                label={"New password"}
-                key={"new_password"}
-                isPassword={true}
-                onChange={setNewPassword}
-            />
-            <TextInput
-                value={repeatPassword}
-                label={"Repeat password"}
-                key={"repeat_password"}
-                isPassword={true}
-                onChange={setRepeatPassword}
-            />
-            <TextInput
-                value={phoneNumber}
-                label={"Phone Number"}
-                key={"phone_number"}
-                isPassword={false}
-                onChange={setPhoneNumber}
-            />
+            <Scrollbars>
+                <div className="AccountSettingsContent">
+                    <TextInput
+                        value={email}
+                        label={"Email"}
+                        key={"email"}
+                        isPassword={false}
+                        onChange={setEmail}
+                    />
+                    <TextInput
+                        value={name}
+                        label={"Name and Surname"}
+                        key={"name_and_surname"}
+                        isPassword={false}
+                        onChange={setName}
+                    />
+                    <TextInput
+                        value={avatarURL}
+                        label={"Profile Photo URL"}
+                        key={"photo_url"}
+                        isPassword={false}
+                        onChange={setAvatarURL}
+                    />
+                    <TextInput
+                        value={newPassword}
+                        label={"New password"}
+                        key={"new_password"}
+                        isPassword={true}
+                        onChange={setNewPassword}
+                    />
+                    <TextInput
+                        value={repeatPassword}
+                        label={"Repeat password"}
+                        key={"repeat_password"}
+                        isPassword={true}
+                        onChange={setRepeatPassword}
+                    />
+                    <TextInput
+                        value={phoneNumber}
+                        label={"Phone Number"}
+                        key={"phone_number"}
+                        isPassword={false}
+                        onChange={setPhoneNumber}
+                    />
 
-            <div className="SubmitWrapper">
-                <TextButton
-                    label={"Submit"}
-                    onClick={onSubmit}
-                />
-            </div>
-
+                    <div className="SubmitWrapper">
+                        <TextButton
+                            label={"Submit"}
+                            onClick={onSubmit}
+                        />
+                    </div>
+                </div>
+            </Scrollbars>
         </div>
     );
 };

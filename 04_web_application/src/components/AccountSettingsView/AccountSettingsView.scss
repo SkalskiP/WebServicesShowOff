@@ -1,8 +1,8 @@
 .AccountSettingsView {
   flex: 1 1 auto;
   align-self: stretch;
-  max-width: 400px;
   margin: 25px;
+  max-width: 450px;
 
   display: flex;
   flex-direction: column;
@@ -11,8 +11,12 @@
   align-items: flex-start;
   align-content: flex-end;
 
-  .SubmitWrapper {
+  .AccountSettingsContent {
+    padding: 15px;
+    max-width: 430px;
+  }
 
+  .SubmitWrapper {
     align-self: stretch;
     margin-top: 15px;
 
