@@ -19,7 +19,7 @@ public class VerificationResult {
         isAdmin = admin;
     }
 
-    public boolean isVerificationStatus() {
+    public boolean getVerificationStatus() {
         return verificationStatus;
     }
 

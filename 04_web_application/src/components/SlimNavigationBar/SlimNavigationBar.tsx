@@ -24,7 +24,7 @@ const SlimNavigationBarComponent = (props: IProps) => {
             "SlimNavigationBar",
             {
                 "closed": _.includes(
-                    [TabName.SETTINGS, TabName.NOTIFICATIONS, TabName.MENAGE_USERS, TabName.DASHBOARD], props.activeTabName)
+                    [TabName.SETTINGS, TabName.NOTIFICATIONS, TabName.MANAGE_USERS, TabName.DASHBOARD], props.activeTabName)
             }
         );
     };

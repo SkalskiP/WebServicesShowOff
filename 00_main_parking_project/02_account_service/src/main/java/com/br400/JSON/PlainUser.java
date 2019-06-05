@@ -6,6 +6,7 @@ public class PlainUser {
     private String password;
     private Boolean isAdmin;
     private String photoUrl;
+    private String phoneNumber;
 
     public String getDisplayName() {
         return displayName;
@@ -45,5 +46,13 @@ public class PlainUser {
 
     public void setPhotoUrl(String photoUrl) {
         this.photoUrl = photoUrl;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 }

@@ -9,6 +9,7 @@ interface IProps {
     inputStyle?: React.CSSProperties;
     labelStyle?: React.CSSProperties;
     barStyle?: React.CSSProperties;
+    value?: string;
 }
 
 const TextInput = (props: IProps) => {
@@ -30,6 +31,7 @@ const TextInput = (props: IProps) => {
     return (
         <div className="TextInput">
             <input
+                value={!!props.value ? props.value : undefined}
                 type={getInputType()}
                 id={key}
                 style={inputStyle}

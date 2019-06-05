@@ -7,6 +7,7 @@ export type GeneralState = {
     activeTabName: TabName;
     activeHistoryTabName: HistoryTabName;
     notificationStatus: boolean;
+    isAdmin: boolean;
 };
 
 interface UpdateActiveTabName {
@@ -37,7 +38,15 @@ interface UpdateLoading {
     };
 }
 
+interface UpdateAdmin {
+    type: typeof Action.UPDATE_ADMIN;
+    payload: {
+        isAdmin: boolean;
+    };
+}
+
 export type GeneralActionTypes = UpdateActiveTabName
     | UpdateActiveHistoryTabName
     | UpdateNotificationStatus
-    | UpdateLoading;
+    | UpdateLoading
+    | UpdateAdmin;
