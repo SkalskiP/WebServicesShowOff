@@ -15,8 +15,8 @@ public class EmployeeDTO extends AbstractDTO {
     @Column(name = "id", nullable = false)
     private Integer id;
 
-    @Column(name = "id_from_account_db", nullable = false)
-    private Integer externalId;
+    @Column(name = "firebase_uid", nullable = false)
+    private String firebaseUid;
 
     @OneToMany(fetch=FetchType.LAZY, mappedBy="employee")
     @JsonManagedReference
@@ -30,12 +30,12 @@ public class EmployeeDTO extends AbstractDTO {
         this.id = id;
     }
 
-    public Integer getExternalId() {
-        return externalId;
+    public String getFirebaseUid() {
+        return firebaseUid;
     }
 
-    public void setExternalId(Integer external_id) {
-        this.externalId = external_id;
+    public void setFirebaseUid(String firebaseUid) {
+        this.firebaseUid = firebaseUid;
     }
 
     public Set<ZoneDTO> getZones() {
