@@ -1,0 +1,62 @@
+@import '../../Settings';
+
+.PaginationPanel {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  align-content: flex-start;
+  padding: 0 10px;
+
+  .TextButton {
+    margin-left: 2px;
+    padding: 0;
+    width: 30px;
+    height: 30px;
+    box-shadow: none;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+
+    &.active {
+      color: rgb(255, 255, 255);
+      background-color: $secondaryTextColor;
+    }
+
+    &.active:hover {
+      color: rgb(255, 255, 255);
+      background-color: $secondaryTextColor;
+    }
+
+    &:hover {
+      box-shadow: $secondaryTextColor 0 0 0 2px inset;
+      color: $secondaryTextColor;
+      background-color: transparent;
+    }
+  }
+
+  .ImageButton {
+    margin-left: 2px;
+    padding: 0;
+    width: 30px;
+    height: 30px;
+    border-radius: 4px;
+
+    > img {
+      max-height: 20px;
+      filter: invert(1) brightness(5%) sepia(100%) hue-rotate(230deg) saturate(1000%) ;
+    }
+
+    &:hover {
+      box-shadow: $secondaryTextColor 0 0 0 2px inset;
+      > img {
+        filter: invert(1) brightness(5%) sepia(100%) hue-rotate(230deg) saturate(1000%) ;
+      }
+    }
+  }
+}

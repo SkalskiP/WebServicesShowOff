@@ -63,6 +63,7 @@ export default class DashboardView extends React.Component<{}, IState> {
                     renderHeader={this.renderHeader}
                     headerHeight={50}
                     renderContent={this.renderContent}
+                    renderFooter={null}
                 />
             </div>
         )

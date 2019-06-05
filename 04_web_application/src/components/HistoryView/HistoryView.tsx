@@ -8,6 +8,8 @@ import {IParkingTicket} from "../../interfaces/IParkingTicket";
 import axios, {AxiosResponse} from 'axios'
 import Settings from "../../settings/Settings";
 import {ResponseToObjectMapper} from "../../utils/ResponseToObjectMapper";
+import {HistoryViewHelper} from "../../logic/HistoryViewHelper";
+import PaginationPanel from "../PaginationPanel/PaginationPanel";
 
 interface IProps {
     activeHistoryTabName: HistoryTabName;
@@ -16,7 +18,7 @@ interface IProps {
 interface IState {
     tableData: IParkingTicket[];
     totalCount: number;
-    currentPage: number;
+    activePageIndex: number;
 }
 
 class HistoryViewComponent extends React.Component<IProps, IState> {
@@ -24,78 +26,42 @@ class HistoryViewComponent extends React.Component<IProps, IState> {
     public state: IState = {
         tableData: [],
         totalCount: null,
-        currentPage: 1
+        activePageIndex: 1
     };
 
     protected headerLabels: string[] = ["Id", "Street", "Number", "Ticket type", "Payment time", "Expiry time", "Departure time", "Status"];
-
-    public Url:string = Settings.SERVER_NAME + "/" + Settings.HISTORY_REQUEST_PATH;
-
-    public getQueryParams() {
-        const startDate = new Date();
-        const endDate = new Date();
-
-        switch (this.props.activeHistoryTabName) {
-            case HistoryTabName.TODAY:
-                startDate.setTime(startDate.getTime() - 24 * 3600000);
-                break;
-            case HistoryTabName.YESTERDAY:
-                startDate.setTime(startDate.getTime() - 2 * 24 * 3600000);
-                endDate.setTime(endDate.getTime() - 24 * 3600000);
-                break;
-            case HistoryTabName.LAST_WEEK:
-                startDate.setTime(startDate.getTime() - 7 * 24 * 3600000);
-                break;
-            case HistoryTabName.LAST_MONTH:
-                startDate.setTime(startDate.getTime() - 30 * 24 * 3600000);
-                break;
-            case HistoryTabName.LAST_YEAR:
-                startDate.setTime(startDate.getTime() - 365 * 24 * 3600000);
-                break;
-        }
-
-        const startYear = startDate.getFullYear();
-        const startDay = startDate.getDate() > 9 ? "" + startDate.getDate() : "0" + startDate.getDate();
-        const startMonth = (startDate.getMonth() + 1) > 9 ? "" + (startDate.getMonth() + 1) : "0" + (startDate.getMonth() + 1);
-
-        const endYear = endDate.getFullYear();
-        const endDay = endDate.getDate() > 9 ? "" + endDate.getDate() : "0" + endDate.getDate();
-        const endMonth = (endDate.getMonth() + 1) > 9 ? "" + (endDate.getMonth() + 1) : "0" + (endDate.getMonth() + 1);
-
-        return {
-            limit: 10,
-            offset: 0,
-            from: startYear + "-" + startMonth + "-" + startDay + " 00:00:00",
-            to: endYear + "-" + endMonth + "-" + endDay + " 23:59:59"
-        };
-    }
-
-    public requestData = () => {
-        axios.get(this.Url, {params: this.getQueryParams()})
-            .then((response:AxiosResponse) => {
-                const tableData:IParkingTicket[] = response.data.data.map(ResponseToObjectMapper.forHistoryRequest);
-                const totalCount:number = response.data.totalCount;
-
-                console.log(totalCount);
-
-                this.setState({
-                    tableData: tableData,
-                    totalCount: totalCount
-                });
-            })
-    };
+    protected url:string = Settings.SERVER_NAME + "/" + Settings.HISTORY_REQUEST_PATH;
+    protected batchSize:number = 5;
 
     public componentDidMount(): void {
-        this.requestData();
+        this.requestData(1);
     }
 
     public componentDidUpdate(prevProps: Readonly<IProps>, prevState: Readonly<{}>, snapshot?: any): void {
         if (prevProps.activeHistoryTabName !== this.props.activeHistoryTabName) {
-            this.requestData();
+            this.requestData(1);
         }
     }
 
-    protected renderHeader = (style: React.CSSProperties) => {
+    public requestData = (pageIndex: number) => {
+        axios.get(this.url, {params: HistoryViewHelper.getQueryParams(this.props.activeHistoryTabName, pageIndex, this.batchSize)})
+            .then((response:AxiosResponse) => {
+                const tableData:IParkingTicket[] = response.data.data.map(ResponseToObjectMapper.forHistoryRequest);
+                const totalCount:number = response.data.totalCount;
+
+                this.setState({
+                    tableData: tableData,
+                    totalCount: totalCount,
+                    activePageIndex: pageIndex
+                });
+            })
+    };
+
+    protected changePageHandler = (index:number) => {
+        this.requestData(index);
+    };
+
+    protected renderTableHeader = (style: React.CSSProperties) => {
         return(
             <div className="TableHeader" style={style}>
                 {this.headerLabels.map((label:string) => <div className="ColumnHeader">
@@ -105,7 +71,7 @@ class HistoryViewComponent extends React.Component<IProps, IState> {
         )
     };
 
-    protected renderContent = (style: React.CSSProperties) => {
+    protected renderTableContent = (style: React.CSSProperties) => {
         return(
             <div className="TableContent" style={style}>
                 {this.state.tableData.map((data: IParkingTicket) => <div className="TableRow">
@@ -122,14 +88,25 @@ class HistoryViewComponent extends React.Component<IProps, IState> {
         )
     };
 
+    protected renderTableFooter = (style: React.CSSProperties) => {
+        return(
+            <PaginationPanel
+                activePageIndex={this.state.activePageIndex}
+                totalPagesCount={Math.floor(this.state.totalCount / this.batchSize) + 1}
+                onActivePageChange={this.changePageHandler}
+            />
+        )
+    };
+
     public render() {
         return(
             <div className="HistoryView">
                 <TableBox
                     tableWidth={1400}
-                    renderHeader={this.renderHeader}
                     headerHeight={50}
-                    renderContent={this.renderContent}
+                    renderHeader={this.renderTableHeader}
+                    renderContent={this.renderTableContent}
+                    renderFooter={this.renderTableFooter}
                 />
             </div>
         )

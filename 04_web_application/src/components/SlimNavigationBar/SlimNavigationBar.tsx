@@ -6,7 +6,7 @@ import _ from 'lodash';
 import {AppState} from "../../store";
 import {connect} from "react-redux";
 import HistoryButtonsData from "../../data/HistoryButtonsData";
-import SlimNavigationBarButton from "../SlimNavigationBarButton/SlimNavigationBarButton";
+import ImageButton from "../ImageButton/ImageButton";
 import {ISlimNavigationBarButton} from "../../interfaces/ISlimNavigationBarButton";
 import {HistoryTabName} from "../../utils/types/HistoryTabName";
 import {updateActiveHistoryTabName} from "../../store/general/actionCreators";
@@ -33,7 +33,7 @@ const SlimNavigationBarComponent = (props: IProps) => {
         switch (props.activeTabName) {
             case (TabName.HISTORY):
                 return HistoryButtonsData.map(
-                    (data:ISlimNavigationBarButton) => <SlimNavigationBarButton
+                    (data:ISlimNavigationBarButton) => <ImageButton
                         key={data.displayName}
                         image={data.imageSource}
                         imageAlt={data.imageAlt}

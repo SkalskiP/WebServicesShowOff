@@ -14,6 +14,22 @@
   align-items: center;
   align-content: flex-start;
 
+  .ImageButton {
+    align-self: stretch;
+    height: $slimNavigationBarWidth;
+    border-bottom: solid 1px white;
+
+    &.active {
+      background-color: $secondaryHeaderColor;
+      transition: all .1s ease-in;
+    }
+
+    &:hover {
+      background-color: $secondaryHeaderColor;
+      transition: all .1s ease-in;
+    }
+  }
+
   &.closed {
     width: 0;
   }

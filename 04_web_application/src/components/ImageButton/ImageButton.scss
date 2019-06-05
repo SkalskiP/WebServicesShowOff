@@ -1,11 +1,7 @@
 @import '../../Settings';
 
-.SlimNavigationBarButton {
-  align-self: stretch;
-  height: $slimNavigationBarWidth;
+.ImageButton {
   cursor: pointer;
-  border-bottom: solid 1px white;
-
   background-color: transparent;
   transition: all .1s ease-in;
 
@@ -15,16 +11,6 @@
   justify-content: center;
   align-items: center;
   align-content: center;
-
-  &.active {
-    background-color: $secondaryHeaderColor;
-    transition: all .1s ease-in;
-  }
-
-  &:hover {
-    background-color: $secondaryHeaderColor;
-    transition: all .1s ease-in;
-  }
 
   > img {
     filter: brightness(0) invert(1);

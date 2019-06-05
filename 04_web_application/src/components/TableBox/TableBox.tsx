@@ -7,6 +7,7 @@ interface IProps {
     renderHeader: (style: React.CSSProperties) => any;
     headerHeight:number;
     renderContent: (style: React.CSSProperties) => any;
+    renderFooter?: (style: React.CSSProperties) => any;
 }
 
 interface IState {
@@ -64,7 +65,9 @@ class TableBox extends React.Component<IProps, IState> {
                             {this.props.renderContent({width: this.props.tableWidth})}
                         </Scrollbars>
                     </div>
-                    <div className="ControlPanel"/>
+                    <div className="ControlPanel">
+                        {this.props.renderFooter && this.props.renderFooter({})}
+                    </div>
                 </div>
             </div>
         )

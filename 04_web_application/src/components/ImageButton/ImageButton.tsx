@@ -1,6 +1,6 @@
 import classNames from "classnames";
 import React from "react";
-import './SlimNavigationBarButton.scss';
+import './ImageButton.scss';
 
 interface IProps {
     key:string;
@@ -10,12 +10,12 @@ interface IProps {
     isActive:boolean;
 }
 
-const SlimNavigationBarButton = (props:IProps) => {
+const ImageButton = (props:IProps) => {
     const {key, image, imageAlt, onClick, isActive} = props;
 
     const geClassName = () => {
         return classNames(
-            "SlimNavigationBarButton",
+            "ImageButton",
             {
                 "active": isActive
             }
@@ -33,4 +33,4 @@ const SlimNavigationBarButton = (props:IProps) => {
     );
 };
 
-export default SlimNavigationBarButton;
+export default ImageButton;

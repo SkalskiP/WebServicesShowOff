@@ -15,7 +15,7 @@ interface IProps {
 const NavigationBarButton = (props:IProps) => {
     const {key, image, imageAlt, label, onClick, isActive, isMarked} = props;
 
-    const geClassName = () => {
+    const getClassName = () => {
         return classNames(
             "NavigationBarButton",
             {
@@ -26,7 +26,7 @@ const NavigationBarButton = (props:IProps) => {
 
     return (
         <div
-            className={geClassName()}
+            className={getClassName()}
             key={key}
             onClick={onClick}
         >
