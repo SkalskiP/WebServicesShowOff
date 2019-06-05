@@ -70,8 +70,10 @@ public class ParkingTicketRestService {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         LocalDateTime fromDateTime = LocalDateTime.parse(from, formatter);
         LocalDateTime toDateTime = LocalDateTime.parse(to, formatter);
-        List<ParkingTicketDTO> parkingTickets = ParkingTicketDAO.getInstance()
+        List<ParkingTicketDTO> parkingTicketsData = ParkingTicketDAO.getInstance()
                 .findTicketsFromTimePeriod(fromDateTime, toDateTime, limit, offset);
-        return Response.ok().entity(parkingTickets).build();
+        Long parkingTicketCount = ParkingTicketDAO.getInstance()
+                .findTicketsFromTimePeriodCount(fromDateTime, toDateTime);
+        return Response.ok().entity(new TicketReportData(parkingTicketsData, parkingTicketCount)).build();
     }
 }

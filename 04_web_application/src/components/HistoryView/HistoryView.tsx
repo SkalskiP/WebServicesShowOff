@@ -15,12 +15,16 @@ interface IProps {
 
 interface IState {
     tableData: IParkingTicket[];
+    totalCount: number;
+    currentPage: number;
 }
 
 class HistoryViewComponent extends React.Component<IProps, IState> {
 
     public state: IState = {
-        tableData: []
+        tableData: [],
+        totalCount: null,
+        currentPage: 1
     };
 
     protected headerLabels: string[] = ["Id", "Street", "Number", "Ticket type", "Payment time", "Expiry time", "Departure time", "Status"];
@@ -59,7 +63,7 @@ class HistoryViewComponent extends React.Component<IProps, IState> {
         const endMonth = (endDate.getMonth() + 1) > 9 ? "" + (endDate.getMonth() + 1) : "0" + (endDate.getMonth() + 1);
 
         return {
-            limit: 50,
+            limit: 10,
             offset: 0,
             from: startYear + "-" + startMonth + "-" + startDay + " 00:00:00",
             to: endYear + "-" + endMonth + "-" + endDay + " 23:59:59"
@@ -68,9 +72,16 @@ class HistoryViewComponent extends React.Component<IProps, IState> {
 
     public requestData = () => {
         axios.get(this.Url, {params: this.getQueryParams()})
-            .then((data:AxiosResponse) => {
-                const tableData:IParkingTicket[] = data.data.map(ResponseToObjectMapper.forHistoryRequest);
-                this.setState({tableData: tableData});
+            .then((response:AxiosResponse) => {
+                const tableData:IParkingTicket[] = response.data.data.map(ResponseToObjectMapper.forHistoryRequest);
+                const totalCount:number = response.data.totalCount;
+
+                console.log(totalCount);
+
+                this.setState({
+                    tableData: tableData,
+                    totalCount: totalCount
+                });
             })
     };
 

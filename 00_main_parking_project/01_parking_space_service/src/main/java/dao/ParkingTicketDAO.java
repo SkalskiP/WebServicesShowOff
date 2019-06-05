@@ -43,4 +43,11 @@ public class ParkingTicketDAO extends AbstractDAO<ParkingTicketDTO> {
         query.setMaxResults(limit); // equivalent to LIMIT
         return query.getResultList();
     }
+
+    public Long findTicketsFromTimePeriodCount(LocalDateTime from, LocalDateTime to) {
+        TypedQuery query = entityManager.createQuery("SELECT COUNT(c) FROM " + className + " c WHERE c.arrivalTime BETWEEN :fromDate AND :toDate", Long.class);
+        query.setParameter("fromDate", from);
+        query.setParameter("toDate", to);
+        return (Long) query.getSingleResult();
+    }
 }

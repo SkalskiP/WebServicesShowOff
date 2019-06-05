@@ -50,7 +50,6 @@ class TableBox extends React.Component<IProps, IState> {
 
     public render() {
         const {tableWidth, tableHeight, tableLeftOffset} = this.state;
-        console.log(this.state.tableWidth);
         return(
             <div className="TableBoxWrapper" ref={ref => this.tableWrapper = ref}>
                 <div className="TableBox" style={{width: tableWidth, height: tableHeight}}>

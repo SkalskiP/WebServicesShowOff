@@ -1,6 +1,8 @@
 package dao;
 
 import dto.AbstractDTO;
+import org.hibernate.Criteria;
+import org.hibernate.criterion.Projections;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
@@ -32,6 +34,11 @@ public abstract class AbstractDAO<T extends AbstractDTO> {
         TypedQuery query = entityManager.createQuery("SELECT c FROM " + className + " c WHERE c.id = :id", clazz);
         query.setParameter("id", itemId);
         return (T) query.getSingleResult();
+    }
+
+    public Integer getCount() {
+        TypedQuery query = entityManager.createQuery("SELECT COUNT(e) FROM " + className + " e", clazz);
+        return (Integer) query.getSingleResult();
     }
 
     public Optional<Integer> addItem(T item) {

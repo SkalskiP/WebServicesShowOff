@@ -35,7 +35,7 @@ export default class DashboardView extends React.Component<{}, IState> {
     protected renderHeader = (style: React.CSSProperties) => {
         return(
             <div className="TableHeader" style={style}>
-                {this.headerLabels.map((label:string) => <div className="ColumnHeader">
+                {this.headerLabels.map((label:string) => <div className="ColumnHeader" key={label}>
                     {label}
                 </div>)}
             </div>
