@@ -35,3 +35,14 @@ export function updateNotificationStatus (
         },
     };
 }
+
+export function updateLoadingStatus (
+    loading: boolean
+): GeneralActionTypes {
+    return {
+        type: Action.UPDATE_LOADING,
+        payload: {
+            loading,
+        },
+    };
+}

@@ -3,6 +3,7 @@ import {TabName} from "../../utils/types/TabName";
 import {HistoryTabName} from "../../utils/types/HistoryTabName";
 
 export type GeneralState = {
+    loading: boolean;
     activeTabName: TabName;
     activeHistoryTabName: HistoryTabName;
     notificationStatus: boolean;
@@ -29,6 +30,14 @@ interface UpdateNotificationStatus {
     };
 }
 
+interface UpdateLoading {
+    type: typeof Action.UPDATE_LOADING;
+    payload: {
+        loading: boolean;
+    };
+}
+
 export type GeneralActionTypes = UpdateActiveTabName
     | UpdateActiveHistoryTabName
-    | UpdateNotificationStatus;
+    | UpdateNotificationStatus
+    | UpdateLoading;

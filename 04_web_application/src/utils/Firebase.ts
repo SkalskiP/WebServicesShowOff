@@ -2,6 +2,7 @@ import * as firebase from "firebase";
 import {store} from "../index";
 import {updateUserData} from "../store/account/actionCreators";
 import axios from 'axios';
+import {updateLoadingStatus} from "../store/general/actionCreators";
 
 const config = {
     apiKey: "AIzaSyBUk6dgMPAs7zM46FGg3ICj_0lU1sfjc88",
@@ -32,6 +33,7 @@ export class Firebase {
                 axios.interceptors.request.eject(stickHeader);
             }
             store.dispatch(updateUserData(user));
+            store.dispatch(updateLoadingStatus(false));
         });
     }
 

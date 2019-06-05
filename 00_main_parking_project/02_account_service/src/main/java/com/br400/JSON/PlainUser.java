@@ -5,6 +5,7 @@ public class PlainUser {
     private String email;
     private String password;
     private Boolean isAdmin;
+    private String photoUrl;
 
     public String getDisplayName() {
         return displayName;
@@ -36,5 +37,13 @@ public class PlainUser {
 
     public void setAdmin(Boolean admin) {
         isAdmin = admin;
+    }
+
+    public String getPhotoUrl() {
+        return photoUrl;
+    }
+
+    public void setPhotoUrl(String photoUrl) {
+        this.photoUrl = photoUrl;
     }
 }

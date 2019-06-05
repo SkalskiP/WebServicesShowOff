@@ -4,6 +4,7 @@ import {TabName} from "../../utils/types/TabName";
 import {HistoryTabName} from "../../utils/types/HistoryTabName";
 
 const initialState: GeneralState = {
+    loading: true,
     activeTabName: TabName.DASHBOARD,
     activeHistoryTabName: HistoryTabName.TODAY,
     notificationStatus: true
@@ -30,6 +31,12 @@ export function generalReducer(
             return {
                 ...state,
                 notificationStatus: action.payload.notificationStatus,
+            };
+        }
+        case Action.UPDATE_LOADING: {
+            return {
+                ...state,
+                loading: action.payload.loading,
             };
         }
         default:
