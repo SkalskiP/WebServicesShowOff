@@ -1,73 +1,88 @@
-import React from "react";
+import React, {useState} from "react";
 import './AccountSettingsView.scss';
 import TextInput from "../TextInput/TextInput";
 import {TextButton} from "../TextButton/TextButton";
+import {connect} from "react-redux";
+import {AppState} from "../../store";
+import {User} from "firebase";
+import axios from 'axios';
 
-const AccountSettingsView = () => {
+interface Props {
+    user: User
+}
 
-    let login = "";
-    let previousPassword = "";
-    let newPassword = "";
-    let repeatPassword = "";
-
-    const onLoginChange = (value) => {
-        login = value;
-    };
-
-    const onPreviousPasswordChange = (value) => {
-        previousPassword = value;
-    };
-
-    const onNewPasswordChange = (value) => {
-        newPassword = value;
-    };
-
-    const onRepeatPasswordChange = (value) => {
-        repeatPassword = value;
-    };
+const AccountSettingsView: React.FC<Props> = ({user}) => {
+    const [email, setEmail] = useState(user.email);
+    const [name, setName] = useState(user.displayName);
+    const [avatarURL, setAvatarURL] = useState(user.photoURL);
+    const [newPassword, setNewPassword] = useState("");
+    const [repeatPassword, setRepeatPassword] = useState("");
+    const [phoneNumber, setPhoneNumber] = useState(user.phoneNumber);
 
     const onSubmit = () => {
-        //TODO: Implement submit
-        console.log("Login:" + login);
-        console.log("Previous password:" + previousPassword);
-        console.log("New password:" + newPassword);
-        console.log("Repeat password:" + repeatPassword);
+        axios.patch(`localhost:8080/auth/api/user/${user.uid}`, {
+
+        })
     };
 
     return (
         <div className="AccountSettingsView">
             <TextInput
-                label={"Login"}
-                key={"login"}
+                value={email}
+                label={"Email"}
+                key={"email"}
                 isPassword={false}
-                onChange={onLoginChange}
+                onChange={setEmail}
             />
             <TextInput
-                label={"Previous password"}
-                key={"previous_password"}
-                isPassword={true}
-                onChange={onPreviousPasswordChange}
+                value={name}
+                label={"Name and Surname"}
+                key={"name_and_surname"}
+                isPassword={false}
+                onChange={setName}
             />
             <TextInput
+                value={avatarURL}
+                label={"Profile Photo URL"}
+                key={"photo_url"}
+                isPassword={false}
+                onChange={setAvatarURL}
+            />
+            <TextInput
+                value={newPassword}
                 label={"New password"}
                 key={"new_password"}
                 isPassword={true}
-                onChange={onNewPasswordChange}
+                onChange={setNewPassword}
             />
             <TextInput
+                value={repeatPassword}
                 label={"Repeat password"}
                 key={"repeat_password"}
                 isPassword={true}
-                onChange={onRepeatPasswordChange}
+                onChange={setRepeatPassword}
             />
+            <TextInput
+                value={phoneNumber}
+                label={"Phone Number"}
+                key={"phone_number"}
+                isPassword={false}
+                onChange={setPhoneNumber}
+            />
+
             <div className="SubmitWrapper">
                 <TextButton
                     label={"Submit"}
                     onClick={onSubmit}
                 />
             </div>
+
         </div>
     );
 };
 
-export default AccountSettingsView;
+const mapStateToProps = (state: AppState) => ({
+    user: state.account.user
+});
+
+export default connect(mapStateToProps)(AccountSettingsView);

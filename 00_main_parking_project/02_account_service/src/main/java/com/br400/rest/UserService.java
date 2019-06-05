@@ -65,6 +65,7 @@ public class UserService {
             request.setEmail(payload.getEmail());
             request.setPassword(payload.getPassword());
             request.setPhotoUrl(payload.getPhotoUrl());
+            request.setPhoneNumber(payload.getPhoneNumber());
             UserRecord user = FirebaseAuth.getInstance().createUser(request);
             Map<String, Object> customClaims = new HashMap<>();
             customClaims.put("isAdmin", payload.getAdmin());
@@ -96,17 +97,20 @@ public class UserService {
                 customClaims.put("isAdmin", payload.getAdmin());
                 request.setCustomClaims(customClaims);
             }
-
             if (payload.getDisplayName() != null && !payload.getDisplayName().equals(user.getDisplayName())) {
                 request.setDisplayName(payload.getDisplayName());
             }
-
             if (payload.getEmail() != null && !payload.getEmail().equals(user.getEmail())) {
                 request.setDisplayName(payload.getEmail());
             }
-
+            if (payload.getPassword() != null) {
+                request.setPassword(payload.getPassword());
+            }
             if (payload.getPhotoUrl() != null && !payload.getPhotoUrl().equals(user.getPhotoUrl())) {
                 request.setPhotoUrl(payload.getPhotoUrl());
+            }
+            if (payload.getPhoneNumber() != null && !payload.getPhoneNumber().equals(user.getPhoneNumber())) {
+                request.setPhoneNumber(payload.getPhoneNumber());
             }
 
             user = FirebaseAuth.getInstance().updateUser(request);
