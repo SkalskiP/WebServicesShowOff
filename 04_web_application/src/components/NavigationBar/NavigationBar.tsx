@@ -9,25 +9,26 @@ import {connect} from "react-redux";
 import {TabName} from "../../utils/types/TabName"
 import {NavigationBarFooter} from "../NavigationBarFooter/NavigationBarFooter";
 
-interface IProps {
+interface Props {
     activeTabName: TabName;
     notificationStatus: boolean;
     updateActiveTabName: (activeTabName: TabName) => any;
+    isAdmin: boolean;
 }
 
-const NavigationBarComponent = (props: IProps) => {
+const NavigationBarComponent: React.FC<Props> = ({activeTabName, notificationStatus, updateActiveTabName, isAdmin}) => {
 
     const getButtons = () => {
-        return NavigationBarButtonsData.map(
+        return NavigationBarButtonsData.filter(el => isAdmin ? true : !el.advancedAccess).map(
             (data:INavigationBarButton) => <NavigationBarButton
                 key={data.displayName}
                 image={data.imageSource}
                 imageAlt={data.imageAlt}
                 label={data.displayName}
-                isActive={props.activeTabName === data.activeTabName}
+                isActive={activeTabName === data.activeTabName}
                 //TODO: Validation of newly added notifications
-                isMarked={data.activeTabName === TabName.NOTIFICATIONS && props.notificationStatus}
-                onClick={() => props.updateActiveTabName(data.activeTabName)}
+                isMarked={data.activeTabName === TabName.NOTIFICATIONS && notificationStatus}
+                onClick={() => updateActiveTabName(data.activeTabName)}
             />
         )
     };
@@ -48,7 +49,8 @@ const NavigationBarComponent = (props: IProps) => {
 
 const mapStateToProps = (state: AppState) => ({
     activeTabName: state.general.activeTabName,
-    notificationStatus: state.general.notificationStatus
+    notificationStatus: state.general.notificationStatus,
+    isAdmin: state.general.isAdmin
 });
 
 const dispatchToProps = {
