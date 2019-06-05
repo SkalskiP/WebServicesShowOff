@@ -1,4 +1,4 @@
-package com.br400.RestServices;
+package com.br400.rest;
 
 import com.br400.JSON.PlainUser;
 import com.google.firebase.auth.FirebaseAuth;
@@ -48,6 +48,7 @@ public class UserService {
             request.setDisplayName(payload.getDisplayName());
             request.setEmail(payload.getEmail());
             request.setPassword(payload.getPassword());
+            request.setPhotoUrl(payload.getPhotoUrl());
             UserRecord user = FirebaseAuth.getInstance().createUser(request);
             Map<String, Object> customClaims = new HashMap<>();
             customClaims.put("isAdmin", payload.getAdmin());
@@ -81,6 +82,10 @@ public class UserService {
 
             if (payload.getEmail() != null && !payload.getEmail().equals(user.getEmail())) {
                 request.setDisplayName(payload.getEmail());
+            }
+
+            if (payload.getPhotoUrl() != null && !payload.getPhotoUrl().equals(user.getPhotoUrl())) {
+                request.setPhotoUrl(payload.getPhotoUrl());
             }
 
             user = FirebaseAuth.getInstance().updateUser(request);
