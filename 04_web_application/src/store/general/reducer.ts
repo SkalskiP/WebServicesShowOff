@@ -7,7 +7,8 @@ const initialState: GeneralState = {
     loading: true,
     activeTabName: TabName.DASHBOARD,
     activeHistoryTabName: HistoryTabName.TODAY,
-    notificationStatus: true
+    notificationStatus: true,
+    isAdmin: false
 };
 
 export function generalReducer(
@@ -37,6 +38,12 @@ export function generalReducer(
             return {
                 ...state,
                 loading: action.payload.loading,
+            };
+        }
+        case Action.UPDATE_ADMIN: {
+            return {
+                ...state,
+                isAdmin: action.payload.isAdmin,
             };
         }
         default:

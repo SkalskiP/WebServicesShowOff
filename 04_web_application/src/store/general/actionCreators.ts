@@ -46,3 +46,14 @@ export function updateLoadingStatus (
         },
     };
 }
+
+export function updateAdminStatus (
+    isAdmin: boolean
+): GeneralActionTypes {
+    return {
+        type: Action.UPDATE_ADMIN,
+        payload: {
+            isAdmin,
+        },
+    };
+}

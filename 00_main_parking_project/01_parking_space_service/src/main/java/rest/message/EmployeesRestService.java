@@ -2,7 +2,7 @@ package rest.message;
 
 import dao.EmployeeDAO;
 import dto.EmployeeDTO;
-import util.UserValidator;
+import util.UserVerificator;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -14,7 +14,7 @@ public class EmployeesRestService {
     @GET
     @Produces({MediaType.APPLICATION_JSON})
     public Response getEmployees(@HeaderParam("Authorization") String token) {
-        if (token == null || !UserValidator.validateIdToken(token).getVerificationStatus()) {
+        if (token == null || !UserVerificator.validateIdToken(token).getVerificationStatus()) {
             return Response.status(Response.Status.UNAUTHORIZED).build();
         }
         List<EmployeeDTO> employees = EmployeeDAO.getInstance().getItems();
@@ -25,7 +25,7 @@ public class EmployeesRestService {
     @Path("/{id}")
     @Produces({MediaType.APPLICATION_JSON})
     public Response getEmployeeById(@PathParam("id") Integer id, @HeaderParam("Authorization") String token) {
-        if (token == null || !UserValidator.validateIdToken(token).getVerificationStatus()) {
+        if (token == null || !UserVerificator.validateIdToken(token).getVerificationStatus()) {
             return Response.status(Response.Status.UNAUTHORIZED).build();
         }
         EmployeeDTO employee = EmployeeDAO.getInstance().getItem(id);

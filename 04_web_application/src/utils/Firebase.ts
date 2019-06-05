@@ -2,7 +2,7 @@ import * as firebase from "firebase";
 import {store} from "../index";
 import {updateUserData} from "../store/account/actionCreators";
 import axios from 'axios';
-import {updateLoadingStatus} from "../store/general/actionCreators";
+import {updateAdminStatus, updateLoadingStatus} from "../store/general/actionCreators";
 
 const config = {
     apiKey: "AIzaSyBUk6dgMPAs7zM46FGg3ICj_0lU1sfjc88",
@@ -34,6 +34,8 @@ export class Firebase {
             }
             store.dispatch(updateUserData(user));
             store.dispatch(updateLoadingStatus(false));
+            const isAdmin = user ? (await user.getIdTokenResult()).claims.isAdmin : false;
+            store.dispatch(updateAdminStatus(isAdmin ? isAdmin : false));
         });
     }
 
@@ -42,17 +44,11 @@ export class Firebase {
             email,
             password
         );
-        const currentToken = await result.user.getIdToken();
-        stickHeader = axios.interceptors.request.use((config) => {
-            config.headers = {...config.headers, Authorization: currentToken};
-            return config;
-        });
         store.dispatch(updateUserData(result.user));
     };
 
     public static signOut = async () => {
         await Firebase.auth.signOut();
-        axios.interceptors.request.eject(stickHeader);
         store.dispatch(updateUserData(null));
     };
 }

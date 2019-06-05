@@ -10,9 +10,9 @@ import org.apache.http.impl.client.HttpClientBuilder;
 
 import java.io.IOException;
 
-public class UserValidator {
+public class UserVerificator {
     public static Identity validateIdToken(String idToken) {
-        return UserValidator.sendToken(idToken);
+        return UserVerificator.sendToken(idToken);
     }
 
     private static Identity sendToken(String token) {
