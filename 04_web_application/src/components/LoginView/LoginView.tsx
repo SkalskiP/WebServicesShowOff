@@ -3,6 +3,7 @@ import TextInput from "../TextInput/TextInput";
 import {TextButton} from "../TextButton/TextButton";
 import {Firebase} from "../../utils/Firebase";
 import "./LoginView.scss";
+import {MathUtil} from "../../utils/MathUtil";
 
 export const LoginView: React.FC<{}> = () => {
     const [loginState, setLoginState] = useState("login");
@@ -37,6 +38,23 @@ export const LoginView: React.FC<{}> = () => {
         color: "#ffffff"
     };
 
+    const getBubbles = () => {
+        let bubbles = [];
+
+        for (let index = 0; index < 15; index++) {
+            const bubbleRadius = MathUtil.getRandomInt(20, 120);
+            const bubbleStyle:React.CSSProperties = {
+                position: "absolute",
+                width: bubbleRadius,
+                height: bubbleRadius,
+                left: MathUtil.getRandomInt(10, 90) + "%",
+                top: MathUtil.getRandomInt(10, 90) + "%"
+            };
+            bubbles.push(<div className="Bubble" style={bubbleStyle}/>)
+        }
+        return bubbles;
+    };
+
     const renderBox = () => {
         switch (loginState) {
             case "login":
@@ -68,29 +86,41 @@ export const LoginView: React.FC<{}> = () => {
                 );
             case "reset":
                 return (
-                  <>
-                      <TextInput
-                          label={"Email"}
-                          key={"email"}
-                          isPassword={false}
-                          onChange={onEmailChange}
-                          inputStyle={inputStyle}
-                          barStyle={barStyle}
-                          labelStyle={labelStyle}
-                      />
-                      <div className="ButtonsWrapper">
-                          <TextButton label={"Reset Password"} onClick={onForgotPasswordSubmit}/>
-                      </div>
-                  </>
+                    <>
+                        <TextInput
+                            label={"Email"}
+                            key={"email"}
+                            isPassword={false}
+                            onChange={onEmailChange}
+                            inputStyle={inputStyle}
+                            barStyle={barStyle}
+                            labelStyle={labelStyle}
+                        />
+                        <div className="ButtonsWrapper">
+                            <TextButton label={"Reset Password"} onClick={onForgotPasswordSubmit}/>
+                        </div>
+                    </>
                 );
             default:
                 return null;
         }
     };
 
+
     return (
         <div className="LoginView">
             <img alt={"logo"} src={"/logo.png"}/>
+            <img
+                className="LogoImage"
+                alt={"logo"}
+                src={"/logo.png"}
+            />
+            <img
+                className="LogoText"
+                alt={"logo2"}
+                src={"/logo2.png"}
+            />
+            {getBubbles()}
             <div className="LoginContainer">
                 {renderBox()}
             </div>
