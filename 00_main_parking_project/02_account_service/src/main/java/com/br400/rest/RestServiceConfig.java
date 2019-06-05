@@ -1,8 +1,8 @@
-package com.br400.RestServices;
+package com.br400.rest;
 
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
 
-@ApplicationPath("/api")
+@ApplicationPath("/rest")
 public class RestServiceConfig extends Application {
 }

@@ -1,4 +1,4 @@
-import React, {useCallback,} from "react";
+import React, {useCallback, useState,} from "react";
 import TextInput from "../TextInput/TextInput";
 import {TextButton} from "../TextButton/TextButton";
 import {Firebase} from "../../utils/Firebase";
@@ -6,15 +6,25 @@ import "./LoginView.scss";
 import {MathUtil} from "../../utils/MathUtil";
 
 export const LoginView: React.FC<{}> = () => {
+    const [loginState, setLoginState] = useState("login");
     let loginText = "";
     let passwordText = "";
+    let emailText = "";
 
     const onLoginChange = useCallback(value => (loginText = value), []);
     const onPasswordChange = useCallback(value => (passwordText = value), []);
+    const onEmailChange= useCallback(value => (emailText = value), []);
+
     const onSubmit = useCallback(() => Firebase.signIn(loginText, passwordText), [
         loginText,
         passwordText
     ]);
+
+    const onForgotPassword= useCallback(() => setLoginState("reset"), [loginState]);
+    const onForgotPasswordSubmit = useCallback(() => {
+        Firebase.auth.sendPasswordResetEmail(emailText);
+        setLoginState("login");
+    }, [emailText]);
 
     const inputStyle:React.CSSProperties = {
         color: "#ffffff"
@@ -45,6 +55,57 @@ export const LoginView: React.FC<{}> = () => {
         return bubbles;
     };
 
+    const renderBox = () => {
+        switch (loginState) {
+            case "login":
+                return (
+                    <>
+                        <TextInput
+                            label={"Login"}
+                            key={"login"}
+                            isPassword={false}
+                            onChange={onLoginChange}
+                            inputStyle={inputStyle}
+                            barStyle={barStyle}
+                            labelStyle={labelStyle}
+                        />
+                        <TextInput
+                            label={"Password"}
+                            key={"password"}
+                            isPassword={true}
+                            onChange={onPasswordChange}
+                            inputStyle={inputStyle}
+                            barStyle={barStyle}
+                            labelStyle={labelStyle}
+                        />
+                        <div className="ButtonsWrapper">
+                            <TextButton label={"Sign in"} onClick={onSubmit}/>
+                            <TextButton label={"Forgot password?"} onClick={onForgotPassword}/>
+                        </div>
+                    </>
+                );
+            case "reset":
+                return (
+                    <>
+                        <TextInput
+                            label={"Email"}
+                            key={"email"}
+                            isPassword={false}
+                            onChange={onEmailChange}
+                            inputStyle={inputStyle}
+                            barStyle={barStyle}
+                            labelStyle={labelStyle}
+                        />
+                        <div className="ButtonsWrapper">
+                            <TextButton label={"Reset Password"} onClick={onForgotPasswordSubmit}/>
+                        </div>
+                    </>
+                );
+            default:
+                return null;
+        }
+    };
+
     return (
         <div className="LoginView">
             <img
@@ -59,28 +120,7 @@ export const LoginView: React.FC<{}> = () => {
             />
             {getBubbles()}
             <div className="LoginContainer">
-                <TextInput
-                    label={"Login"}
-                    key={"login"}
-                    isPassword={false}
-                    onChange={onLoginChange}
-                    inputStyle={inputStyle}
-                    barStyle={barStyle}
-                    labelStyle={labelStyle}
-                />
-                <TextInput
-                    label={"Previous password"}
-                    key={"previous_password"}
-                    isPassword={true}
-                    onChange={onPasswordChange}
-                    inputStyle={inputStyle}
-                    barStyle={barStyle}
-                    labelStyle={labelStyle}
-                />
-                <div className="ButtonsWrapper">
-                    <TextButton label={"Sign in"} onClick={onSubmit}/>
-                    <TextButton label={"Forgot password?"} onClick={null}/>
-                </div>
+                {renderBox()}
             </div>
         </div>
     );

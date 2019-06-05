@@ -2,11 +2,9 @@ package rest.parking_spot;
 
 import dao.ParkingSpotDAO;
 import dto.ParkingSpotDTO;
+import util.UserValidator;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.List;
@@ -16,7 +14,10 @@ public class ParkingSpotRestService {
 
     @GET
     @Produces({MediaType.APPLICATION_JSON})
-    public Response getParkingSpots() {
+    public Response getParkingSpots(@HeaderParam("Authorization") String token) {
+        if (token == null || !UserValidator.validateIdToken(token).getVerificationStatus()) {
+            return Response.status(Response.Status.UNAUTHORIZED).build();
+        }
         List<ParkingSpotDTO> parkingSpots = ParkingSpotDAO.getInstance().getItems();
         return Response.ok().entity(parkingSpots).build();
     }
@@ -24,7 +25,10 @@ public class ParkingSpotRestService {
     @GET
     @Path("/{id}")
     @Produces({MediaType.APPLICATION_JSON})
-    public Response getParkingSpotById(@PathParam("id") Integer id) {
+    public Response getParkingSpotById(@PathParam("id") Integer id, @HeaderParam("Authorization") String token) {
+        if (token == null || !UserValidator.validateIdToken(token).getVerificationStatus()) {
+            return Response.status(Response.Status.UNAUTHORIZED).build();
+        }
         ParkingSpotDTO parkingSpot = ParkingSpotDAO.getInstance().getItem(id);
         return Response.ok().entity(parkingSpot).build();
     }
