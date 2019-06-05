@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Czas generowania: 31 Maj 2019, 09:37
+-- Czas generowania: 05 Cze 2019, 11:48
 -- Wersja serwera: 5.7.25-0ubuntu0.18.04.2
 -- Wersja PHP: 7.0.33-5+ubuntu18.04.1+deb.sury.org+1
 
@@ -28,17 +28,18 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `EMPLOYEE` (
   `id` int(11) NOT NULL,
-  `id_from_account_db` int(11) NOT NULL
+  `id_from_account_db` int(11) NOT NULL,
+  `firebase_uid` varchar(40) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Zrzut danych tabeli `EMPLOYEE`
 --
 
-INSERT INTO `EMPLOYEE` (`id`, `id_from_account_db`) VALUES
-(1, 1),
-(2, 2),
-(3, 3);
+INSERT INTO `EMPLOYEE` (`id`, `id_from_account_db`, `firebase_uid`) VALUES
+(1, 1, 'keB5QeHn3mgApHOx6JmbmCyP8f73'),
+(2, 2, '0lD1uCVW5rfBVdTY94ZNDmb9tg73'),
+(3, 3, 'XrhTulUX0XXb6HwuYF5ZgO3h2Lh1');
 
 -- --------------------------------------------------------
 
@@ -66,7 +67,7 @@ INSERT INTO `PARKING_SPOT` (`id`, `number`, `occupied`, `trigger_event_uuid`, `s
 (117, 5, 0, NULL, 1),
 (118, 6, 0, NULL, 1),
 (119, 7, 0, NULL, 1),
-(120, 1, 0, NULL, 2),
+(120, 1, 1, '89f4012b-b1e4-4ac9-937a-0ebb6de5b714', 2),
 (121, 2, 0, NULL, 2),
 (122, 3, 0, NULL, 2),
 (123, 4, 0, NULL, 2),
@@ -96,7 +97,7 @@ INSERT INTO `PARKING_SPOT` (`id`, `number`, `occupied`, `trigger_event_uuid`, `s
 (147, 7, 0, NULL, 6),
 (148, 1, 0, NULL, 7),
 (149, 2, 0, NULL, 7),
-(150, 3, 0, NULL, 7),
+(150, 3, 1, 'f5164600-b98c-466d-817d-f02cc50e203d', 7),
 (151, 4, 0, NULL, 7),
 (152, 1, 0, NULL, 8),
 (153, 2, 0, NULL, 8),
@@ -222,7 +223,20 @@ INSERT INTO `PARKING_TICKET` (`id`, `parking_spot_id`, `ticket_type_id`, `arriva
 (50, 150, 6, '2019-05-31 06:41:53', '2019-05-31 06:42:16', '2019-05-31 06:44:16', '2019-05-31 06:45:23', 'CLOSED'),
 (57, 190, 5, '2019-05-31 07:04:12', '2019-05-31 07:04:19', '2019-05-31 07:05:19', '2019-05-31 07:04:25', 'CLOSED'),
 (58, 200, 5, '2019-05-31 07:10:20', '2019-05-31 07:10:38', '2019-05-31 07:11:38', '2019-05-31 07:10:45', 'CLOSED'),
-(59, 195, 5, '2019-05-31 07:24:13', '2019-05-31 07:24:23', '2019-05-31 07:25:23', '2019-05-31 07:24:29', 'CLOSED');
+(59, 195, 5, '2019-05-31 07:24:13', '2019-05-31 07:24:23', '2019-05-31 07:25:23', '2019-05-31 07:24:29', 'CLOSED'),
+(99, 113, 5, '2019-06-01 21:47:00', '2019-06-01 21:47:21', '2019-06-01 21:48:21', '2019-06-01 22:10:15', 'CLOSED'),
+(101, 113, 5, '2019-06-03 17:45:20', '2019-06-03 17:48:20', '2019-06-03 17:49:20', '2019-06-03 20:36:50', 'CLOSED'),
+(103, 200, 5, '2019-06-03 18:32:25', '2019-06-03 18:33:49', '2019-06-03 18:34:49', '2019-06-03 20:39:12', 'CLOSED'),
+(105, 210, NULL, '2019-06-03 18:39:52', NULL, NULL, '2019-06-03 18:44:45', 'CLOSED'),
+(106, 215, NULL, '2019-06-03 18:39:56', NULL, NULL, '2019-06-03 18:44:50', 'CLOSED'),
+(107, 120, NULL, '2019-06-03 18:40:01', NULL, NULL, '2019-06-03 18:44:41', 'CLOSED'),
+(108, 115, NULL, '2019-06-03 19:08:20', NULL, NULL, '2019-06-03 19:25:43', 'CLOSED'),
+(109, 200, NULL, '2019-06-03 19:08:26', NULL, NULL, '2019-06-03 19:25:52', 'CLOSED'),
+(110, 120, 5, '2019-06-03 19:33:34', '2019-06-03 19:34:01', '2019-06-03 19:35:01', '2019-06-03 19:35:19', 'CLOSED'),
+(111, 130, NULL, '2019-06-03 19:33:39', NULL, NULL, '2019-06-03 19:35:33', 'CLOSED'),
+(112, 120, NULL, '2019-06-04 22:37:50', NULL, NULL, NULL, 'UNPAID'),
+(113, 140, NULL, '2019-06-05 09:21:32', NULL, NULL, '2019-06-05 09:23:35', 'CLOSED'),
+(114, 150, 5, '2019-06-05 09:23:08', '2019-06-05 09:23:19', '2019-06-05 09:24:19', NULL, 'ALARM');
 
 -- --------------------------------------------------------
 
@@ -289,8 +303,8 @@ INSERT INTO `TICKET_TYPE` (`id`, `name`, `price`, `duration_minutes`) VALUES
 (2, '2 hour parking time', 3, 120),
 (3, '3 hour parking time', 6, 180),
 (4, '1 day parking time', 60, 1440),
-(5, '1 minut paking time TEST', 0, 1),
-(6, '2 minut paking time TEST', 0, 2);
+(5, '1 minut TEST', 0, 1),
+(6, '2 minut TEST', 0, 2);
 
 -- --------------------------------------------------------
 
@@ -382,7 +396,7 @@ ALTER TABLE `PARKING_SPOT`
 -- AUTO_INCREMENT dla tabeli `PARKING_TICKET`
 --
 ALTER TABLE `PARKING_TICKET`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=115;
 --
 -- AUTO_INCREMENT dla tabeli `STREET`
 --
