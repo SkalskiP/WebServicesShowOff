@@ -16,7 +16,7 @@ export default class DashboardView extends React.Component<{}, IState> {
         tableData: []
     };
 
-    protected headerLabels: string[] = ["Id", "Street", "Number", "Status"];
+    protected headerLabels: string[] = ["Id", "Zone", "Street", "Number", "Status"];
 
     public Url:string = Settings.SERVER_NAME + "/" + Settings.DASHBOARD_REQUEST_PATH;
 
@@ -47,6 +47,7 @@ export default class DashboardView extends React.Component<{}, IState> {
             <div className="TableContent" style={style}>
                 {this.state.tableData.map((data: IParkingSpot) => <div className="TableRow">
                     <div className="TableCell">{data.id}</div>
+                    <div className="TableCell">{data.zone}</div>
                     <div className="TableCell">{data.street}</div>
                     <div className="TableCell">{data.number}</div>
                     <div className="TableCell">{data.status}</div>
@@ -59,7 +60,7 @@ export default class DashboardView extends React.Component<{}, IState> {
         return(
             <div className="DashboardView">
                 <TableBox
-                    tableWidth={800}
+                    tableWidth={1000}
                     renderHeader={this.renderHeader}
                     headerHeight={50}
                     renderContent={this.renderContent}

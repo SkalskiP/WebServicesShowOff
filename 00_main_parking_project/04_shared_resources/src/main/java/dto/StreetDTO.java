@@ -22,7 +22,7 @@ public class StreetDTO extends AbstractDTO {
 
     @ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(name = "zone_id", referencedColumnName = "id")
-    @JsonBackReference
+    @JsonIgnoreProperties("streets")
     private ZoneDTO zone;
 
     @OneToMany(fetch=FetchType.LAZY, mappedBy="street")

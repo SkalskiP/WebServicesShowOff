@@ -30,9 +30,9 @@ public class ParkingSpotDTO extends AbstractDTO {
     @JsonIgnoreProperties("parkingSpots")
     private StreetDTO street;
 
-    @OneToMany(fetch=FetchType.LAZY, mappedBy="parkingSpot")
-    @JsonIgnoreProperties("parkingSpots")
-    private Set<ParkingTicketDTO> parkingTickets;
+//    @OneToMany(fetch=FetchType.LAZY, mappedBy="parkingSpot")
+//    @JsonIgnoreProperties("parkingSpots")
+//    private Set<ParkingTicketDTO> parkingTickets;
 
     @Override
     public Integer getId() {
@@ -67,13 +67,13 @@ public class ParkingSpotDTO extends AbstractDTO {
         this.street = street;
     }
 
-    public Set<ParkingTicketDTO> getParkingTickets() {
-        return parkingTickets;
-    }
-
-    public void setParkingTickets(Set<ParkingTicketDTO> parkingTickets) {
-        this.parkingTickets = parkingTickets;
-    }
+//    public Set<ParkingTicketDTO> getParkingTickets() {
+//        return parkingTickets;
+//    }
+//
+//    public void setParkingTickets(Set<ParkingTicketDTO> parkingTickets) {
+//        this.parkingTickets = parkingTickets;
+//    }
 
     public String getTriggerEventUuid() {
         return triggerEventUuid;

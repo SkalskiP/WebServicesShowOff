@@ -25,7 +25,6 @@ public class ZoneDTO extends AbstractDTO {
     private EmployeeDTO employee;
 
     @OneToMany(fetch=FetchType.LAZY, mappedBy="zone")
-    @JsonManagedReference
     private Set<StreetDTO> streets;
 
     @Override

@@ -19,6 +19,7 @@ export class ResponseToObjectMapper {
     public static forDashboardRequest = (responseObject:any):IParkingSpot => {
         return {
             id: responseObject.id ? responseObject.id : "",
+            zone: responseObject.street.zone.name ?  responseObject.street.zone.name : "",
             street: responseObject.street ? responseObject.street.name : "",
             number: responseObject ? responseObject.number : "",
             status: responseObject.occupied ? "OCCUPIED" : "EMPTY"
