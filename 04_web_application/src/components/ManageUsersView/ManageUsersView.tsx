@@ -6,9 +6,11 @@ import './ManageUsersView.scss';
 import Settings from '../../settings/Settings';
 import classnames from 'classnames';
 import {TextButton} from '../TextButton/TextButton';
+import AccountSettingsView from '../AccountSettingsView/AccountSettingsView';
 
 export const ManageUsersView: React.FC<{}> = () => {
   const [tableData, setTableData] = useState<User[]>([]);
+  const [editedUser, setEditedUser] = useState<User | undefined>(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -36,16 +38,26 @@ export const ManageUsersView: React.FC<{}> = () => {
           <div className="TableCell">{data.displayName}</div>
           <div className={classnames('TableCell', 'WideTableCell')}>{data.email}</div>
           <div className="TableCell">
-            <TextButton label={'Edit'} onClick={() => console.log(data.uid)} />
+            <TextButton label={'Edit'} onClick={() => setEditedUser(data)} />
           </div>
         </div>
       ))}
     </div>
   );
 
-  return (
-    <div className="ManageUsersView">
-      <TableBox tableWidth={1000} renderHeader={renderHeader} headerHeight={50} renderContent={renderContent} />
-    </div>
-  );
+  if (!!editedUser)
+    return (
+      <>
+        <div className="BackButtonContainer">
+          <TextButton label={'Back'} onClick={() => setEditedUser(undefined)} />
+        </div>
+        <AccountSettingsView editedUser={editedUser} />
+      </>
+    );
+  else
+    return (
+      <div className="ManageUsersView">
+        <TableBox tableWidth={1000} renderHeader={renderHeader} headerHeight={50} renderContent={renderContent} />
+      </div>
+    );
 };
