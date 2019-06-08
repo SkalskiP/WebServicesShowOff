@@ -3,12 +3,15 @@ package util;
 import com.google.gson.Gson;
 import org.apache.commons.io.IOUtils;
 import org.apache.http.HttpResponse;
+import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.HttpClientBuilder;
+import org.apache.http.util.EntityUtils;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 
 public class UserVerificator {
     public static Identity validateIdToken(String idToken) {
@@ -24,13 +27,20 @@ public class UserVerificator {
             StringEntity postingString = new StringEntity(gson.toJson(new TokenPayload(token)));
             post.setEntity(postingString);
             post.setHeader("Content-type", "application/json");
+            post.setHeader("accept", "application/json");
             HttpResponse response = httpClient.execute(post);
-            String json = IOUtils.toString(response.getEntity().getContent());
-            return gson.fromJson(json, Identity.class);
+            System.out.println("TEST");
+            String result = EntityUtils.toString(response.getEntity());
+            System.out.println(result);
+            return gson.fromJson(result, Identity.class);
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        } catch (ClientProtocolException e) {
+            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        return null;
+        return new Identity(false, false, null);
     }
 }

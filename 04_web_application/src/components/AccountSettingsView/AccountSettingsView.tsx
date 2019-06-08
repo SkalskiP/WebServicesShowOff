@@ -1,10 +1,10 @@
-import React, {useState} from "react";
+import React, {useState} from 'react';
 import './AccountSettingsView.scss';
-import TextInput from "../TextInput/TextInput";
-import {TextButton} from "../TextButton/TextButton";
-import {connect} from "react-redux";
-import {AppState} from "../../store";
-import {User} from "firebase";
+import TextInput from '../TextInput/TextInput';
+import {TextButton} from '../TextButton/TextButton';
+import {connect} from 'react-redux';
+import {AppState} from '../../store';
+import {User} from 'firebase';
 import axios from 'axios';
 import  Scrollbars  from 'react-custom-scrollbars';
 
@@ -22,7 +22,11 @@ const AccountSettingsView: React.FC<Props> = ({user}) => {
 
     const onSubmit = () => {
         axios.patch(`localhost:8080/auth/api/user/${user.uid}`, {
-
+        displayName: name,
+            email: email,
+            password: newPassword,
+            photoUrl: avatarURL,
+            phoneNumber: phoneNumber,
         })
     };
 
