@@ -24,13 +24,18 @@ const AccountSettingsView: React.FC<Props> = ({loggedUser, editedUser}) => {
   const [phoneNumber, setPhoneNumber] = useState(user.phoneNumber);
 
   const onSubmit = () => {
-    axios.patch(`localhost:8080/auth/api/user/${user.uid}`, {
+    let payload = {
       displayName: name,
       email: email,
-      password: newPassword,
       photoUrl: avatarURL,
       phoneNumber: phoneNumber,
-    });
+    };
+
+    if (newPassword !== '' && !!newPassword && newPassword === repeatPassword) {
+      payload = Object.assign(payload, {password: newPassword});
+    }
+
+    axios.patch(`http://localhost:8080/auth/api/user/${user.uid}`, payload);
   };
 
   return (

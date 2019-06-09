@@ -29,11 +29,19 @@ public class MessagesRestService {
     @GET
     @Produces({MediaType.APPLICATION_JSON})
     public Response getMessagesAll(@HeaderParam("authorization") String token) {
-        if (token == null || !UserVerificator.validateIdToken(token).getVerificationStatus()) {
+        Identity identity = UserVerificator.validateIdToken(token);
+        if (token == null || !identity.getVerificationStatus()) {
             return Response.status(Response.Status.UNAUTHORIZED).build();
         }
         List<ParkingSystemNotificationMessage> allNotifications = NotificationStore.getInstance().getNotificationsAll();
-        return Response.ok().entity(this.filterInactiveNotifications(allNotifications, token)).build();
+        List<ParkingSystemNotificationMessage> filtered = this.filterInactiveNotifications(allNotifications, token);
+
+        if (identity.isAdmin()) {
+            return Response.ok().entity(filtered).build();
+        } else {
+            EmployeeDTO employee = EmployeeDAO.getInstance().getByFirebaseUid(identity.getUid());
+            return Response.ok().entity(filtered.stream().filter(notification -> notification.getEmployeeId().equals(employee.getId())).collect(Collectors.toList())).build();
+        }
     }
 
     @GET
@@ -48,10 +56,14 @@ public class MessagesRestService {
         List<ParkingSystemNotificationMessage> filtered = this.filterInactiveNotifications(allNotifications, token);
 
         if (identity.isAdmin()) {
-            EmployeeDTO employee = EmployeeDAO.getInstance().getByFirebaseUid(identity.getUid());
-            return Response.ok().entity(filtered.stream().filter(notification -> notification.getEmployeeId().equals(employee.getId())).collect(Collectors.toList())).build();
-        } else {
             return Response.ok().entity(filtered).build();
+        } else {
+            EmployeeDTO employee = EmployeeDAO.getInstance().getByFirebaseUid(identity.getUid());
+            if (employee.getId() == id) {
+                return Response.ok().entity(filtered).build();
+            } else {
+                return Response.status(Response.Status.UNAUTHORIZED).build();
+            }
         }
     }
 
