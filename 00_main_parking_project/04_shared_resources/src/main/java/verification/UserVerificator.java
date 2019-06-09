@@ -1,7 +1,6 @@
-package util;
+package verification;
 
 import com.google.gson.Gson;
-import org.apache.commons.io.IOUtils;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;

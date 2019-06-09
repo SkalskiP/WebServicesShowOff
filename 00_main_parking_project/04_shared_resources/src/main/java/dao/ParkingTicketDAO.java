@@ -50,4 +50,23 @@ public class ParkingTicketDAO extends AbstractDAO<ParkingTicketDTO> {
         query.setParameter("toDate", to);
         return (Long) query.getSingleResult();
     }
+
+    public List<ParkingTicketDTO> findTicketsForUserFromTimePeriod(Integer id, LocalDateTime from, LocalDateTime to, Integer limit, Integer offset) {
+        TypedQuery query = entityManager.createQuery(
+                "SELECT c FROM " + className + " c JOIN c.parkingSpot spot JOIN spot.street s JOIN s.zone z JOIN z.employee e WHERE e.id = :id AND (c.arrivalTime BETWEEN :fromDate AND :toDate) ORDER BY c.arrivalTime DESC", clazz);
+        query.setParameter("fromDate", from);
+        query.setParameter("toDate", to);
+        query.setParameter("id", id);
+        query.setFirstResult(offset); // equivalent to OFFSET
+        query.setMaxResults(limit); // equivalent to LIMIT
+        return query.getResultList();
+    }
+
+    public Long findTicketsForUserFromTimePeriodCount(Integer id, LocalDateTime from, LocalDateTime to) {
+        TypedQuery query = entityManager.createQuery("SELECT COUNT(c) FROM " + className + " c JOIN c.parkingSpot spot JOIN spot.street s JOIN s.zone z JOIN z.employee e WHERE e.id = :id AND (c.arrivalTime BETWEEN :fromDate AND :toDate)", Long.class);
+        query.setParameter("fromDate", from);
+        query.setParameter("toDate", to);
+        query.setParameter("id", id);
+        return (Long) query.getSingleResult();
+    }
 }

@@ -1,15 +1,18 @@
 package rest.parking_ticket;
 
+import dao.EmployeeDAO;
 import dao.ParkingSpotDAO;
 import dao.ParkingTicketDAO;
 import dao.TicketTypeDAO;
 import domain.ParkingTicketStatus;
+import dto.EmployeeDTO;
 import dto.ParkingSpotDTO;
 import dto.ParkingTicketDTO;
 import dto.TicketTypeDTO;
 import jms.NotificationMessageSource;
 import timer_guard.ParkingTicketGuard;
-import util.UserVerificator;
+import verification.Identity;
+import verification.UserVerificator;
 
 import javax.ejb.EJB;
 import javax.ws.rs.*;
@@ -74,16 +77,26 @@ public class ParkingTicketRestService {
     @Produces({MediaType.APPLICATION_JSON})
     public Response getParkingTicketsReport(@QueryParam("from") String from, @QueryParam("to") String to,
                                             @QueryParam("limit") Integer limit, @QueryParam("offset") Integer offset, @HeaderParam("Authorization") String token) {
-        if (token == null || !UserVerificator.validateIdToken(token).getVerificationStatus()) {
+        Identity identity = UserVerificator.validateIdToken(token);
+        if (token == null || !identity.getVerificationStatus()) {
             return Response.status(Response.Status.UNAUTHORIZED).build();
         }
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         LocalDateTime fromDateTime = LocalDateTime.parse(from, formatter);
         LocalDateTime toDateTime = LocalDateTime.parse(to, formatter);
-        List<ParkingTicketDTO> parkingTicketsData = ParkingTicketDAO.getInstance()
-                .findTicketsFromTimePeriod(fromDateTime, toDateTime, limit, offset);
-        Long parkingTicketCount = ParkingTicketDAO.getInstance()
-                .findTicketsFromTimePeriodCount(fromDateTime, toDateTime);
-        return Response.ok().entity(new TicketReportData(parkingTicketsData, parkingTicketCount)).build();
+        if (identity.isAdmin()) {
+            List<ParkingTicketDTO> parkingTicketsData = ParkingTicketDAO.getInstance()
+                    .findTicketsFromTimePeriod(fromDateTime, toDateTime, limit, offset);
+            Long parkingTicketCount = ParkingTicketDAO.getInstance()
+                    .findTicketsFromTimePeriodCount(fromDateTime, toDateTime);
+            return Response.ok().entity(new TicketReportData(parkingTicketsData, parkingTicketCount)).build();
+        } else {
+            EmployeeDTO employee = EmployeeDAO.getInstance().getByFirebaseUid(identity.getUid());
+            List<ParkingTicketDTO> parkingTicketsData = ParkingTicketDAO.getInstance()
+                    .findTicketsForUserFromTimePeriod(employee.getId(), fromDateTime, toDateTime, limit, offset);
+            Long parkingTicketCount = ParkingTicketDAO.getInstance()
+                    .findTicketsForUserFromTimePeriodCount(employee.getId(), fromDateTime, toDateTime);
+            return Response.ok().entity(new TicketReportData(parkingTicketsData, parkingTicketCount)).build();
+        }
     }
 }

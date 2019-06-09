@@ -2,7 +2,7 @@ package rest.message;
 
 import dao.EmployeeDAO;
 import dto.EmployeeDTO;
-import util.UserVerificator;
+import verification.UserVerificator;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;

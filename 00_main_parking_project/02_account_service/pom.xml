@@ -33,8 +33,10 @@
         <dependency>
             <groupId>org.jboss.resteasy</groupId>
             <artifactId>resteasy-jaxrs-all</artifactId>
-            <version>3.6.3.Final</version>
+            <version>3.7.0.Final</version>
+            <type>pom</type>
         </dependency>
+
 
         <dependency>
             <groupId>javax</groupId>
