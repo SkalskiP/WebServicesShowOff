@@ -2,21 +2,21 @@ package verification;
 
 public class Identity {
     private boolean verificationStatus;
-    private boolean isAdmin;
+    private boolean admin;
     private String uid;
 
     public Identity(boolean verificationStatus, boolean isAdmin, String uid) {
         this.verificationStatus = verificationStatus;
         this.uid = uid;
-        this.isAdmin = isAdmin;
+        this.admin = isAdmin;
     }
 
     public boolean isAdmin() {
-        return isAdmin;
+        return admin;
     }
 
     public void setAdmin(boolean admin) {
-        isAdmin = admin;
+        this.admin = admin;
     }
 
     public boolean getVerificationStatus() {

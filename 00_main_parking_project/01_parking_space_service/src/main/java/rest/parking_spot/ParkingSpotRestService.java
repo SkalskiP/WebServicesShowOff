@@ -2,6 +2,7 @@ package rest.parking_spot;
 
 import dao.ParkingSpotDAO;
 import dto.ParkingSpotDTO;
+import verification.Identity;
 import verification.UserVerificator;
 
 import javax.ws.rs.*;
@@ -15,10 +16,22 @@ public class ParkingSpotRestService {
     @GET
     @Produces({MediaType.APPLICATION_JSON})
     public Response getParkingSpots(@HeaderParam("Authorization") String token) {
-        if (token == null || !UserVerificator.validateIdToken(token).getVerificationStatus()) {
+        Identity identity = UserVerificator.validateIdToken(token);
+        if (token == null || !identity.getVerificationStatus()) {
             return Response.status(Response.Status.UNAUTHORIZED).build();
         }
-        List<ParkingSpotDTO> parkingSpots = ParkingSpotDAO.getInstance().getItems();
+
+        List<ParkingSpotDTO> parkingSpots;
+
+        System.out.println("DUPA");
+        System.out.println(identity.isAdmin());
+
+        if (identity.isAdmin()) {
+            parkingSpots = ParkingSpotDAO.getInstance().getItems();
+        } else {
+            parkingSpots = ParkingSpotDAO.getInstance().getByFirebaseUid(identity.getUid());
+        }
+
         return Response.ok().entity(parkingSpots).build();
     }
 
