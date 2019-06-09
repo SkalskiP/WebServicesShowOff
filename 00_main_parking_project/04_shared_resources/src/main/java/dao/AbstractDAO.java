@@ -1,8 +1,6 @@
 package dao;
 
 import dto.AbstractDTO;
-import org.hibernate.Criteria;
-import org.hibernate.criterion.Projections;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;

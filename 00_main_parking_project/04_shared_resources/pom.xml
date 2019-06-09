@@ -42,8 +42,21 @@
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
             <version>2.7</version>
-        </dependency>w
+        </dependency>
 
+        <!-- DATABASE -->
+
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>5.4.2.Final</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.clojure</groupId>
+            <artifactId>java.jdbc</artifactId>
+            <version>0.7.9</version>
+        </dependency>
     </dependencies>
 
 </project>

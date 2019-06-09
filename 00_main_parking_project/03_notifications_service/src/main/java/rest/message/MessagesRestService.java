@@ -1,9 +1,12 @@
 package rest.message;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import dao.EmployeeDAO;
+import dto.EmployeeDTO;
 import dto.ParkingSpotDTO;
 import jms.ParkingSystemNotificationMessage;
 import store.NotificationStore;
+import verification.Identity;
 import verification.UserVerificator;
 
 import javax.ws.rs.*;
@@ -18,6 +21,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Path("/employees")
 public class MessagesRestService {
@@ -36,28 +40,35 @@ public class MessagesRestService {
     @Path("/{id}")
     @Produces({MediaType.APPLICATION_JSON})
     public Response getMessagesEmployeeById(@PathParam("id") Integer id, @HeaderParam("authorization") String token) {
-        if (token == null || !UserVerificator.validateIdToken(token).getVerificationStatus()) {
+        Identity identity = UserVerificator.validateIdToken(token);
+        if (token == null || !identity.getVerificationStatus()) {
             return Response.status(Response.Status.UNAUTHORIZED).build();
         }
         List<ParkingSystemNotificationMessage> allNotifications = NotificationStore.getInstance().getNotificationsByEmployee(id);
-        return Response.ok().entity(this.filterInactiveNotifications(allNotifications, token)).build();
+        List<ParkingSystemNotificationMessage> filtered = this.filterInactiveNotifications(allNotifications, token);
+
+        if (identity.isAdmin()) {
+            EmployeeDTO employee = EmployeeDAO.getInstance().getByFirebaseUid(identity.getUid());
+            return Response.ok().entity(filtered.stream().filter(notification -> notification.getEmployeeId().equals(employee.getId())).collect(Collectors.toList())).build();
+        } else {
+            return Response.ok().entity(filtered).build();
+        }
     }
 
     private List<ParkingSystemNotificationMessage> filterInactiveNotifications(List<ParkingSystemNotificationMessage> notifications, String authToken) {
         ArrayList activeNotifications = new ArrayList();
 
-        for (ParkingSystemNotificationMessage notificationMessage : notifications){
+        for (ParkingSystemNotificationMessage notificationMessage : notifications) {
             try {
                 Optional<ParkingSpotDTO> parkingSpot = this.sendGET(notificationMessage.getSpotId(), authToken);
                 if (parkingSpot.isPresent() && parkingSpot.get().getOccupied() && Objects.equals(parkingSpot.get().getTriggerEventUuid(), notificationMessage.getTriggerEventUuid())) {
                     activeNotifications.add(notificationMessage);
                 }
-            }
-            catch (IOException e) {
+            } catch (IOException e) {
                 e.printStackTrace();
             }
         }
-        return  activeNotifications;
+        return activeNotifications;
     }
 
     private Optional<ParkingSpotDTO> sendGET(Integer spotId, String authToken) throws IOException {
