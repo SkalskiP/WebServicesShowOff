@@ -59,7 +59,7 @@ public class MessagesRestService {
             return Response.ok().entity(filtered).build();
         } else {
             EmployeeDTO employee = EmployeeDAO.getInstance().getByFirebaseUid(identity.getUid());
-            if (employee.getId() == id) {
+            if (employee.getId().equals(id)) {
                 return Response.ok().entity(filtered).build();
             } else {
                 return Response.status(Response.Status.UNAUTHORIZED).build();
