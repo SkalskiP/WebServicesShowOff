@@ -1,4 +1,4 @@
-package util;
+package verification;
 
 public class TokenPayload {
     private String token;

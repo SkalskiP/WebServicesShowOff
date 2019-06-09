@@ -2,6 +2,8 @@ package dao;
 
 import dto.ParkingSpotDTO;
 
+import java.util.List;
+
 public class ParkingSpotDAO extends AbstractDAO<ParkingSpotDTO> {
 
     private ParkingSpotDAO() {
@@ -20,5 +22,4 @@ public class ParkingSpotDAO extends AbstractDAO<ParkingSpotDTO> {
         }
         return instance;
     }
-
 }

@@ -2,7 +2,7 @@ package rest.parking_spot;
 
 import dao.ParkingSpotDAO;
 import dto.ParkingSpotDTO;
-import util.UserVerificator;
+import verification.UserVerificator;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;

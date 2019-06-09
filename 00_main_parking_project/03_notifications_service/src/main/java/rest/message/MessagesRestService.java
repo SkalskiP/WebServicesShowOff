@@ -4,11 +4,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import dto.ParkingSpotDTO;
 import jms.ParkingSystemNotificationMessage;
 import store.NotificationStore;
+import verification.UserVerificator;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.io.BufferedReader;
@@ -21,31 +19,36 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
-
 @Path("/employees")
 public class MessagesRestService {
 
     @GET
     @Produces({MediaType.APPLICATION_JSON})
-    public Response getMessagesAll() {
+    public Response getMessagesAll(@HeaderParam("authorization") String token) {
+        if (token == null || !UserVerificator.validateIdToken(token).getVerificationStatus()) {
+            return Response.status(Response.Status.UNAUTHORIZED).build();
+        }
         List<ParkingSystemNotificationMessage> allNotifications = NotificationStore.getInstance().getNotificationsAll();
-        return Response.ok().entity(this.filterInactiveNotifications(allNotifications)).build();
+        return Response.ok().entity(this.filterInactiveNotifications(allNotifications, token)).build();
     }
 
     @GET
     @Path("/{id}")
     @Produces({MediaType.APPLICATION_JSON})
-    public Response getMessagesEmployeeById(@PathParam("id") Integer id) {
+    public Response getMessagesEmployeeById(@PathParam("id") Integer id, @HeaderParam("authorization") String token) {
+        if (token == null || !UserVerificator.validateIdToken(token).getVerificationStatus()) {
+            return Response.status(Response.Status.UNAUTHORIZED).build();
+        }
         List<ParkingSystemNotificationMessage> allNotifications = NotificationStore.getInstance().getNotificationsByEmployee(id);
-        return Response.ok().entity(this.filterInactiveNotifications(allNotifications)).build();
+        return Response.ok().entity(this.filterInactiveNotifications(allNotifications, token)).build();
     }
 
-    private List<ParkingSystemNotificationMessage> filterInactiveNotifications(List<ParkingSystemNotificationMessage> notifications) {
+    private List<ParkingSystemNotificationMessage> filterInactiveNotifications(List<ParkingSystemNotificationMessage> notifications, String authToken) {
         ArrayList activeNotifications = new ArrayList();
 
         for (ParkingSystemNotificationMessage notificationMessage : notifications){
             try {
-                Optional<ParkingSpotDTO> parkingSpot = this.sendGET(notificationMessage.getSpotId());
+                Optional<ParkingSpotDTO> parkingSpot = this.sendGET(notificationMessage.getSpotId(), authToken);
                 if (parkingSpot.isPresent() && parkingSpot.get().getOccupied() && Objects.equals(parkingSpot.get().getTriggerEventUuid(), notificationMessage.getTriggerEventUuid())) {
                     activeNotifications.add(notificationMessage);
                 }
@@ -57,12 +60,13 @@ public class MessagesRestService {
         return  activeNotifications;
     }
 
-    private Optional<ParkingSpotDTO> sendGET(Integer spotId) throws IOException {
+    private Optional<ParkingSpotDTO> sendGET(Integer spotId, String authToken) throws IOException {
         URL obj = new URL("http://localhost:8080/rest/parking-spots/" + spotId.toString());
         ObjectMapper objectMapper = new ObjectMapper();
         HttpURLConnection con = (HttpURLConnection) obj.openConnection();
         con.setRequestMethod("GET");
         con.setRequestProperty("User-Agent", "Mozilla/5.0");
+        con.setRequestProperty("Authorization", authToken);
         int responseCode = con.getResponseCode();
         System.out.println("GET Response Code :: " + responseCode);
         if (responseCode == HttpURLConnection.HTTP_OK) { // success

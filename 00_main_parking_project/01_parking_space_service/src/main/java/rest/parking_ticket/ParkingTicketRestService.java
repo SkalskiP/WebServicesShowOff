@@ -9,7 +9,7 @@ import dto.ParkingTicketDTO;
 import dto.TicketTypeDTO;
 import jms.NotificationMessageSource;
 import timer_guard.ParkingTicketGuard;
-import util.UserVerificator;
+import verification.UserVerificator;
 
 import javax.ejb.EJB;
 import javax.ws.rs.*;

@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>notificatins_service</artifactId>
+    <artifactId>notifications_service</artifactId>
 
     <packaging>war</packaging>
 
@@ -35,14 +35,10 @@
         <dependency>
             <groupId>org.jboss.resteasy</groupId>
             <artifactId>resteasy-jaxrs-all</artifactId>
-            <version>3.6.3.Final</version>
+            <version>3.7.0.Final</version>
+            <type>pom</type>
         </dependency>
 
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
-            <version>2.5.0</version>
-        </dependency>
 
         <!-- SERIALIZING -->
         <dependency>

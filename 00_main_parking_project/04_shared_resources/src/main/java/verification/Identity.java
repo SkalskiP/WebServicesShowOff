@@ -1,4 +1,4 @@
-package util;
+package verification;
 
 public class Identity {
     private boolean verificationStatus;
