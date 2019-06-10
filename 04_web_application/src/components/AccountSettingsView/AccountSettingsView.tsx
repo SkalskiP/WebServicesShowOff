@@ -35,7 +35,7 @@ const AccountSettingsView: React.FC<Props> = ({loggedUser, editedUser}) => {
       payload = Object.assign(payload, {password: newPassword});
     }
 
-    axios.patch(`http://localhost:8080/auth/api/user/${user.uid}`, payload);
+    axios.patch(`http://localhost:8080/auth/rest/user/${user.uid}`, payload);
   };
 
   return (

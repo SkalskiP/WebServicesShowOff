@@ -1,5 +1,6 @@
 package rest;
 
+import org.jboss.resteasy.plugins.interceptors.CorsFilter;
 import rest.message.MessagesRestService;
 
 import javax.ws.rs.ApplicationPath;

@@ -1,5 +1,6 @@
 package rest;
 
+import org.jboss.resteasy.plugins.interceptors.CorsFilter;
 import rest.message.EmployeesRestService;
 import rest.parking_spot.ParkingSpotRestService;
 import rest.parking_ticket.ParkingTicketRestService;
