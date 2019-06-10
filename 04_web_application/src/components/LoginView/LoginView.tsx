@@ -4,8 +4,15 @@ import {TextButton} from "../TextButton/TextButton";
 import {Firebase} from "../../utils/Firebase";
 import "./LoginView.scss";
 import {MathUtil} from "../../utils/MathUtil";
+import {AppState} from "../../store";
+import {connect} from "react-redux";
+import classNames from 'classnames';
 
-export const LoginView: React.FC<{}> = () => {
+interface IProps {
+    lastLoginFailureMessage: string;
+}
+
+const LoginViewComponent: React.FC<IProps> = (props: IProps) => {
     const [loginState, setLoginState] = useState("login");
     let loginText = "";
     let passwordText = "";
@@ -55,6 +62,15 @@ export const LoginView: React.FC<{}> = () => {
         return bubbles;
     };
 
+    const getErrorMessageWrapperClassName = () => {
+        return classNames(
+            "ErrorMessageWrapper",
+            {
+                "active": !!props.lastLoginFailureMessage
+            }
+        );
+    };
+
     const renderBox = () => {
         switch (loginState) {
             case "login":
@@ -78,6 +94,9 @@ export const LoginView: React.FC<{}> = () => {
                             barStyle={barStyle}
                             labelStyle={labelStyle}
                         />
+                        <div className={getErrorMessageWrapperClassName()}>
+                            {props.lastLoginFailureMessage}
+                        </div>
                         <div className="ButtonsWrapper">
                             <TextButton label={"Sign in"} onClick={onSubmit}/>
                             <TextButton label={"Forgot password?"} onClick={onForgotPassword}/>
@@ -125,3 +144,11 @@ export const LoginView: React.FC<{}> = () => {
         </div>
     );
 };
+
+const mapStateToProps = (state: AppState) => ({
+    lastLoginFailureMessage: state.general.lastLoginFailureMessage,
+});
+
+export const LoginView = connect(
+    mapStateToProps,
+)(LoginViewComponent);

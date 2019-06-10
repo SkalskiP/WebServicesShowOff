@@ -2,7 +2,7 @@ import * as firebase from "firebase";
 import {store} from "../index";
 import {updateUserData} from "../store/account/actionCreators";
 import axios from 'axios';
-import {updateAdminStatus, updateLoadingStatus} from "../store/general/actionCreators";
+import {updateAdminStatus, updateLoadingStatus, updateeLastLoginFailureMessage} from "../store/general/actionCreators";
 
 const config = {
     apiKey: "AIzaSyBUk6dgMPAs7zM46FGg3ICj_0lU1sfjc88",
@@ -40,11 +40,14 @@ export class Firebase {
     }
 
     public static signIn = async (email, password) => {
-        const result = await Firebase.auth.signInWithEmailAndPassword(
-            email,
-            password
-        );
-        store.dispatch(updateUserData(result.user));
+        Firebase.auth.signInWithEmailAndPassword(email, password)
+            .then((result) => {
+                store.dispatch(updateUserData(result.user));
+                store.dispatch(updateeLastLoginFailureMessage(null))
+            }).catch((error) => {
+                store.dispatch(updateeLastLoginFailureMessage(error.message));
+            });
+
     };
 
     public static signOut = async () => {

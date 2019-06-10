@@ -1,5 +1,5 @@
-import { GeneralActionTypes } from './types';
-import { Action } from '../Action';
+import {GeneralActionTypes} from './types';
+import {Action} from '../Action';
 import {TabName} from "../../utils/types/TabName";
 import {HistoryTabName} from "../../utils/types/HistoryTabName";
 
@@ -56,4 +56,15 @@ export function updateAdminStatus (
             isAdmin,
         },
     };
+}
+
+export function updateeLastLoginFailureMessage (
+    lastLoginFailureMessage: string
+): GeneralActionTypes {
+    return {
+        type: Action.UPDATE_LOGIN_FAILURE_MESSAGE,
+        payload: {
+            lastLoginFailureMessage
+        }
+    }
 }

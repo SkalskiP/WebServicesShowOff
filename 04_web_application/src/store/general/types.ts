@@ -8,6 +8,7 @@ export type GeneralState = {
     activeHistoryTabName: HistoryTabName;
     notificationStatus: boolean;
     isAdmin: boolean;
+    lastLoginFailureMessage: string;
 };
 
 interface UpdateActiveTabName {
@@ -45,8 +46,16 @@ interface UpdateAdmin {
     };
 }
 
+interface UpdateLastLoginFailureMessage {
+    type: typeof Action.UPDATE_LOGIN_FAILURE_MESSAGE;
+    payload: {
+        lastLoginFailureMessage: string;
+    }
+}
+
 export type GeneralActionTypes = UpdateActiveTabName
     | UpdateActiveHistoryTabName
     | UpdateNotificationStatus
     | UpdateLoading
-    | UpdateAdmin;
+    | UpdateAdmin
+    | UpdateLastLoginFailureMessage;

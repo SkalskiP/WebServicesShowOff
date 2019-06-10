@@ -8,7 +8,8 @@ const initialState: GeneralState = {
     activeTabName: TabName.DASHBOARD,
     activeHistoryTabName: HistoryTabName.TODAY,
     notificationStatus: true,
-    isAdmin: false
+    isAdmin: false,
+    lastLoginFailureMessage: null,
 };
 
 export function generalReducer(
@@ -45,6 +46,12 @@ export function generalReducer(
                 ...state,
                 isAdmin: action.payload.isAdmin,
             };
+        }
+        case Action.UPDATE_LOGIN_FAILURE_MESSAGE: {
+            return {
+                ...state,
+                lastLoginFailureMessage: action.payload.lastLoginFailureMessage,
+            }
         }
         default:
             return state;
