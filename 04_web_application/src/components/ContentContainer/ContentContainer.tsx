@@ -9,39 +9,19 @@ import './ContentContainer.scss';
 import DashboardView from '../DashboardView/DashboardView';
 import NotificationsView from '../NotificationsView/NotificationsView';
 import {ManageUsersView} from '../ManageUsersView/ManageUsersView';
+import {Switch, Route} from 'react-router';
 
-interface IProps {
-  activeTabName: TabName;
-}
-
-const ContentContainerComponent = (props: IProps) => {
-  const getContent = () => {
-    switch (props.activeTabName) {
-      case TabName.SETTINGS:
-        return <AccountSettingsView />;
-      case TabName.HISTORY:
-        return <HistoryView />;
-      case TabName.DASHBOARD:
-        return <DashboardView />;
-      case TabName.NOTIFICATIONS:
-        return <NotificationsView />;
-      case TabName.MANAGE_USERS:
-        return <ManageUsersView />;
-      default:
-        return null;
-    }
-  };
-
+export const ContentContainer = () => {
   return (
     <div className="ContentContainer">
       <ContentContainerHeader />
-      {getContent()}
+      <Switch>
+        <Route exact path={'/'} component={DashboardView} />
+        <Route path={'/account'} component={AccountSettingsView} />
+        <Route path={'/history'} component={HistoryView} />
+        <Route path={'/notifications'} component={NotificationsView} />
+        <Route path={'/users'} component={ManageUsersView} />
+      </Switch>
     </div>
   );
 };
-
-const mapStateToProps = (state: AppState) => ({
-  activeTabName: state.general.activeTabName,
-});
-
-export const ContentContainer = connect(mapStateToProps)(ContentContainerComponent);

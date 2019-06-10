@@ -16,12 +16,6 @@ export function generalReducer(
     action: GeneralActionTypes
 ): GeneralState {
     switch (action.type) {
-        case Action.UPDATE_ACTIVE_TAB_NAME: {
-            return {
-                ...state,
-                activeTabName: action.payload.activeTabName,
-            };
-        }
         case Action.UPDATE_ACTIVE_HISTORY_TAB_NAME: {
             return {
                 ...state,

@@ -1,7 +1,7 @@
 export enum TabName {
-  DASHBOARD = "DASHBOARD",
-  NOTIFICATIONS = "NOTIFICATIONS",
-  HISTORY = "HISTORY",
-  MANAGE_USERS = "MANAGE_USERS",
-  SETTINGS = "SETTINGS",
+  DASHBOARD = '/',
+  NOTIFICATIONS = '/notifications',
+  HISTORY = '/history',
+  MANAGE_USERS = '/users',
+  SETTINGS = '/account',
 }
