@@ -101,7 +101,7 @@ public class UserService {
                 request.setDisplayName(payload.getDisplayName());
             }
             if (payload.getEmail() != null && !payload.getEmail().equals(user.getEmail())) {
-                request.setDisplayName(payload.getEmail());
+                request.setEmail(payload.getEmail());
             }
             if (payload.getPassword() != null) {
                 request.setPassword(payload.getPassword());
