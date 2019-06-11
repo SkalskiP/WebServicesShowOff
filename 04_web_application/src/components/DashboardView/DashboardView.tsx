@@ -8,16 +8,19 @@ import TableBox from '../TableBox/TableBox';
 import FilteringPanel from '../FilteringPanel/FilteringPanel';
 import _ from 'lodash';
 import PaginationPanel from '../PaginationPanel/PaginationPanel';
+import {LoaderView} from '../LoaderView/LoaderView';
 
 interface IState {
   tableData: IParkingSpot[];
   totalCount: number;
+  loading: boolean;
 }
 
 export default class DashboardView extends React.Component<{}, IState> {
   public state: IState = {
     tableData: [],
     totalCount: null,
+    loading: false,
   };
 
   protected headerLabels: string[] = ['Id', 'Zone', 'Street', 'Number', 'Status'];
@@ -28,6 +31,7 @@ export default class DashboardView extends React.Component<{}, IState> {
   protected streetName: string = '';
 
   public requestData = () => {
+    this.setState({loading: true});
     axios
       .get(this.url, {
         params: {
@@ -42,6 +46,7 @@ export default class DashboardView extends React.Component<{}, IState> {
         this.setState({
           tableData: tableData,
           totalCount: response.data.totalCount,
+          loading: false,
         });
       });
   };
@@ -120,18 +125,22 @@ export default class DashboardView extends React.Component<{}, IState> {
     );
   };
 
-    public render() {
-        return(
-            <div className="DashboardView">
-                <TableBox
-                    totalTableContentWidth={1000}
-                    renderHeader={this.renderHeader}
-                    headerHeight={50}
-                    renderContent={this.state.tableData.length !== 0 ? this.renderContent : null}
-                    renderFooter={this.renderFooter}
-                    noDataMessage={"I don't have any \n Parking Spot data to show"}
-                />
-            </div>
-        )
-    }
+  public render() {
+    return (
+      <div className="DashboardView">
+        {this.state.loading ? (
+          <LoaderView />
+        ) : (
+          <TableBox
+            totalTableContentWidth={1000}
+            renderHeader={this.renderHeader}
+            headerHeight={50}
+            renderContent={this.state.tableData.length !== 0 ? this.renderContent : null}
+            renderFooter={this.renderFooter}
+            noDataMessage={"I don't have any \n Parking Spot data to show"}
+          />
+        )}
+      </div>
+    );
+  }
 }
