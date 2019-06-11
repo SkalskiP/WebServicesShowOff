@@ -3,11 +3,12 @@ import './TableBox.scss';
 import  Scrollbars  from 'react-custom-scrollbars';
 
 interface IProps {
-    tableWidth: number;
+    totalTableContentWidth: number;
     renderHeader: (style: React.CSSProperties) => any;
     headerHeight:number;
-    renderContent: (style: React.CSSProperties) => any;
+    renderContent?: (style: React.CSSProperties) => any;
     renderFooter?: (style: React.CSSProperties) => any;
+    noDataMessage?: string;
 }
 
 interface IState {
@@ -30,7 +31,7 @@ class TableBox extends React.Component<IProps, IState> {
         const tableWrapperSize = this.tableWrapper.getBoundingClientRect();
 
         this.setState({
-            tableWidth: Math.min(this.props.tableWidth, tableWrapperSize.width),
+            tableWidth: Math.min(this.props.totalTableContentWidth, tableWrapperSize.width),
             tableHeight: tableWrapperSize.height
         });
     };
@@ -51,22 +52,23 @@ class TableBox extends React.Component<IProps, IState> {
 
     public render() {
         const {tableWidth, tableHeight, tableLeftOffset} = this.state;
+        const {headerHeight, renderHeader, totalTableContentWidth, renderContent, renderFooter, noDataMessage} = this.props;
         return(
             <div className="TableBoxWrapper" ref={ref => this.tableWrapper = ref}>
                 <div className="TableBox" style={{width: tableWidth, height: tableHeight}}>
-                    <div className="HeaderWrapper" style={{height: this.props.headerHeight}}>
-                        {this.props.renderHeader({width: this.props.tableWidth, left: tableLeftOffset})}
+                    <div className="HeaderWrapper" style={{height: headerHeight}}>
+                        {renderHeader({width: totalTableContentWidth, left: tableLeftOffset})}
                     </div>
                     <div className="TableWrapper">
-                        <Scrollbars
+                        {!!renderContent ? <Scrollbars
                             onScrollFrame={this.handleScrollFrame}
                             autoHide={true}
                         >
-                            {this.props.renderContent({width: this.props.tableWidth})}
-                        </Scrollbars>
+                            {renderContent({width: totalTableContentWidth - 1})}
+                        </Scrollbars> : noDataMessage}
                     </div>
                     <div className="ControlPanel">
-                        {this.props.renderFooter && this.props.renderFooter({})}
+                        {renderFooter && renderFooter({})}
                     </div>
                 </div>
             </div>

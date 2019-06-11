@@ -103,11 +103,12 @@ class HistoryViewComponent extends React.Component<IProps, IState> {
         return(
             <div className="HistoryView">
                 <TableBox
-                    tableWidth={1400}
+                    totalTableContentWidth={1400}
                     headerHeight={50}
                     renderHeader={this.renderTableHeader}
-                    renderContent={this.renderTableContent}
+                    renderContent={this.state.tableData.length !== 0 ? this.renderTableContent : null}
                     renderFooter={this.renderTableFooter}
+                    noDataMessage={"I don't have any \n Parking Tickets data to show"}
                 />
             </div>
         )

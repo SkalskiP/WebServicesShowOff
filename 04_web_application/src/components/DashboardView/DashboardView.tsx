@@ -117,11 +117,12 @@ export default class DashboardView extends React.Component<{}, IState> {
         return(
             <div className="DashboardView">
                 <TableBox
-                    tableWidth={1000}
+                    totalTableContentWidth={1000}
                     renderHeader={this.renderHeader}
                     headerHeight={50}
-                    renderContent={this.renderContent}
+                    renderContent={this.state.tableData.length !== 0 ? this.renderContent : null}
                     renderFooter={this.renderFooter}
+                    noDataMessage={"I don't have any \n Parking Spot data to show"}
                 />
             </div>
         )

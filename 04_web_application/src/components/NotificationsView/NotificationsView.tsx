@@ -59,11 +59,12 @@ export default class NotificationsView extends React.Component<{}, IState> {
         return(
             <div className="DashboardView">
                 <TableBox
-                    tableWidth={800}
+                    totalTableContentWidth={800}
                     renderHeader={this.renderHeader}
                     headerHeight={50}
-                    renderContent={this.renderContent}
+                    renderContent={this.state.tableData.length !== 0 ? this.renderContent : null}
                     renderFooter={null}
+                    noDataMessage={"I don't have any \n Notifications to show"}
                 />
             </div>
         )

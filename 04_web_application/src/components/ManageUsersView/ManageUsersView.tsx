@@ -57,7 +57,7 @@ export const ManageUsersView: React.FC<{}> = () => {
   else
     return (
       <div className="ManageUsersView">
-        <TableBox tableWidth={1000} renderHeader={renderHeader} headerHeight={50} renderContent={renderContent} />
+        <TableBox totalTableContentWidth={1000} renderHeader={renderHeader} headerHeight={50} renderContent={renderContent} />
       </div>
     );
 };
