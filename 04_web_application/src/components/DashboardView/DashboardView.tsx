@@ -38,7 +38,7 @@ export default class DashboardView extends React.Component<{}, IState> {
         },
       })
       .then((response: AxiosResponse) => {
-        const tableData: IParkingSpot[] = response.data.map(ResponseToObjectMapper.forDashboardRequest);
+        const tableData: IParkingSpot[] = response.data.data.map(ResponseToObjectMapper.forDashboardRequest);
         this.setState({
           tableData: tableData,
           totalCount: response.data.totalCount,
