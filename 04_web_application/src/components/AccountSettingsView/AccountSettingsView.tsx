@@ -7,13 +7,16 @@ import {AppState} from '../../store';
 import {User} from 'firebase';
 import axios from 'axios';
 import Scrollbars from 'react-custom-scrollbars';
+import {updateUserData} from '../../store/account/actionCreators';
 
 interface Props {
   loggedUser: User;
   editedUser?: User;
+  setEditedUser?: (user: User) => void;
+  updateUser(user: User): void;
 }
 
-const AccountSettingsView: React.FC<Props> = ({loggedUser, editedUser}) => {
+const AccountSettingsView: React.FC<Props> = ({setEditedUser, updateUser, loggedUser, editedUser}) => {
   const user = editedUser ? editedUser : loggedUser;
 
   const [email, setEmail] = useState(user.email);
@@ -35,7 +38,16 @@ const AccountSettingsView: React.FC<Props> = ({loggedUser, editedUser}) => {
       payload = Object.assign(payload, {password: newPassword});
     }
 
-    axios.patch(`http://localhost:8080/auth/rest/user/${user.uid}`, payload);
+    axios
+      .patch(`http://localhost:8080/auth/rest/user/${user.uid}`, payload)
+      .then(response => response.data)
+      .then((payload: User) => {
+        if (editedUser) {
+          setEditedUser(payload);
+        } else {
+          updateUser(payload);
+        }
+      });
   };
 
   return (
@@ -88,8 +100,15 @@ const AccountSettingsView: React.FC<Props> = ({loggedUser, editedUser}) => {
   );
 };
 
+const mapDispatchToProps = {
+  updateUser: updateUserData,
+};
+
 const mapStateToProps = (state: AppState) => ({
   loggedUser: state.account.user,
 });
 
-export default connect(mapStateToProps)(AccountSettingsView);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(AccountSettingsView);
