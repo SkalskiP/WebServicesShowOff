@@ -2,7 +2,7 @@ import axios from 'axios';
 import * as firebase from 'firebase';
 import {store} from '../index';
 import {updateUserData} from '../store/account/actionCreators';
-import {updateAdminStatus, updateeLastLoginFailureMessage, updateLoadingStatus} from '../store/general/actionCreators';
+import {updateAdminStatus, updateLastLoginFailureMessage, updateLoadingStatus} from '../store/general/actionCreators';
 import {UserData} from './types/UserData';
 
 const config = {
@@ -50,11 +50,11 @@ export class Firebase {
     Firebase.auth
       .signInWithEmailAndPassword(email, password)
       .then(result => {
-        store.dispatch(updateUserData(result.user));
-        store.dispatch(updateeLastLoginFailureMessage(null));
+        store.dispatch(updateLastLoginFailureMessage(null));
+        setTimeout(() => store.dispatch(updateUserData(result.user)), 2000);
       })
       .catch(error => {
-        store.dispatch(updateeLastLoginFailureMessage(error.message));
+        store.dispatch(updateLastLoginFailureMessage(error.message));
       });
   };
 
