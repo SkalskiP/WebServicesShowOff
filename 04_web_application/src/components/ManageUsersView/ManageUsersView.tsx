@@ -1,16 +1,17 @@
 import axios from 'axios';
-import {User} from 'firebase';
-import React, {useEffect, useState} from 'react';
-import TableBox from '../TableBox/TableBox';
-import './ManageUsersView.scss';
-import Settings from '../../settings/Settings';
 import classnames from 'classnames';
-import {TextButton} from '../TextButton/TextButton';
+import { User } from 'firebase';
+import React, { useEffect, useState } from 'react';
+import Settings from '../../settings/Settings';
+import { UserData } from '../../utils/types/UserData';
 import AccountSettingsView from '../AccountSettingsView/AccountSettingsView';
+import TableBox from '../TableBox/TableBox';
+import { TextButton } from '../TextButton/TextButton';
+import './ManageUsersView.scss';
 
 export const ManageUsersView: React.FC<{}> = () => {
-  const [tableData, setTableData] = useState<User[]>([]);
-  const [editedUser, setEditedUser] = useState<User | undefined>(null);
+  const [tableData, setTableData] = useState<UserData[]>([]);
+  const [editedUser, setEditedUser] = useState<UserData | undefined>(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -32,7 +33,7 @@ export const ManageUsersView: React.FC<{}> = () => {
 
   const renderContent = (style: any) => (
     <div className="TableContent" style={style}>
-      {tableData.map((data: User) => (
+      {tableData.map((data: UserData) => (
         <div className="TableRow">
           <div className={classnames('TableCell', 'WideTableCell')}>{data.uid}</div>
           <div className="TableCell">{data.displayName}</div>
@@ -57,7 +58,12 @@ export const ManageUsersView: React.FC<{}> = () => {
   else
     return (
       <div className="ManageUsersView">
-        <TableBox totalTableContentWidth={1000} renderHeader={renderHeader} headerHeight={50} renderContent={renderContent} />
+        <TableBox
+          totalTableContentWidth={1000}
+          renderHeader={renderHeader}
+          headerHeight={50}
+          renderContent={renderContent}
+        />
       </div>
     );
 };

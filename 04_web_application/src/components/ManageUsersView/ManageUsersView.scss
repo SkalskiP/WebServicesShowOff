@@ -13,8 +13,10 @@
   .WideTableCell {
     width: 400px;
   }
+}
 
-  .BackButtonContainer {
-    width: 100%;
-  }
+.BackButtonContainer {
+  width: 100%;
+  align-items: center;
+  justify-content: flex-start;
 }

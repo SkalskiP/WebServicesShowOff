@@ -1,27 +1,27 @@
-import React, {useState} from 'react';
-import './AccountSettingsView.scss';
-import TextInput from '../TextInput/TextInput';
-import {TextButton} from '../TextButton/TextButton';
-import {connect} from 'react-redux';
-import {AppState} from '../../store';
-import {User} from 'firebase';
 import axios from 'axios';
+import React, { useState } from 'react';
 import Scrollbars from 'react-custom-scrollbars';
-import {updateUserData} from '../../store/account/actionCreators';
+import { connect } from 'react-redux';
+import { AppState } from '../../store';
+import { updateUserData } from '../../store/account/actionCreators';
+import { UserData } from '../../utils/types/UserData';
+import { TextButton } from '../TextButton/TextButton';
+import TextInput from '../TextInput/TextInput';
+import './AccountSettingsView.scss';
 
 interface Props {
-  loggedUser: User;
-  editedUser?: User;
-  setEditedUser?: (user: User) => void;
-  updateUser(user: User): void;
+  loggedUser: UserData;
+  editedUser?: UserData;
+  setEditedUser?: (user: UserData) => void;
+  updateUser(user: UserData): void;
 }
 
 const AccountSettingsView: React.FC<Props> = ({setEditedUser, updateUser, loggedUser, editedUser}) => {
-  const user = editedUser ? editedUser : loggedUser;
+  const user = editedUser || loggedUser;
 
   const [email, setEmail] = useState(user.email);
   const [name, setName] = useState(user.displayName);
-  const [avatarURL, setAvatarURL] = useState(user.photoURL);
+  const [avatarURL, setAvatarURL] = useState(user.photoUrl);
   const [newPassword, setNewPassword] = useState('');
   const [repeatPassword, setRepeatPassword] = useState('');
   const [phoneNumber, setPhoneNumber] = useState(user.phoneNumber);
@@ -41,9 +41,12 @@ const AccountSettingsView: React.FC<Props> = ({setEditedUser, updateUser, logged
     axios
       .patch(`http://localhost:8080/auth/rest/user/${user.uid}`, payload)
       .then(response => response.data)
-      .then((payload: User) => {
+      .then((payload: UserData) => {
         if (editedUser) {
           setEditedUser(payload);
+          if (editedUser.uid === loggedUser.uid) {
+            updateUser(payload);
+          }
         } else {
           updateUser(payload);
         }

@@ -1,14 +1,15 @@
-import { Action } from "../Action";
-import {User} from "firebase";
+import {Action} from '../Action';
+import {User} from 'firebase';
+import {UserData} from '../../utils/types/UserData';
 
 export type AccountState = {
-  user: User
+  user: UserData;
 };
 
 interface UpdateUserData {
   type: typeof Action.UPDATE_USER_DATA;
   payload: {
-    user: User;
+    user: UserData;
   };
 }
 
