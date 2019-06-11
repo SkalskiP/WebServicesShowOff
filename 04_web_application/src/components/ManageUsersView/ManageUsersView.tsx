@@ -1,21 +1,26 @@
 import axios from 'axios';
+import classnames from 'classnames';
 import {User} from 'firebase';
 import React, {useEffect, useState} from 'react';
-import TableBox from '../TableBox/TableBox';
-import './ManageUsersView.scss';
 import Settings from '../../settings/Settings';
-import classnames from 'classnames';
-import {TextButton} from '../TextButton/TextButton';
+import {UserData} from '../../utils/types/UserData';
 import AccountSettingsView from '../AccountSettingsView/AccountSettingsView';
+import TableBox from '../TableBox/TableBox';
+import {TextButton} from '../TextButton/TextButton';
+import './ManageUsersView.scss';
+import {LoaderView} from '../LoaderView/LoaderView';
 
 export const ManageUsersView: React.FC<{}> = () => {
-  const [tableData, setTableData] = useState<User[]>([]);
-  const [editedUser, setEditedUser] = useState<User | undefined>(null);
+  const [tableData, setTableData] = useState<UserData[]>([]);
+  const [editedUser, setEditedUser] = useState<UserData | undefined>(null);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
+      setLoading(true);
       const {data} = await axios.get(Settings.SERVER_NAME + '/auth/rest/user');
       setTableData(data.values);
+      setLoading(false);
     };
 
     fetchData();
@@ -32,7 +37,7 @@ export const ManageUsersView: React.FC<{}> = () => {
 
   const renderContent = (style: any) => (
     <div className="TableContent" style={style}>
-      {tableData.map((data: User) => (
+      {tableData.map((data: UserData) => (
         <div className="TableRow">
           <div className={classnames('TableCell', 'WideTableCell')}>{data.uid}</div>
           <div className="TableCell">{data.displayName}</div>
@@ -45,6 +50,9 @@ export const ManageUsersView: React.FC<{}> = () => {
     </div>
   );
 
+  if (loading) {
+    return <LoaderView />;
+  }
   if (!!editedUser)
     return (
       <>
@@ -57,7 +65,12 @@ export const ManageUsersView: React.FC<{}> = () => {
   else
     return (
       <div className="ManageUsersView">
-        <TableBox totalTableContentWidth={1000} renderHeader={renderHeader} headerHeight={50} renderContent={renderContent} />
+        <TableBox
+          totalTableContentWidth={1000}
+          renderHeader={renderHeader}
+          headerHeight={50}
+          renderContent={renderContent}
+        />
       </div>
     );
 };

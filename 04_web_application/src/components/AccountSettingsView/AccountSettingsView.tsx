@@ -1,32 +1,36 @@
+import axios from 'axios';
 import React, {useState} from 'react';
-import './AccountSettingsView.scss';
-import TextInput from '../TextInput/TextInput';
-import {TextButton} from '../TextButton/TextButton';
+import Scrollbars from 'react-custom-scrollbars';
 import {connect} from 'react-redux';
 import {AppState} from '../../store';
-import {User} from 'firebase';
-import axios from 'axios';
-import Scrollbars from 'react-custom-scrollbars';
 import {updateUserData} from '../../store/account/actionCreators';
+import {UserData} from '../../utils/types/UserData';
+import {TextButton} from '../TextButton/TextButton';
+import TextInput from '../TextInput/TextInput';
+import './AccountSettingsView.scss';
+import {LoaderView} from '../LoaderView/LoaderView';
 
 interface Props {
-  loggedUser: User;
-  editedUser?: User;
-  setEditedUser?: (user: User) => void;
-  updateUser(user: User): void;
+  loggedUser: UserData;
+  editedUser?: UserData;
+  setEditedUser?: (user: UserData) => void;
+  updateUser(user: UserData): void;
 }
 
 const AccountSettingsView: React.FC<Props> = ({setEditedUser, updateUser, loggedUser, editedUser}) => {
-  const user = editedUser ? editedUser : loggedUser;
+  const user = editedUser || loggedUser;
 
   const [email, setEmail] = useState(user.email);
   const [name, setName] = useState(user.displayName);
-  const [avatarURL, setAvatarURL] = useState(user.photoURL);
+  const [avatarURL, setAvatarURL] = useState(user.photoUrl);
   const [newPassword, setNewPassword] = useState('');
   const [repeatPassword, setRepeatPassword] = useState('');
   const [phoneNumber, setPhoneNumber] = useState(user.phoneNumber);
 
+  const [loading, setLoading] = useState(false);
+
   const onSubmit = () => {
+    setLoading(true);
     let payload = {
       displayName: name,
       email: email,
@@ -41,61 +45,69 @@ const AccountSettingsView: React.FC<Props> = ({setEditedUser, updateUser, logged
     axios
       .patch(`http://localhost:8080/auth/rest/user/${user.uid}`, payload)
       .then(response => response.data)
-      .then((payload: User) => {
+      .then((payload: UserData) => {
         if (editedUser) {
           setEditedUser(payload);
+          if (editedUser.uid === loggedUser.uid) {
+            updateUser(payload);
+          }
         } else {
           updateUser(payload);
         }
+        setLoading(false);
       });
   };
 
   return (
     <div className="AccountSettingsView">
-      <Scrollbars>
-        <div className="AccountSettingsContent">
-          <TextInput value={email} label={'Email'} key={'email'} isPassword={false} onChange={setEmail} />
-          <TextInput
-            value={name}
-            label={'Name and Surname'}
-            key={'name_and_surname'}
-            isPassword={false}
-            onChange={setName}
-          />
-          <TextInput
-            value={avatarURL}
-            label={'Profile Photo URL'}
-            key={'photo_url'}
-            isPassword={false}
-            onChange={setAvatarURL}
-          />
-          <TextInput
-            value={newPassword}
-            label={'New password'}
-            key={'new_password'}
-            isPassword={true}
-            onChange={setNewPassword}
-          />
-          <TextInput
-            value={repeatPassword}
-            label={'Repeat password'}
-            key={'repeat_password'}
-            isPassword={true}
-            onChange={setRepeatPassword}
-          />
-          <TextInput
-            value={phoneNumber}
-            label={'Phone Number'}
-            key={'phone_number'}
-            isPassword={false}
-            onChange={setPhoneNumber}
-          />
+      {loading ? (
+        <LoaderView />
+      ) : (
+        <Scrollbars>
+          <div className="AccountSettingsContent">
+            <TextInput value={email} label={'Email'} key={'email'} isPassword={false} onChange={setEmail} />
+            <TextInput
+              value={name}
+              label={'Name and Surname'}
+              key={'name_and_surname'}
+              isPassword={false}
+              onChange={setName}
+            />
+            <TextInput
+              value={avatarURL}
+              label={'Profile Photo URL'}
+              key={'photo_url'}
+              isPassword={false}
+              onChange={setAvatarURL}
+            />
+            <TextInput
+              value={newPassword}
+              label={'New password'}
+              key={'new_password'}
+              isPassword={true}
+              onChange={setNewPassword}
+            />
+            <TextInput
+              value={repeatPassword}
+              label={'Repeat password'}
+              key={'repeat_password'}
+              isPassword={true}
+              onChange={setRepeatPassword}
+            />
+            <TextInput
+              value={phoneNumber}
+              label={'Phone Number'}
+              key={'phone_number'}
+              isPassword={false}
+              onChange={setPhoneNumber}
+            />
 
-          <div className="SubmitWrapper">
-            <TextButton label={'Submit'} onClick={onSubmit} />
+            <div className="SubmitWrapper">
+              <TextButton label={'Submit'} onClick={onSubmit} />
+            </div>
           </div>
-        </div>
-      </Scrollbars>
+        </Scrollbars>
+      )}
     </div>
   );
 };

@@ -1,14 +1,12 @@
-import {AccountActionTypes} from "./types";
-import {Action} from "../Action";
-import {User} from "firebase";
+import {UserData} from '../../utils/types/UserData';
+import {Action} from '../Action';
+import {AccountActionTypes} from './types';
 
-export function updateUserData(
-    user: User
-): AccountActionTypes {
-    return {
-        type: Action.UPDATE_USER_DATA,
-        payload: {
-            user
-        },
-    };
+export function updateUserData(user: UserData): AccountActionTypes {
+  return {
+    type: Action.UPDATE_USER_DATA,
+    payload: {
+      user,
+    },
+  };
 }
