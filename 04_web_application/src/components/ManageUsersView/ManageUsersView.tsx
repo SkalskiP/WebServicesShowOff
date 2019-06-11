@@ -19,7 +19,7 @@ export const ManageUsersView: React.FC<{}> = () => {
     };
 
     fetchData();
-  }, []);
+  }, [editedUser]);
 
   const renderHeader = (style: any) => (
     <div className="TableHeader" style={style}>
@@ -51,7 +51,7 @@ export const ManageUsersView: React.FC<{}> = () => {
         <div className="BackButtonContainer">
           <TextButton label={'Back'} onClick={() => setEditedUser(undefined)} />
         </div>
-        <AccountSettingsView editedUser={editedUser} />
+        <AccountSettingsView setEditedUser={setEditedUser} editedUser={editedUser} />
       </>
     );
   else
