@@ -5,6 +5,7 @@ import axios, {AxiosResponse} from "axios";
 import {ResponseToObjectMapper} from "../../utils/ResponseToObjectMapper";
 import TableBox from "../TableBox/TableBox";
 import {IParkingSystemNotification} from "../../interfaces/IParkingSystemNotification";
+import {TextButton} from "../TextButton/TextButton";
 
 interface IState {
     tableData: IParkingSystemNotification[];
@@ -26,6 +27,11 @@ export default class NotificationsView extends React.Component<{}, IState> {
                 const tableData:IParkingSystemNotification[] = data.data.map(ResponseToObjectMapper.forNotificationsRequest);
                 this.setState({tableData: tableData});
             })
+    };
+
+    public resolveNotification = (employeeId: number, spotId: number) => {
+        axios.delete(this.Url, {params: {"employeeId": employeeId, "spotId": spotId}})
+            .then(this.requestData)
     };
 
     public componentDidMount(): void {
@@ -50,6 +56,9 @@ export default class NotificationsView extends React.Component<{}, IState> {
                     <div className="TableCell">{data.spotId}</div>
                     <div className="TableCell">{data.ticketId}</div>
                     <div className="TableCell">{data.status}</div>
+                    <div className="TableCell">
+                        <TextButton label={'Resolve'} onClick={() => this.resolveNotification(data.employeeId, data.spotId)} />
+                    </div>
                 </div>)}
             </div>
         )
@@ -59,7 +68,7 @@ export default class NotificationsView extends React.Component<{}, IState> {
         return(
             <div className="DashboardView">
                 <TableBox
-                    totalTableContentWidth={800}
+                    totalTableContentWidth={1000}
                     renderHeader={this.renderHeader}
                     headerHeight={50}
                     renderContent={this.state.tableData.length !== 0 ? this.renderContent : null}
