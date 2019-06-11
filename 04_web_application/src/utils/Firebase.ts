@@ -47,15 +47,9 @@ export class Firebase {
   }
 
   public static signIn = async (email, password) => {
-    Firebase.auth
-      .signInWithEmailAndPassword(email, password)
-      .then(result => {
-        store.dispatch(updateLastLoginFailureMessage(null));
-        setTimeout(() => store.dispatch(updateUserData(result.user)), 2000);
-      })
-      .catch(error => {
-        store.dispatch(updateLastLoginFailureMessage(error.message));
-      });
+    Firebase.auth.signInWithEmailAndPassword(email, password).catch(error => {
+      store.dispatch(updateLastLoginFailureMessage(error.message));
+    });
   };
 
   public static signOut = async () => {
