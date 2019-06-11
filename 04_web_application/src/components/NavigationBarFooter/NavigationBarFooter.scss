@@ -1,4 +1,4 @@
-@import "../../Settings";
+@import '../../Settings';
 
 $logoutButtonMargin: 5px;
 
@@ -70,7 +70,9 @@ $logoutButtonMargin: 5px;
     align-content: center;
 
     > img {
-      max-height: 55px;
+      height: 55px;
+      width: 55px;
+      object-fit: cover;
       border-radius: 50%;
     }
   }
