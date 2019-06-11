@@ -4,24 +4,23 @@ import NavigationBarButton from '../NavigationBarButton/NavigationBarButton';
 import NavigationBarButtonsData from '../../data/NavigationBarButtonsData';
 import {INavigationBarButton} from '../../interfaces/INavigationBarButton';
 import {AppState} from '../../store';
-import {updateActiveTabName} from '../../store/general/actionCreators';
 import {connect} from 'react-redux';
 import {TabName} from '../../utils/types/TabName';
 import {NavigationBarFooter} from '../NavigationBarFooter/NavigationBarFooter';
+import {withRouter, RouteComponentProps} from 'react-router-dom';
 
-interface Props {
+interface Props extends RouteComponentProps {
   activeTabName: TabName;
   notificationStatus: boolean;
-  updateActiveTabName: (activeTabName: TabName) => any;
   isAdmin: boolean;
   navigateToPage: (path: string) => void;
 }
 
 const NavigationBarComponent: React.FC<Props> = ({
+  match,
   navigateToPage,
   activeTabName,
   notificationStatus,
-  updateActiveTabName,
   isAdmin,
 }) => {
   const getButtons = () => {
@@ -32,7 +31,7 @@ const NavigationBarComponent: React.FC<Props> = ({
           image={data.imageSource}
           imageAlt={data.imageAlt}
           label={data.displayName}
-          isActive={activeTabName === data.activeTabName}
+          isActive={match.path === data.activeTabName}
           //TODO: Validation of newly added notifications
           isMarked={data.activeTabName === TabName.NOTIFICATIONS && notificationStatus}
           onClick={() => navigateToPage(data.activeTabName)}
@@ -40,6 +39,8 @@ const NavigationBarComponent: React.FC<Props> = ({
       )
     );
   };
+
+  console.log(match.path);
 
   return (
     <div className="NavigationBar">
@@ -59,11 +60,5 @@ const mapStateToProps = (state: AppState) => ({
   isAdmin: state.general.isAdmin,
 });
 
-const dispatchToProps = {
-  updateActiveTabName,
-};
-
-export const NavigationBar = connect(
-  mapStateToProps,
-  dispatchToProps
-)(NavigationBarComponent);
+// @ts-ignore
+export const NavigationBar = withRouter(connect(mapStateToProps)(NavigationBarComponent));
