@@ -36,6 +36,19 @@ public class NotificationStore {
         }
     }
 
+    public boolean resolve(Integer employeeId, Integer spotId) {
+        if (usersMailbox.get(employeeId) != null) {
+            if (usersMailbox.get(employeeId).get(spotId) != null) {
+                usersMailbox.get(employeeId).remove(spotId);
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
+    }
+
     public List<ParkingSystemNotificationMessage> getNotificationsAll() {
         ArrayList<ArrayList<ParkingSystemNotificationMessage>> notificationsItems = new ArrayList<ArrayList<ParkingSystemNotificationMessage>>();
         Iterator iterator = usersMailbox.entrySet().iterator();

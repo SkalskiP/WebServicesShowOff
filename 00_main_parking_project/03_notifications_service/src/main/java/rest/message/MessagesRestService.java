@@ -44,26 +44,19 @@ public class MessagesRestService {
         }
     }
 
-    @GET
-    @Path("/{id}")
+    @DELETE
     @Produces({MediaType.APPLICATION_JSON})
-    public Response getMessagesEmployeeById(@PathParam("id") Integer id, @HeaderParam("authorization") String token) {
+    public Response resolveNotification(@QueryParam("employeeId") Integer employeeId, @QueryParam("spotId") Integer spotId, @HeaderParam("authorization") String token) {
         Identity identity = UserVerificator.validateIdToken(token);
         if (token == null || !identity.getVerificationStatus()) {
             return Response.status(Response.Status.UNAUTHORIZED).build();
         }
-        List<ParkingSystemNotificationMessage> allNotifications = NotificationStore.getInstance().getNotificationsByEmployee(id);
-        List<ParkingSystemNotificationMessage> filtered = this.filterInactiveNotifications(allNotifications, token);
 
-        if (identity.isAdmin()) {
-            return Response.ok().entity(filtered).build();
+        boolean resolveStatus = NotificationStore.getInstance().resolve(employeeId, spotId);
+        if (resolveStatus) {
+            return Response.ok().build();
         } else {
-            EmployeeDTO employee = EmployeeDAO.getInstance().getByFirebaseUid(identity.getUid());
-            if (employee.getId().equals(id)) {
-                return Response.ok().entity(filtered).build();
-            } else {
-                return Response.status(Response.Status.UNAUTHORIZED).build();
-            }
+            return Response.status(Response.Status.NOT_FOUND).build();
         }
     }
 
