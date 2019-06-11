@@ -15,24 +15,25 @@ public class ParkingSpotRestService {
 
     @GET
     @Produces({MediaType.APPLICATION_JSON})
-    public Response getParkingSpots(@HeaderParam("Authorization") String token) {
+    public Response getParkingSpots(@QueryParam("zone") String zone, @QueryParam("street") String street,
+                                    @QueryParam("limit") Integer limit, @QueryParam("offset") Integer offset, @HeaderParam("Authorization") String token) {
+
         Identity identity = UserVerificator.validateIdToken(token);
         if (token == null || !identity.getVerificationStatus()) {
             return Response.status(Response.Status.UNAUTHORIZED).build();
         }
 
-        List<ParkingSpotDTO> parkingSpots;
-
-        System.out.println("DUPA");
-        System.out.println(identity.isAdmin());
+        ParkingSpotRaportData parkingSpotRaport = new ParkingSpotRaportData();
 
         if (identity.isAdmin()) {
-            parkingSpots = ParkingSpotDAO.getInstance().getItems();
+            parkingSpotRaport.setData(ParkingSpotDAO.getInstance().getFiltered(zone, street, offset, limit));
+            parkingSpotRaport.setTotalCount(ParkingSpotDAO.getInstance().getFilteredCount(zone, street));
         } else {
-            parkingSpots = ParkingSpotDAO.getInstance().getByFirebaseUid(identity.getUid());
+            parkingSpotRaport.setData(ParkingSpotDAO.getInstance().getByFirebaseUid(zone, street, offset, limit, identity.getUid()));
+            parkingSpotRaport.setTotalCount(ParkingSpotDAO.getInstance().getByFirebaseUidCount(zone, street, identity.getUid()));
         }
 
-        return Response.ok().entity(parkingSpots).build();
+        return Response.ok().entity(parkingSpotRaport).build();
     }
 
     @GET

@@ -28,9 +28,7 @@ public class UserVerificator {
             post.setHeader("Content-type", "application/json");
             post.setHeader("accept", "application/json");
             HttpResponse response = httpClient.execute(post);
-            System.out.println("TEST");
             String result = EntityUtils.toString(response.getEntity());
-            System.out.println(result);
             return gson.fromJson(result, Identity.class);
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();

@@ -90,11 +90,12 @@ class HistoryViewComponent extends React.Component<IProps, IState> {
 
     protected renderTableFooter = (style: React.CSSProperties) => {
         return(
+            [<div/>,
             <PaginationPanel
                 activePageIndex={this.state.activePageIndex}
                 totalPagesCount={Math.floor(this.state.totalCount / this.batchSize) + 1}
                 onActivePageChange={this.changePageHandler}
-            />
+            />]
         )
     };
 
