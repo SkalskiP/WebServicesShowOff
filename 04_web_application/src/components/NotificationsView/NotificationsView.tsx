@@ -1,88 +1,81 @@
-import React from 'react';
+import React from "react";
 import './NotificationsView.scss';
-import Settings from '../../settings/Settings';
-import axios, {AxiosResponse} from 'axios';
-import {ResponseToObjectMapper} from '../../utils/ResponseToObjectMapper';
-import TableBox from '../TableBox/TableBox';
-import {IParkingSystemNotification} from '../../interfaces/IParkingSystemNotification';
-import {TextButton} from '../TextButton/TextButton';
-import {LoaderView} from '../LoaderView/LoaderView';
+import Settings from "../../settings/Settings";
+import axios, {AxiosResponse} from "axios";
+import {ResponseToObjectMapper} from "../../utils/ResponseToObjectMapper";
+import TableBox from "../TableBox/TableBox";
+import {IParkingSystemNotification} from "../../interfaces/IParkingSystemNotification";
+import {TextButton} from "../TextButton/TextButton";
 
-interface State {
-  tableData: IParkingSystemNotification[];
-  loading: boolean;
+interface IState {
+    tableData: IParkingSystemNotification[];
 }
 
-export default class NotificationsView extends React.Component<{}, State> {
-  public state: State = {
-    tableData: [],
-    loading: false,
-  };
+export default class NotificationsView extends React.Component<{}, IState> {
 
-  protected headerLabels: string[] = ['Employee Id', 'Spot Id', 'Ticket Id', 'Status'];
+    public state: IState = {
+        tableData: []
+    };
 
-  public Url: string = Settings.SERVER_NAME + '/' + Settings.NOTIFICATIONS_REQUEST_PATH;
+    protected headerLabels: string[] = ["Employee Id", "Spot Id", "Ticket Id", "Status"];
 
-  public requestData = () => {
-    this.setState({loading: true});
-    axios.get(this.Url).then((data: AxiosResponse) => {
-      const tableData: IParkingSystemNotification[] = data.data.map(ResponseToObjectMapper.forNotificationsRequest);
-      this.setState({tableData: tableData, loading: false});
-    });
-  };
+    public Url:string = Settings.SERVER_NAME + "/" + Settings.NOTIFICATIONS_REQUEST_PATH;
 
-  public resolveNotification = (employeeId: number, spotId: number) => {
-    axios.delete(this.Url, {params: {employeeId: employeeId, spotId: spotId}}).then(this.requestData);
-  };
+    public requestData = () => {
+        axios.get(this.Url)
+            .then((data:AxiosResponse) => {
+                const tableData:IParkingSystemNotification[] = data.data.map(ResponseToObjectMapper.forNotificationsRequest);
+                this.setState({tableData: tableData});
+            })
+    };
 
-  public componentDidMount(): void {
-    this.requestData();
-  }
+    public resolveNotification = (employeeId: number, spotId: number) => {
+        axios.delete(this.Url, {params: {"employeeId": employeeId, "spotId": spotId}})
+            .then(this.requestData)
+    };
 
-  protected renderHeader = (style: React.CSSProperties) => {
-    return (
-      <div className="TableHeader" style={style}>
-        {this.headerLabels.map((label: string) => (
-          <div className="ColumnHeader">{label}</div>
-        ))}
-      </div>
-    );
-  };
+    public componentDidMount(): void {
+        this.requestData();
+    }
 
-  protected renderContent = (style: React.CSSProperties) => {
-    return (
-      <div className="TableContent" style={style}>
-        {this.state.tableData.map((data: IParkingSystemNotification) => (
-          <div className="TableRow">
-            <div className="TableCell">{data.employeeId}</div>
-            <div className="TableCell">{data.spotId}</div>
-            <div className="TableCell">{data.ticketId}</div>
-            <div className="TableCell">{data.status}</div>
-            <div className="TableCell">
-              <TextButton label={'Resolve'} onClick={() => this.resolveNotification(data.employeeId, data.spotId)} />
+    protected renderHeader = (style: React.CSSProperties) => {
+        return(
+            <div className="TableHeader" style={style}>
+                {this.headerLabels.map((label:string) => <div className="ColumnHeader">
+                    {label}
+                </div>)}
             </div>
-          </div>
-        ))}
-      </div>
-    );
-  };
+        )
+    };
 
-  public render() {
-    return (
-      <div className="DashboardView">
-        {this.state.loading ? (
-          <LoaderView />
-        ) : (
-          <TableBox
-            totalTableContentWidth={1000}
-            renderHeader={this.renderHeader}
-            headerHeight={50}
-            renderContent={this.state.tableData.length !== 0 ? this.renderContent : null}
-            renderFooter={null}
-            noDataMessage={"I don't have any \n Notifications to show"}
-          />
-        )}
-      </div>
-    );
-  }
+    protected renderContent = (style: React.CSSProperties) => {
+        return(
+            <div className="TableContent" style={style}>
+                {this.state.tableData.map((data: IParkingSystemNotification) => <div className="TableRow">
+                    <div className="TableCell">{data.employeeId}</div>
+                    <div className="TableCell">{data.spotId}</div>
+                    <div className="TableCell">{data.ticketId}</div>
+                    <div className="TableCell">{data.status}</div>
+                    <div className="TableCell">
+                        <TextButton label={'Resolve'} onClick={() => this.resolveNotification(data.employeeId, data.spotId)} />
+                    </div>
+                </div>)}
+            </div>
+        )
+    };
+
+    public render() {
+        return(
+            <div className="DashboardView">
+                <TableBox
+                    totalTableContentWidth={1000}
+                    renderHeader={this.renderHeader}
+                    headerHeight={50}
+                    renderContent={this.state.tableData.length !== 0 ? this.renderContent : null}
+                    renderFooter={null}
+                    noDataMessage={"I don't have any \n Notifications to show"}
+                />
+            </div>
+        )
+    }
 }

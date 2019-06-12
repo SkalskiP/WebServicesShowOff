@@ -1,13 +1,15 @@
 .AccountSettingsView {
-  display: flex;
   flex: 1 1 auto;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
-  flex-wrap: nowrap;
   align-self: stretch;
   margin: 25px;
+  max-width: 450px;
+
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: flex-end;
+  align-items: flex-start;
+  align-content: flex-end;
 
   .AccountSettingsContent {
     padding: 15px;
